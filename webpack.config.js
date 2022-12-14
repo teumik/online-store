@@ -2,6 +2,7 @@
 const path = require('node:path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const mode = process.env.NODE_ENV;
 const isProduction = mode === 'production';
@@ -27,6 +28,15 @@ const config = {
       filename: 'static/css/[contenthash].css',
     }),
   ],
+  optimization: {
+    minimize: isProduction,
+    minimizer: [
+      new TerserPlugin({
+        terserOptions: { format: { comments: false } },
+        extractComments: false,
+      }),
+    ],
+  },
   module: {
     rules: [
       {
@@ -36,7 +46,6 @@ const config = {
       {
         test: /\.(tsx?|jsx?)$/i,
         exclude: ['/node_modules/'],
-
         use: isProduction ? { loader: 'babel-loader' } : { loader: 'ts-loader' },
       },
       {

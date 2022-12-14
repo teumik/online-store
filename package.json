@@ -12,7 +12,8 @@
   "dependencies": {
     "postcss-preset-env": "^7.8.3",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "terser-webpack-plugin": "^5.3.6"
   },
   "devDependencies": {
     "@babel/cli": "^7.19.3",
