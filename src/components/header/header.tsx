@@ -1,5 +1,6 @@
 import './header.scss';
 import Cart from './Cart/cart';
+import Logo from './Logo/logo';
 
 function Header() {
   const totalPrice = 1000;
@@ -9,7 +10,9 @@ function Header() {
   return (
     <header className="header">
       <ul className="header__list">
-        <li className="header__items" />
+        <li className="header__items">
+          <Logo />
+        </li>
         <li className="header__items">
           <Cart
             currency={currency}
