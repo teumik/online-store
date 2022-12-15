@@ -1,0 +1,15 @@
+.filters__list-item {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+
+    label {
+        cursor: pointer;
+    }
+
+    p {
+        margin: 0;
+    }
+}
