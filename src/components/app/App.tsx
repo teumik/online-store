@@ -6,7 +6,7 @@ function App() {
   return (
     <>
       <Header />
-      <main className=".main">
+      <main className="main">
         <h1>Header More Headers And I Like It</h1>
         <p>Text</p>
         <section>
