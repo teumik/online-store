@@ -4,7 +4,7 @@ import Header from '../header/header';
 
 function App() {
   return (
-    <div>
+    <>
       <Header />
       <h1>Header More Headers And I Like It</h1>
       <p>Text</p>
@@ -13,7 +13,7 @@ function App() {
         <p>Subtext</p>
       </section>
       <Footer />
-    </div>
+    </>
   );
 }
 
