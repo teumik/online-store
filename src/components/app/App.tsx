@@ -4,7 +4,7 @@ import Header from '../Header/header';
 import Filters from '../filters/filters';
 import Data from '../../data.json';
 
-import { DateControl } from '../../date.control';
+import DateControl from '../../date.control';
 
 function App() {
   const DateControler = new DateControl(Data.products);
