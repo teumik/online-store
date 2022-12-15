@@ -1,0 +1,27 @@
+.logo {
+  border: 1px solid teal;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: black;
+    text-decoration: none;
+  }
+
+
+  &__svg {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 4rem;
+    height: 4rem;
+    border: 1px solid tomato;
+    border-radius: 50%;
+  }
+
+  &__header {
+    margin: 0;
+  }
+}

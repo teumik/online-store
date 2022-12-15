@@ -1,15 +1,14 @@
 .header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  color: firebrick;
-  font-size: 2rem;
+  padding: 0.5rem;
+  border: 1px solid red;
 
-  &__logo {
-    color: inherit;
-  }
-
-  &__cart {
-    color: inherit;
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    margin: 0;
+    padding: 0;
+    list-style: none;
   }
 }
