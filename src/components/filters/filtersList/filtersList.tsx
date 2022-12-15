@@ -2,35 +2,26 @@ import './filtersList.scss';
 import FilterListItem from '../filterListItem/filterListItem';
 
 interface filterListProps {
-    title: string
+    filterTitle: string
+    values: string[]
 }
 
 
-
-const categoryTitles: string[] = ['smartphones', 'laptops', 'fragrances', 'skincare', 'laptops', 'fragrances', 'skincare', 'laptops', 'fragrances', 'skincare', 'laptops', 'fragrances', 'skincare']
-const brandTitles: string[] = ['apple', 'samsung', 'OPPO', 'Huawei', 'dermive', 'dry rose']
 const FiltersList = (props: filterListProps) => {
-    let { title } = props;
+    let { filterTitle, values } = props;
 
-    const elements: JSX.Element[] = [];
-
-    for (let i = 0; i < categoryTitles.length; i++) {
-        elements.push(<FilterListItem title={
-            title === 'Category'
-                ? categoryTitles[i]
-                : brandTitles[i]
-        } />)
-    }
+    const elements: JSX.Element[] = values.map((item: string) => {
+        return <FilterListItem title={item} />
+    })
 
     return (
         <div className="filters__item">
-            <h3 className="filters__title">{title}</h3>
+            <h3 className="filters__title">{filterTitle}</h3>
             <div className="filters__list">
                 {elements}
             </div>
         </div>
     )
-
 
 }
 
