@@ -1,17 +1,20 @@
 import './App.scss';
 import Footer from '../footer/footer';
 import Header from '../header/header';
+import Filters from '../filters/filters';
+import Data from '../../data.json';
+
+import { DateControl } from '../../date.control';
 
 function App() {
+  let DateControler = new DateControl(Data.products);
+
   return (
     <>
       <Header />
-      <h1>Header More Headers And I Like It</h1>
-      <p>Text</p>
-      <section>
-        <h2>Subheader</h2>
-        <p>Subtext</p>
-      </section>
+      <Filters
+        categories={DateControler.getUniqCategories()}
+        brands={DateControler.getUniqBrands()} />
       <Footer />
     </>
   );
