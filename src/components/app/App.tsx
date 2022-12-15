@@ -6,12 +6,14 @@ function App() {
   return (
     <>
       <Header />
-      <h1>Header More Headers And I Like It</h1>
-      <p>Text</p>
-      <section>
-        <h2>Subheader</h2>
-        <p>Subtext</p>
-      </section>
+      <main className=".main">
+        <h1>Header More Headers And I Like It</h1>
+        <p>Text</p>
+        <section>
+          <h2>Subheader</h2>
+          <p>Subtext</p>
+        </section>
+      </main>
       <Footer />
     </>
   );
