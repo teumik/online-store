@@ -1,3 +1,5 @@
+import Data from './data.json';
+
 interface Idate {
   brand: string;
   category: string;
@@ -12,21 +14,40 @@ interface Idate {
   title: string;
 }
 
-export default class DateControl {
+class DateControl {
   private date;
   constructor(date: Idate[]) {
     this.date = date;
   }
 
-  getUniqBrands() {
+  getUniqBrands(): string[] {
     return Array.from(new Set(
       this.date.map((item: Idate) => item.brand)
     ));
   }
 
-  getUniqCategories() {
+  getUniqCategories(): string[] {
     return Array.from(new Set(
       this.date.map((item: Idate) => item.category)
     ));
   }
+
+  getLowPrice(): number {
+    return Math.min(...this.date.map((item) => item.price));
+  }
+
+  getMaxPrice() {
+    return Math.max(...this.date.map((item) => item.price));
+  }
+
+  getLowStock(): number {
+    return Math.min(...this.date.map((item) => item.stock));
+  }
+
+  getMaxStock() {
+    return Math.max(...this.date.map((item) => item.stock));
+  }
 }
+
+const DateControler = new DateControl(Data.products);
+export default DateControler;
