@@ -1,3 +1,5 @@
+import './cartListItem.scss'
+
 // interface CartListItem {
 //     phoneName: string,
 //     description: string,

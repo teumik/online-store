@@ -3,7 +3,6 @@
 .productsCart {
     max-width: 800px;
     border: 1px solid black;
-
     border-radius: 10px;
 
     p {
@@ -14,60 +13,27 @@
         margin: 0;
         padding: 10px
     }
-}
 
-.productsCart__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid black;
-    border-radius: 10px 10px 0 0;
-    background-color: black;
-    color: #fff;
-    padding: 0 10px;
-}
-
-.productsCart__controls {
-    justify-content: space-between;
-    display: flex;
-    align-items: center;
-    gap: 20px;
-}
-
-
-.productsItem {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-}
-
-
-.info {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    .info__addition {
-        display: flex;
-        gap: 15px;
-    }
-}
-
-
-.stock {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 10px;
-
-    h6 {
+    &__title {
         margin: 0;
+        padding: 20px 10px;
+    }
+
+    &__header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border: 1px solid black;
+        border-radius: 10px 10px 0 0;
+        background-color: black;
+        color: #fff;
+        padding: 0 10px;
     }
 
     &__controls {
+        justify-content: space-between;
         display: flex;
-        gap: 5px;
         align-items: center;
+        gap: 20px;
     }
 }
