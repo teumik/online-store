@@ -3,7 +3,7 @@ import Footer from '../footer/footer';
 import Header from '../header/header';
 import Filters from '../filters/filters';
 import Data from '../../data.json';
-
+import Products from '../products/products';
 import DateControl from '../../date.control';
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
           categories={DateControler.getUniqCategories()}
           brands={DateControler.getUniqBrands()}
         />
+        <Products />
       </main>
       <Footer />
     </>
