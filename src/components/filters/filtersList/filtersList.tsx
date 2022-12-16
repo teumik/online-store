@@ -9,7 +9,8 @@ interface filterListProps {
 function FiltersList(props: filterListProps) {
   const { filterTitle, values } = props;
 
-  const elements: JSX.Element[] = values.map((item: string) => <FilterListItem title={item} key={item} />);
+  const elements: JSX.Element[] = values
+    .map((item: string) => <FilterListItem title={item} key={item} />);
 
   return (
     <div className="filters__item">

@@ -13,10 +13,10 @@ function Filters(props: filtersProps) {
   return (
     <aside className="filters">
       <div className="filters__control">
-        <button className="filters__control-btn" type='button'>
+        <button className="filters__control-btn" type="button">
           Reset filters
         </button>
-        <button className="filters__control-btn" type='button'>
+        <button className="filters__control-btn" type="button">
           Copy link
         </button>
       </div>
