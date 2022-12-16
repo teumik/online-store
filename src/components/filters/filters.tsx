@@ -2,6 +2,8 @@ import './filters.scss';
 import FiltersList from './filtersList/filtersList';
 import FilterRange from './filtersRange/filterRange';
 
+import DateControler from '../../date.control';
+
 interface filtersProps {
   categories: string[];
   brands: string[];
@@ -21,10 +23,24 @@ function Filters(props: filtersProps) {
         </button>
       </div>
 
-      <FiltersList filterTitle="Category" values={categories} />
-      <FiltersList filterTitle="Brand" values={brands} />
-      <FilterRange title="Price" />
-      <FilterRange title="Stock" />
+      <FiltersList
+        filterTitle="Category"
+        values={categories}
+      />
+      <FiltersList
+        filterTitle="Brand"
+        values={brands}
+      />
+      <FilterRange
+        title="Price"
+        min={DateControler.getLowPrice()}
+        max={DateControler.getMaxPrice()}
+      />
+      <FilterRange
+        title="Stock"
+        min={DateControler.getLowStock()}
+        max={DateControler.getMaxStock()}
+      />
     </aside>
   );
 }
