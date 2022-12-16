@@ -1,3 +1,4 @@
+import './lib/style/customNormalize.css';
 import './lib/style/normalize.css';
 import './index.scss';
 import React from 'react';
