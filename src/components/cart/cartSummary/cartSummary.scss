@@ -1,0 +1,19 @@
+.summary {
+    border: 1px solid black;
+    border-radius: 10px;
+    max-width: 250px;
+    text-align: center;
+    max-height: 260px;
+
+
+    &__title {
+        background-color: black;
+        color: #fff;
+        margin: 0;
+        padding: 20px 10px;
+    }
+
+    &__input {
+        max-width: 150px;
+    }
+}
