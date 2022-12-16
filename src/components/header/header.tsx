@@ -1,6 +1,6 @@
 import './header.scss';
-import Cart from './Cart/cart';
-import Logo from './Logo/logo';
+import Cart from './cart/cart';
+import Logo from './logo/logo';
 
 function Header() {
   const totalPrice = 1000;

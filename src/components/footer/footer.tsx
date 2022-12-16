@@ -1,6 +1,6 @@
 import './footer.scss';
-import RssSvg from './RssSvg/rssSvg';
-import GithubSvg from './GithubSvg/githubSvg';
+import RssSvg from './rssSvg/rssSvg';
+import GithubSvg from './gitHubSvg/gitHubSvg';
 
 function Footer() {
   return (
