@@ -15,6 +15,8 @@ module.exports = {
   extends: [
     'airbnb',
     'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
+    'plugin:react-hooks/recommended',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
   ],
@@ -64,6 +66,7 @@ module.exports = {
     semi: 'off',
     quotes: 'off',
     'padding-line-between-statements': 'off',
+    'keyword-spacing': 'off',
 
     /*
       TypeScript rules
@@ -85,8 +88,9 @@ module.exports = {
       blankLine: 'always',
       prev: '*',
       next: ['interface', 'type', 'function'],
-    },
-    ],
+    }],
+    '@typescript-eslint/keyword-spacing': ['error'],
+    '@typescript-eslint/type-annotation-spacing': 'error',
 
     /*
       React rules
@@ -97,6 +101,6 @@ module.exports = {
     /*
         Import rules
     */
-    'react/react-in-jsx-scope': 'off',
+    // 'react/react-in-jsx-scope': 'off',
   },
 };
