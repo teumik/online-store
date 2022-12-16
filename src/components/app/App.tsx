@@ -1,6 +1,6 @@
 import './App.scss';
-import Footer from '../Footer/footer';
-import Header from '../Header/header';
+import Footer from '../footer/footer';
+import Header from '../header/header';
 import Filters from '../filters/filters';
 import Data from '../../data.json';
 
