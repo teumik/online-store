@@ -1,4 +1,4 @@
-import './cartListItem.scss'
+import './cartListItem.scss';
 
 // interface CartListItem {
 //     phoneName: string,

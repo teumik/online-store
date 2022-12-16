@@ -1,6 +1,6 @@
 import CartList from './cartList/cartList';
 import CartSummary from './cartSummary/cartSummary';
-import './cartPage.scss'
+import './cartPage.scss';
 
 function CartPage() {
   return (
