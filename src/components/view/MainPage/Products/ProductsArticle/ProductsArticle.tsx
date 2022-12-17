@@ -1,6 +1,6 @@
 import './productsArticle.scss';
-import CartButton from './cartButton/cartButton';
-import { IData } from '../../../controller/types/data.interface';
+import CartButton from './CartButton/CartButton';
+import { IData } from '../../../../controller/types/data.interface';
 
 interface PropData {
   article: IData;

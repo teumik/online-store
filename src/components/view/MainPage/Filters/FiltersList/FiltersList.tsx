@@ -1,5 +1,5 @@
 import './filtersList.scss';
-import FilterListItem from '../filterListItem/filterListItem';
+import FilterListItem from '../FilterListItem/FilterListItem';
 
 interface filterListProps {
   filterTitle: string;

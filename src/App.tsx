@@ -1,23 +1,22 @@
 import './App.scss';
-import Footer from './components/view/footer/footer';
-import Header from './components/view/header/header';
-import Filters from './components/view/filters/filters';
-import Data from './lib/data/data.json';
-import Products from './components/view/products/products';
-import { DataControl } from './components/controller/data.controller';
-import DateControler from './components/controller/date.control';
+import Footer from './components/view/Footer/Footer';
+import Header from './components/view/Header/Header';
+import Filters from './components/view/MainPage/Filters/Filters';
+import productsData from './lib/data/productsData.json';
+import Products from './components/view/MainPage/Products/Products';
+import DataController from './components/controller/data.controller';
 
 function App() {
-  const dataControler = new DataControl(Data.products);
-  const data = dataControler.getData;
+  const dataController = new DataController(productsData.products);
+  const data = dataController.getData;
 
   return (
     <>
       <Header />
       <main className="main">
         <Filters
-          categories={DateControler.getUniqCategories()}
-          brands={DateControler.getUniqBrands()}
+          categories={dataController.getUniqCategories()}
+          brands={dataController.getUniqBrands()}
         />
         <Products data={data} />
       </main>

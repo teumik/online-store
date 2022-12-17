@@ -1,7 +1,7 @@
 import './products.scss';
-import SortButtons from './sortButton/sortButton';
-import ProductsArticle from './productsArticle/productsArticle';
-import { IData } from '../../controller/types/data.interface';
+import SortButtons from './SortButton/SortButton';
+import ProductsArticle from './ProductsArticle/ProductsArticle';
+import { IData } from '../../../controller/types/data.interface';
 
 interface PropData {
   data: IData[];

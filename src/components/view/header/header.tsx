@@ -1,12 +1,13 @@
 import './header.scss';
-import Cart from './cart/cart';
-import Logo from './logo/logo';
+import Cart from './Cart/Cart';
+import Logo from './Logo/Logo';
 
 function Header() {
   const totalPrice = 1000;
   const currency = '$';
   const itemsCount = 3;
   const totalDiscount = 2;
+
   return (
     <header className="header">
       <ul className="header__list">

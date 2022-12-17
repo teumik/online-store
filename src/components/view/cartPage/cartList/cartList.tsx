@@ -1,5 +1,5 @@
 import './cartList.scss';
-import CartListItem from '../cattListItem/cartListItem';
+import CartListItem from '../CartListItem/CartListItem';
 
 // interface cartListProps {
 //     items: CartListItem[]

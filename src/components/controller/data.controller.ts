@@ -1,7 +1,6 @@
 import { IData } from './types/data.interface';
-import Data from '../../lib/data/data.json';
 
-export class DataControl {
+export default class DataController {
   private readonly data;
   constructor(data: IData[]) {
     this.data = data;
@@ -39,6 +38,3 @@ export class DataControl {
     return Math.max(...this.data.map((item) => item.stock));
   }
 }
-
-const DateControler = new DataControl(Data.products);
-export default DateControler;
