@@ -1,8 +1,7 @@
 import './filters.scss';
 import FiltersList from './filtersList/filtersList';
 import FilterRange from './filtersRange/filterRange';
-
-import DateControler from '../../date.control';
+import DateControler from '../../controller/date.control';
 
 interface filtersProps {
   categories: string[];
@@ -15,14 +14,9 @@ function Filters(props: filtersProps) {
   return (
     <aside className="filters">
       <div className="filters__control">
-        <button className="filters__control-btn" type="button">
-          Reset filters
-        </button>
-        <button className="filters__control-btn" type="button">
-          Copy link
-        </button>
+        <button className="filters__control-btn" type="button">Reset filters</button>
+        <button className="filters__control-btn" type="button">Copy link</button>
       </div>
-
       <FiltersList
         filterTitle="Category"
         values={categories}

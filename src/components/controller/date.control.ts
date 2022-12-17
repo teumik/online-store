@@ -1,4 +1,4 @@
-import Data from './data.json';
+import Data from '../../lib/data/data.json';
 
 interface Idate {
   brand: string;
@@ -14,7 +14,7 @@ interface Idate {
   title: string;
 }
 
-class DateControl {
+export class DateControl {
   private date;
   constructor(date: Idate[]) {
     this.date = date;
