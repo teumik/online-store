@@ -1,18 +1,9 @@
+import { filtersProps } from '../../../types/types';
 import './filters.scss';
 import FiltersList from './FiltersList/FiltersList';
 import FilterRange from './FiltersRange/FilterRange';
-import DataController from '../../../controller/data.controller';
-import productsData from '../../../../lib/data/productsData.json';
 
-interface filtersProps {
-  categories: string[];
-  brands: string[];
-}
-
-function Filters(props: filtersProps) {
-  const { categories, brands } = props;
-  const dataController = new DataController(productsData.products);
-
+function FiltersView({ categories, brands }: filtersProps) {
   return (
     <aside className="filters">
       <div className="filters__control">
@@ -29,16 +20,16 @@ function Filters(props: filtersProps) {
       />
       <FilterRange
         title="Price"
-        min={dataController.getLowPrice()}
-        max={dataController.getMaxPrice()}
+        min={0}
+        max={2000}
       />
       <FilterRange
         title="Stock"
-        min={dataController.getLowStock()}
-        max={dataController.getMaxStock()}
+        min={0}
+        max={2000}
       />
     </aside>
   );
 }
 
-export default Filters;
+export default FiltersView;
