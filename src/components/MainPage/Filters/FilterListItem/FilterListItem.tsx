@@ -1,12 +1,7 @@
+import { filterItemProps } from '../../../../types/types';
 import './filterListItem.scss';
 
-interface filterItemProps {
-  title: string;
-}
-
-const filterListItem = (props: filterItemProps) => {
-  const { title } = props;
-
+function FilterListItemView({ title }: filterItemProps) {
   return (
     <li className="filters__list-item">
       <input type="checkbox" className="filters__list-checkbox" id={title} />
@@ -14,6 +9,6 @@ const filterListItem = (props: filterItemProps) => {
       <p className="filters__list-stock">5/5</p>
     </li>
   );
-};
+}
 
-export default filterListItem;
+export default FilterListItemView;
