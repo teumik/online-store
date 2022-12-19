@@ -1,31 +1,25 @@
 import { useState } from 'react';
+import { filterRangeProps } from '../../../../types/types';
 import './filterRange.scss';
 
-interface filterRangeProps {
-  title: string;
-  min: number;
-  max: number;
-}
-
-function FilterRange(props: filterRangeProps) {
-  const { title, min, max } = props;
-
-  const [lowprice, setLowprice] = useState(min);
-  const [maxprice, setMaxprice] = useState(max);
+function FilterRangeView({
+  title, min, max,
+}: filterRangeProps) {
+  const [lowprice, setLowPrice] = useState(min);
+  const [maxprice, setMaxPrice] = useState(max);
 
   function rangeControl(e: { target: HTMLInputElement }): void {
     const { target } = e;
     const value: number = parseInt(target.value, 10);
     if (target.classList.contains('filters__range-1')) {
       if (value > maxprice) return;
-      setLowprice(value);
+      setLowPrice(value);
     }
     if (target.classList.contains('filters__range-2')) {
       if (value < lowprice) return;
-      setMaxprice(value);
+      setMaxPrice(value);
     }
   }
-
   return (
     <div className="filters__item">
       <h3 className="filters__title">{title}</h3>
@@ -58,4 +52,4 @@ function FilterRange(props: filterRangeProps) {
   );
 }
 
-export default FilterRange;
+export default FilterRangeView;
