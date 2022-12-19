@@ -2,7 +2,7 @@ import './filters.scss';
 import FiltersList from './FiltersList/FiltersList';
 import FilterRange from './FiltersRange/FilterRange';
 import DataController from '../../../controller/data.controller';
-import productsData from '../../../../lib/data/productsData.json';
+import productsData from '../../../lib/data/productsData.json';
 
 interface filtersProps {
   categories: string[];
