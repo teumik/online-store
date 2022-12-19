@@ -1,16 +1,6 @@
 import './cartListItem.scss';
 
-// interface CartListItem {
-//     phoneName: string,
-//     description: string,
-//     thumbnail: string,
-//     rating: number,
-//     discount: number,
-//     stock: number,
-//     price: number
-// }
-
-function CartListItem() {
+function CartListItemView() {
   // let {phoneName , description , rating , discount , stock , price} = props
 
   return (
@@ -42,4 +32,4 @@ function CartListItem() {
   );
 }
 
-export default CartListItem;
+export default CartListItemView;

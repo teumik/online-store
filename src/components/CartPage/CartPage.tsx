@@ -2,7 +2,7 @@ import CartList from './CartList/CartList';
 import CartSummary from './CartSummary/CartSummary';
 import './cartPage.scss';
 
-function CartPage() {
+function CartPageView() {
   return (
     <div className="cart">
       <CartList />
@@ -11,4 +11,4 @@ function CartPage() {
   );
 }
 
-export default CartPage;
+export default CartPageView;

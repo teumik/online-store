@@ -1,10 +1,7 @@
 import './cartList.scss';
 import CartListItem from '../CartListItem/CartListItem';
 
-// interface cartListProps {
-//     items: CartListItem[]
-// }
-function CartList() {
+function CartListView() {
   return (
     <div className="productsCart">
       <div className="productsCart__header">
@@ -33,4 +30,4 @@ function CartList() {
   );
 }
 
-export default CartList;
+export default CartListView;

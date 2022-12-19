@@ -1,12 +1,9 @@
 import './cartSummary.scss';
 
-function CartSummary() {
+function CartSummaryView() {
   return (
-
     <div className="summary">
-
       <h2 className="summary__title">Summary</h2>
-
       <form className="summary__form">
         <p className="summary__total-items">Products: 1</p>
         <p className="summary__total-price">Total: 50$</p>
@@ -18,4 +15,4 @@ function CartSummary() {
   );
 }
 
-export default CartSummary;
+export default CartSummaryView;
