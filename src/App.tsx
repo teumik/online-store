@@ -1,6 +1,6 @@
 import './App.scss';
 import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
+import Header from './container/Header/Header';
 import Filters from './components/MainPage/Filters/Filters';
 import productsData from './lib/data/productsData.json';
 import Products from './components/MainPage/Products/Products';
