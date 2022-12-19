@@ -1,13 +1,15 @@
 import FiltersView from '../../../components/MainPage/Filters/Filters';
-import { filtersProps } from '../../../types/types';
+import DC from '../../../controller/data.controller';
 
-function Filters(props: filtersProps) {
-  const { categories, brands } = props;
-
+function Filters() {
   return (
     <FiltersView
-      categories={categories}
-      brands={brands}
+      categories={DC.getUniqCategories}
+      brands={DC.getUniqBrands}
+      minPrice={DC.getLowPrice}
+      maxPrice={DC.getMaxPrice}
+      minStock={DC.getLowStock}
+      maxStock={DC.getMaxStock}
     />
   );
 }

@@ -1,9 +1,11 @@
 import { filtersProps } from '../../../types/types';
 import './filters.scss';
-import FiltersList from './FiltersList/FiltersList';
-import FilterRange from './FiltersRange/FilterRange';
+import FiltersList from '../../../container/MainPage/Filters/FiltersList/FiltersList';
+import FilterRange from './FiltersRange/FilterRange'; // <=============
 
-function FiltersView({ categories, brands }: filtersProps) {
+function FiltersView({
+  categories, brands, minPrice, maxPrice, minStock, maxStock,
+}: filtersProps) {
   return (
     <aside className="filters">
       <div className="filters__control">
@@ -20,13 +22,13 @@ function FiltersView({ categories, brands }: filtersProps) {
       />
       <FilterRange
         title="Price"
-        min={0}
-        max={2000}
+        min={minPrice}
+        max={maxPrice}
       />
       <FilterRange
         title="Stock"
-        min={0}
-        max={2000}
+        min={minStock}
+        max={maxStock}
       />
     </aside>
   );

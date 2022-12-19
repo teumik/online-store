@@ -2,7 +2,6 @@ export interface filterRangeProps {
   title: string;
   min: number;
   max: number;
-
 }
 
 export interface filterItemProps {
@@ -17,6 +16,10 @@ export interface filterListProps {
 export interface filtersProps {
   categories: string[];
   brands: string[];
+  minPrice: number;
+  maxPrice: number;
+  minStock: number;
+  maxStock: number;
 }
 
 // interface cartListProps {
