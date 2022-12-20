@@ -28,3 +28,9 @@
     margin: 0;
   }
 }
+
+.filters__list {
+  padding: 0;
+  overflow: auto;
+  max-height: 150px;
+}
