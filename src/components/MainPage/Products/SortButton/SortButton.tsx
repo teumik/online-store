@@ -1,13 +1,12 @@
 import './sortButton.scss';
-import { useState } from 'react';
+// import { useState } from 'react';
 import { SortButtonsType } from './types/sortButton.interface';
 
-function SortButtons({ content }: SortButtonsType) {
-  const [isActive, toggleSortState] = useState(true);
-
-  const reverseSort = () => {
-    toggleSortState((state) => !state);
-  };
+function SortButtons({ content, isActive, reverseSort }: SortButtonsType) {
+  // const [isActive, toggleSortState] = useState(true);
+  // const reverseSort = () => {
+  //   toggleSortState((state) => !state);
+  // };
 
   return (
     <button

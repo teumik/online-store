@@ -1,16 +1,16 @@
 import './productsArticle.scss';
-import CartButton from './CartButton/CartButton';
 import { IData } from '../../../../controller/types/data.interface';
 
 interface PropData {
   article: IData;
+  currency: string;
+  children: JSX.Element | JSX.Element[];
 }
 
-function ProductsArticle({ article }: PropData) {
+function ProductsArticle({ article, currency, children }: PropData) {
   const {
     title, brand, category, description, price, stock, thumbnail,
   } = article;
-  const currency = '$';
 
   return (
     <article className="item item_list">
@@ -28,7 +28,7 @@ function ProductsArticle({ article }: PropData) {
       </div>
       <div className="item__section purchase">
         <h3 className="item__price purchase__price">{`${currency}${price}`}</h3>
-        <CartButton />
+        {children}
         <p className="item__count purchase__count">{`Quantity: ${stock}`}</p>
       </div>
     </article>
