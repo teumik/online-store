@@ -1,13 +1,28 @@
 import { IData } from './types/data.interface';
+import productsData from '../lib/data/productsData.json';
 
 export default class DataController {
   private readonly data;
+  public view: IData[];
   constructor(data: IData[]) {
     this.data = data;
+    this.view = this.data;
   }
 
   get getData() {
-    return this.data;
+    return this.view;
+  }
+
+  get getCount() {
+    return this.view.length;
+  }
+
+  sortAscending() {
+    this.view.sort((a, b) => a.price - b.price);
+  }
+
+  sortDescending() {
+    this.view.sort((a, b) => b.price - a.price);
   }
 
   getUniqBrands(): string[] {
@@ -38,3 +53,5 @@ export default class DataController {
     return Math.max(...this.data.map((item) => item.stock));
   }
 }
+
+export const dataController = new DataController(productsData.products);
