@@ -1,7 +1,6 @@
 import { IData } from './types/data.interface';
-import DATA from '../lib/data/productsData.json';
 
-class DataController {
+export default class DataController {
   private readonly data;
   constructor(data: IData[]) {
     this.data = data;
@@ -11,35 +10,31 @@ class DataController {
     return this.data;
   }
 
-  get getUniqBrands(): string[] {
+  getUniqBrands(): string[] {
     return Array.from(new Set(
       this.data.map((item: IData) => item.brand)
     ));
   }
 
-  get getUniqCategories(): string[] {
+  getUniqCategories(): string[] {
     return Array.from(new Set(
       this.data.map((item: IData) => item.category)
     ));
   }
 
-  get getLowPrice(): number {
+  getLowPrice(): number {
     return Math.min(...this.data.map((item) => item.price));
   }
 
-  get getMaxPrice() {
+  getMaxPrice() {
     return Math.max(...this.data.map((item) => item.price));
   }
 
-  get getLowStock(): number {
+  getLowStock(): number {
     return Math.min(...this.data.map((item) => item.stock));
   }
 
-  get getMaxStock() {
+  getMaxStock() {
     return Math.max(...this.data.map((item) => item.stock));
   }
 }
-
-const DC = new DataController(DATA.products);
-
-export default DC;

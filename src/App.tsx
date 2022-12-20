@@ -4,11 +4,12 @@ import Header from './components/Header/Header';
 import Filters from './container/MainPage/Filters/Filters';
 
 import Products from './components/MainPage/Products/Products';
-
-import DC from './controller/data.controller';
+import DataController from './controller/data.controller';
+import productsData from './lib/data/productsData.json';
 
 function App() {
-  const data = DC.getData;
+  const dataController = new DataController(productsData.products);
+  const data = dataController.getData;
 
   return (
     <>

@@ -1,15 +1,18 @@
 import FiltersView from '../../../components/MainPage/Filters/Filters';
-import DC from '../../../controller/data.controller';
+import DataController from '../../../controller/data.controller';
+import productsData from '../../../lib/data/productsData.json';
+
+const dataController = new DataController(productsData.products);
 
 function Filters() {
   return (
     <FiltersView
-      categories={DC.getUniqCategories}
-      brands={DC.getUniqBrands}
-      minPrice={DC.getLowPrice}
-      maxPrice={DC.getMaxPrice}
-      minStock={DC.getLowStock}
-      maxStock={DC.getMaxStock}
+      categories={dataController.getUniqCategories()}
+      brands={dataController.getUniqBrands()}
+      minPrice={dataController.getLowPrice()}
+      maxPrice={dataController.getMaxPrice()}
+      minStock={dataController.getLowStock()}
+      maxStock={dataController.getMaxStock()}
     />
   );
 }
