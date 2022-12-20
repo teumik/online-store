@@ -1,28 +1,16 @@
 import './products.scss';
-import SortButtons from './SortButton/SortButton';
-import ProductsArticle from './ProductsArticle/ProductsArticle';
-import { IData } from '../../../controller/types/data.interface';
+import { ProductsProp } from './types/products.interface';
 
-interface PropData {
-  data: IData[];
-}
-
-function Products({ data }: PropData) {
-  const countDisplayItems = 100;
-  const buttonsContent = ['Price', 'Discount'];
-
+function Products({
+  countDisplayItems,
+  buttonsElements,
+  articles,
+}: ProductsProp) {
   return (
     <section className="products">
       <ul className="products__header">
         <li className="products__items sorts">
-          {
-            buttonsContent.map((el) => (
-              <SortButtons
-                key={el.toLowerCase()}
-                content={el}
-              />
-            ))
-          }
+          {buttonsElements}
         </li>
         <li className="products__items">{`Results found: ${countDisplayItems}`}</li>
         <li className="products__items">
@@ -31,14 +19,7 @@ function Products({ data }: PropData) {
         </li>
       </ul>
       <div>
-        {
-          data.map((el) => (
-            <ProductsArticle
-              article={el}
-              key={el.id}
-            />
-          ))
-        }
+        {articles}
       </div>
     </section>
   );

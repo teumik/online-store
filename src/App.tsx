@@ -1,10 +1,10 @@
 import './App.scss';
-import Footer from './container/Footer/Footer';
 import Header from './container/Header/Header';
+import Footer from './container/Footer/Footer';
 import Filters from './container/MainPage/Filters/Filters';
-import productsData from './lib/data/productsData.json';
-import Products from './components/MainPage/Products/Products';
+import Products from './container/MainPage/Products/Products';
 import DataController from './controller/data.controller';
+import productsData from './lib/data/productsData.json';
 
 function App() {
   const dataController = new DataController(productsData.products);
