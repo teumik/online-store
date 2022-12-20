@@ -1,8 +1,9 @@
 import './footer.scss';
 import RssSvg from './RssSvg/RssSvg';
 import GithubSvg from './GithubSvg/GithubSvg';
+import { FooterType } from './types/footer.interface';
 
-function Footer() {
+function Footer({ date }: FooterType) {
   return (
     <footer className="footer">
       <ul className="footer__list">
@@ -20,7 +21,7 @@ function Footer() {
             </li>
           </ul>
         </li>
-        <li className="footer__items">{`${new Date().getFullYear()} ©DreamTeam`}</li>
+        <li className="footer__items">{`${date} ©DreamTeam`}</li>
         <li className="footer__items">
           <a className="footer__links" href="https://rs.school/js/" target="_blank" rel="noreferrer">
             <div className="wrapper_adjust">
