@@ -1,11 +1,5 @@
 import './productsArticle.scss';
-import { IData } from '../../../../controller/types/data.interface';
-
-interface PropData {
-  article: IData;
-  currency: string;
-  children: JSX.Element | JSX.Element[];
-}
+import { PropData } from './types/productsArticle.interface';
 
 function ProductsArticle({ article, currency, children }: PropData) {
   const {

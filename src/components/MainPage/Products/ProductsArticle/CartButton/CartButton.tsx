@@ -1,10 +1,5 @@
 import './cartButton.scss';
-
-interface CartButtonType {
-  isActive: boolean;
-  buttonHandler: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
-  getInnerText: () => string;
-}
+import { CartButtonType } from './types/cartButton.interface';
 
 function CartButton({
   isActive,
