@@ -11,7 +11,7 @@ function ProductsArticle({ article }: PropData) {
 
   return (
     <ProductsArticleView article={article} currency={currency}>
-      <CartButton />
+      <CartButton id={article.id} />
     </ProductsArticleView>
   );
 }

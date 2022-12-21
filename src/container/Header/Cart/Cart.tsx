@@ -1,19 +1,16 @@
+import { useContext } from 'react';
 import CartView from '../../../components/Header/Cart/Cart';
-import { CartProps } from '../../../components/Header/Cart/types/cart.interface';
+import CartContext from '../../../context/cart.context';
 
-function Cart(props: CartProps) {
-  const {
-    totalPrice,
-    currency,
-    totalDiscount,
-    itemsCount,
-  } = props;
+function Cart() {
+  const { cartState } = useContext(CartContext);
+
   return (
     <CartView
-      totalPrice={totalPrice}
-      currency={currency}
-      totalDiscount={totalDiscount}
-      itemsCount={itemsCount}
+      currency={cartState.cart.currency}
+      totalPrice={cartState.cartTotalPrice}
+      totalDiscount={cartState.cartTotalDiscount}
+      itemsCount={cartState.cartItemsCount}
     />
   );
 }

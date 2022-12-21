@@ -1,26 +1,36 @@
+import { useContext } from 'react';
 import ProductsView from '../../../components/MainPage/Products/Products';
-import useReverseState from '../../../hooks/useReverseState';
-import { IData } from '../../../controller/types/data.interface';
+import useReverseState from '../../../hooks/useReversePrice';
 import SortButtons from './SortButton/sortButton';
 import ProductsArticle from './ProductsArticle/productsArticle';
+import DataContext from '../../../context/data.context';
 
-function Products({ data }: Record<'data', IData[]>) {
-  const countDisplayItems = 100;
-  const buttonsContent = ['Price', 'Discount'];
-  const cutsomHook = useReverseState;
+function Products() {
+  const ctx = useContext(DataContext);
+  const {
+    view,
+    sortPriceAscending, sortPriceDescending,
+    sortStockAscending, sortStockDescending,
+  } = ctx;
+
+  const countDisplayItems = ctx.getCount;
+  const buttonsContent = [
+    { name: 'Price', hook: useReverseState, sort: [sortPriceAscending, sortPriceDescending] },
+    { name: 'Stock', hook: useReverseState, sort: [sortStockAscending, sortStockDescending] },
+  ];
   const buttonsElements = buttonsContent.map((el) => {
-    const hook = cutsomHook();
+    const hook = el.hook(el.sort[0], el.sort[1]);
     return (
       <SortButtons
-        key={el.toLowerCase()}
-        content={el}
+        key={el.name.toLowerCase()}
+        content={el.name}
         isActive={hook.isActive}
         reverseSort={hook.reverseSort}
       />
     );
   });
 
-  const articles = data.map((el) => (
+  const articles = view.map((el) => (
     <ProductsArticle
       key={el.id}
       article={el}
