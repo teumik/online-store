@@ -10,14 +10,18 @@ function App() {
   const ctx = useUpdateCart();
 
   return (
-    <CartContext.Provider value={ctx}>
-      <Header />
+    <>
+      <CartContext.Provider value={ctx}>
+        <Header />
+      </CartContext.Provider>
       <main className="main">
         <Filters />
-        <Products />
+        <CartContext.Provider value={ctx}>
+          <Products />
+        </CartContext.Provider>
       </main>
       <Footer />
-    </CartContext.Provider>
+    </>
   );
 }
 

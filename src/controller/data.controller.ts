@@ -19,10 +19,6 @@ export default class DataController {
     };
   }
 
-  deleteEl() {
-    this.view.shift();
-  }
-
   // CART START
 
   set cartUpdate(cartItems: number[]) {
