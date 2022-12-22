@@ -1,10 +1,12 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import DataContext from '../../../../context/data.context';
 import { filterRangeProps } from '../../../../types/types';
 import './filterRange.scss';
 
 function FilterRangeView({
   title, min, max,
 }: filterRangeProps) {
+  const ctx = useContext(DataContext);
   const [lowprice, setLowPrice] = useState(min);
   const [maxprice, setMaxPrice] = useState(max);
 
@@ -19,13 +21,15 @@ function FilterRangeView({
       if (value < lowprice) return;
       setMaxPrice(value);
     }
+
+    ctx.onChangeFiltersRange(title, [lowprice, maxprice]);
   }
   return (
     <div className="filters__item">
       <h3 className="filters__title">{title}</h3>
       <div className="filters__range-values">
         <p>{lowprice}</p>
-        ⟷
+        ?
         <p>{maxprice}</p>
       </div>
       <div className="range__box">

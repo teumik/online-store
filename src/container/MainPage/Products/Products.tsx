@@ -1,10 +1,15 @@
+import { useContext } from 'react';
 import ProductsView from '../../../components/MainPage/Products/Products';
 import useReverseState from '../../../hooks/useReverseState';
 import { IData } from '../../../controller/types/data.interface';
 import SortButtons from './SortButton/sortButton';
 import ProductsArticle from './ProductsArticle/productsArticle';
 
+import ProductsContext from '../../../context/products.context';
+import DataContext from '../../../context/data.context';
+
 function Products({ data }: Record<'data', IData[]>) {
+  const ctx = useContext(DataContext);
   const countDisplayItems = 100;
   const buttonsContent = ['Price', 'Discount'];
   const cutsomHook = useReverseState;
@@ -28,11 +33,13 @@ function Products({ data }: Record<'data', IData[]>) {
   ));
 
   return (
+
     <ProductsView
       countDisplayItems={countDisplayItems}
       buttonsElements={buttonsElements}
       articles={articles}
     />
+
   );
 }
 
