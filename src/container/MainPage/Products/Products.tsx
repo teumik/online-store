@@ -30,19 +30,18 @@ function Products() {
     );
   });
 
-  const articles = view.map((el) => (
-    <ProductsArticle
-      key={el.id}
-      article={el}
-    />
-  ));
-
   return (
     <ProductsView
       countDisplayItems={countDisplayItems}
       buttonsElements={buttonsElements}
-      articles={articles}
-    />
+    >
+      {view.map((el) => (
+        <ProductsArticle
+          key={el.id}
+          article={el}
+        />
+      ))}
+    </ProductsView>
   );
 }
 

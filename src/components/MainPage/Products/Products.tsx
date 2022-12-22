@@ -4,7 +4,7 @@ import { ProductsProp } from './types/products.interface';
 function Products({
   countDisplayItems,
   buttonsElements,
-  articles,
+  children,
 }: ProductsProp) {
   return (
     <section className="products">
@@ -19,7 +19,7 @@ function Products({
         </li>
       </ul>
       <div>
-        {articles}
+        {children}
       </div>
     </section>
   );
