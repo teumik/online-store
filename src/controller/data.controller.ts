@@ -19,8 +19,6 @@ export default class DataController {
     };
   }
 
-  // CART START
-
   set cartUpdate(cartItems: number[]) {
     this.cart.idArray = cartItems;
   }
@@ -55,8 +53,6 @@ export default class DataController {
     this.cart.idArray.push(id);
   }
 
-  // CART END
-
   get getData() {
     return this.view;
   }
@@ -64,8 +60,6 @@ export default class DataController {
   get getCount() {
     return this.view.length;
   }
-
-  // SORT START
 
   sortPriceAscending() {
     this.data.sort((a, b) => a.price - b.price);
@@ -86,8 +80,6 @@ export default class DataController {
     this.data.sort((a, b) => b.stock - a.stock);
     this.view.sort((a, b) => b.stock - a.stock);
   }
-
-  // SORT END
 
   getUniqBrands(): string[] {
     return Array.from(new Set(
