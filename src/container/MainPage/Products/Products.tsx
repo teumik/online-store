@@ -10,6 +10,7 @@ import DataContext from '../../../context/data.context';
 
 function Products({ data }: Record<'data', IData[]>) {
   const ctx = useContext(DataContext);
+  const { productsState } = useContext(ProductsContext);
   const countDisplayItems = 100;
   const buttonsContent = ['Price', 'Discount'];
   const cutsomHook = useReverseState;
@@ -25,7 +26,7 @@ function Products({ data }: Record<'data', IData[]>) {
     );
   });
 
-  const articles = data.map((el) => (
+  const articles = productsState.view.map((el) => (
     <ProductsArticle
       key={el.id}
       article={el}
