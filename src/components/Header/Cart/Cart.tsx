@@ -6,7 +6,7 @@ function Cart({
   currency,
   totalDiscount,
   itemsCount,
-}: CartProps): JSX.Element {
+}: CartProps) {
   return (
     <div className="cart">
       <span className="cart__total">{`Total price: ${currency}${totalPrice}`}</span>
