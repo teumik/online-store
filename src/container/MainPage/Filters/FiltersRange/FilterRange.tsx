@@ -1,4 +1,4 @@
-import FilterRangeView from '../../../../components/MainPage/Filters/FiltersRange/FilterRange';
+import FilterRangeView from '../../../../components/MainPage/Filters/FiltersRange/FilterRangeView';
 
 export interface filterRangeProps {
   title: string;

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import FiltersView from '../../../components/MainPage/Filters/Filters';
+import FiltersView from '../../../components/MainPage/Filters/FiltersView';
 import DataContext from '../../../context/data.context';
 
 export default function Filters() {

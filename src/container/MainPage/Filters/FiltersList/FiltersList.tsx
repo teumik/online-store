@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import FiltersListView from '../../../../components/MainPage/Filters/FiltersList/FiltersList';
+import FiltersListView from '../../../../components/MainPage/Filters/FiltersList/FiltersListView';
 import DataContext from '../../../../context/data.context';
 import ProductsContext from '../../../../context/products.context';
 
