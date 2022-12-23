@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import SortButtonsView from '../../../../components/MainPage/Products/SortButton/SortButton';
 import { SortButtonsType } from '../../../../components/MainPage/Products/SortButton/types/sortButton.interface';
 import useClassRemove from '../../../../hooks/useClassRemove';

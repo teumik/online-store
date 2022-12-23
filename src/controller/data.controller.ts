@@ -19,11 +19,6 @@ export default class DataController {
     };
   }
 
-  // METHOD EXAMPLE
-  delete() {
-    this.view.shift();
-  }
-
   // CART START
 
   set cartUpdate(cartItems: number[]) {
@@ -31,7 +26,7 @@ export default class DataController {
   }
 
   get cartItems() {
-    return this.cart.idArray.map((id) => this.view.find((article) => article.id === id));
+    return this.cart.idArray.map((id) => this.data.find((article) => article.id === id));
   }
 
   get cartTotalPrice() {
@@ -70,21 +65,29 @@ export default class DataController {
     return this.view.length;
   }
 
+  // SORT START
+
   sortPriceAscending() {
+    this.data.sort((a, b) => a.price - b.price);
     this.view.sort((a, b) => a.price - b.price);
   }
 
   sortPriceDescending() {
+    this.data.sort((a, b) => b.price - a.price);
     this.view.sort((a, b) => b.price - a.price);
   }
 
   sortStockAscending() {
+    this.data.sort((a, b) => a.stock - b.stock);
     this.view.sort((a, b) => a.stock - b.stock);
   }
 
   sortStockDescending() {
+    this.data.sort((a, b) => b.stock - a.stock);
     this.view.sort((a, b) => b.stock - a.stock);
   }
+
+  // SORT END
 
   getUniqBrands(): string[] {
     return Array.from(new Set(
