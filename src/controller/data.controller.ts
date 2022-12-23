@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { IData } from './types/data.interface';
 import productsData from '../lib/data/productsData.json';
 
@@ -18,6 +17,8 @@ export default class DataController {
   public cart: CartType;
   rangeFilters: RangeFilters;
   listFilters: string[];
+  activeBrandsFilters: string[];
+  activeCategoryFilters: string[];
   constructor(data: IData[]) {
     this.data = data;
     this.view = [...this.data];
@@ -25,13 +26,13 @@ export default class DataController {
       currency: '$',
       idArray: [],
     };
-
     this.rangeFilters = {
       Price: [0, 10000],
       Stock: [0, 10000],
     };
-
     this.listFilters = [];
+    this.activeBrandsFilters = [];
+    this.activeCategoryFilters = [];
   }
 
   onChangeFiltersRange(label: string, value: number[]) {
@@ -42,37 +43,56 @@ export default class DataController {
     this.filterAllProducts();
   }
 
-  onChangeFiltersList(label: string) {
-    if (!this.listFilters.includes(label)) {
-      this.listFilters.push(label);
+  onChangeFiltersList(label: string, categoryTitle: string) {
+    if (categoryTitle === 'Brand') {
+      if (!this.activeBrandsFilters.includes(label)) {
+        this.activeBrandsFilters.push(label);
+      } else {
+        this.activeBrandsFilters = this.activeBrandsFilters.filter((i) => i !== label);
+      }
+      this.filterAllProducts();
     } else {
-      this.listFilters = this.listFilters.filter((i) => i !== label);
+      if (!this.activeCategoryFilters.includes(label)) {
+        this.activeCategoryFilters.push(label);
+      } else {
+        this.activeCategoryFilters = this.activeCategoryFilters.filter((i) => i !== label);
+      }
+      this.filterAllProducts();
     }
-    this.filterAllProducts();
   }
 
   filterAllProducts() {
-    if (this.listFilters.length > 0) {
+    if (this.activeBrandsFilters.length > 0 && this.activeCategoryFilters.length > 0) {
       this.view = this.data.filter((prod) => {
-        if (this.listFilters.includes(prod.brand) || this.listFilters.includes(prod.category)) {
-          if (prod.price < this.rangeFilters.Price[0]) return false;
-          if (prod.price > this.rangeFilters.Price[1]) return false;
-          if (prod.stock < this.rangeFilters.Stock[0]) return false;
-          if (prod.stock > this.rangeFilters.Stock[1]) return false;
+        if (this.activeBrandsFilters.includes(prod.brand)
+          && this.activeCategoryFilters.includes(prod.category)) {
+          if (prod.price <= this.rangeFilters.Price[0]) return false;
+          if (prod.price >= this.rangeFilters.Price[1]) return false;
+          if (prod.stock <= this.rangeFilters.Stock[0]) return false;
+          if (prod.stock >= this.rangeFilters.Stock[1]) return false;
+          return prod;
+        }
+      });
+    } else if (this.activeBrandsFilters.length > 0 || this.activeCategoryFilters.length > 0) {
+      this.view = this.data.filter((prod) => {
+        if (this.activeBrandsFilters.includes(prod.brand)
+          || this.activeCategoryFilters.includes(prod.category)) {
+          if (prod.price <= this.rangeFilters.Price[0]) return false;
+          if (prod.price >= this.rangeFilters.Price[1]) return false;
+          if (prod.stock <= this.rangeFilters.Stock[0]) return false;
+          if (prod.stock >= this.rangeFilters.Stock[1]) return false;
           return prod;
         }
       });
     } else {
       this.view = this.data.filter((prod) => {
-        if (prod.price < this.rangeFilters.Price[0]) return false;
-        if (prod.price > this.rangeFilters.Price[1]) return false;
-        if (prod.stock < this.rangeFilters.Stock[0]) return false;
-        if (prod.stock > this.rangeFilters.Stock[1]) return false;
+        if (prod.price <= this.rangeFilters.Price[0]) return false;
+        if (prod.price >= this.rangeFilters.Price[1]) return false;
+        if (prod.stock <= this.rangeFilters.Stock[0]) return false;
+        if (prod.stock >= this.rangeFilters.Stock[1]) return false;
         return prod;
       });
     }
-
-    console.log(this.view);
   }
 
   set cartUpdate(cartItems: number[]) {
@@ -159,6 +179,14 @@ export default class DataController {
 
   getMaxStock() {
     return Math.max(...this.data.map((item) => item.stock));
+  }
+
+  getMaxSense(title: string) {
+    return this.data.filter((prod) => prod.brand === title || prod.category === title).length;
+  }
+
+  getCurrentSense(title: string) {
+    return this.view.filter((prod) => prod.brand === title || prod.category === title).length;
   }
 }
 
