@@ -1,8 +1,6 @@
 import './cartListItem.scss';
 
 function CartListItemView() {
-  // let {phoneName , description , rating , discount , stock , price} = props
-
   return (
     <li className="productsCart__item productsItem">
       <p className="productsItem__pos">1</p>
