@@ -8,7 +8,6 @@ function Products({
   buttonsElements,
   articles,
 }: ProductsProp) {
-  const { updateProducts } = useContext(ProductsContext);
   return (
     <section className="products">
 

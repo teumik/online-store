@@ -9,7 +9,6 @@ import ProductsContext from '../../../context/products.context';
 import DataContext from '../../../context/data.context';
 
 function Products({ data }: Record<'data', IData[]>) {
-  const ctx = useContext(DataContext);
   const { productsState } = useContext(ProductsContext);
   const countDisplayItems = 100;
   const buttonsContent = ['Price', 'Discount'];
