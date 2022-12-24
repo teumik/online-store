@@ -1,32 +1,37 @@
-import { useContext, useState } from 'react';
+import {
+  FormEvent, useContext, useState
+} from 'react';
 import DataContext from '../context/data.context';
 import ProductsContext from '../context/products.context';
 
 const useRangeValues = (min: number, max: number, title: string) => {
-  const [lowprice, setLowPrice] = useState(min);
-  const [maxprice, setMaxPrice] = useState(max);
+  const [lowRangeValue, setLowPrice] = useState(min);
+  const [maxRangeValue, setMaxPrice] = useState(max);
   const { updateProducts } = useContext(ProductsContext);
   const ctx = useContext(DataContext);
 
-  function calculateInputValue(e: { target: HTMLInputElement }): void {
-    const { target } = e;
-    const value: number = parseInt(target.value, 10);
+  function calculateInputValue(e: FormEvent<HTMLInputElement>) {
+    const target = e.currentTarget;
+    const inputValue = parseInt(target.value, 10);
+
     if (target.classList.contains('filters__range-1')) {
-      if (value > maxprice) return;
-      setLowPrice(value);
+      if (inputValue > maxRangeValue) return;
+      setLowPrice(inputValue);
+      ctx.onChangeFiltersRange(title, [inputValue, maxRangeValue]);
     }
     if (target.classList.contains('filters__range-2')) {
-      if (value < lowprice) return;
-      setMaxPrice(value);
+      if (inputValue < lowRangeValue) return;
+      setMaxPrice(inputValue);
+      ctx.onChangeFiltersRange(title, [lowRangeValue, inputValue]);
     }
-    ctx.onChangeFiltersRange(title, [lowprice, maxprice]);
     updateProducts();
   }
+
   return {
-    lowprice,
-    maxprice,
+    lowRangeValue,
+    maxRangeValue,
     calculateInputValue,
   };
 };
-
+// console.log(e.currentTarget.value);
 export default useRangeValues;

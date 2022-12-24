@@ -11,8 +11,8 @@ export default function FilterRangeView({
   title, min, max,
 }: filterRangeProps) {
   const {
-    lowprice,
-    maxprice,
+    lowRangeValue,
+    maxRangeValue,
     calculateInputValue,
   } = useRangeValues(min, max, title);
 
@@ -20,27 +20,29 @@ export default function FilterRangeView({
     <div className="filters__item">
       <h3 className="filters__title">{title}</h3>
       <div className="filters__range-values">
-        <p>{lowprice}</p>
+        <p>{lowRangeValue}</p>
         ?
-        <p>{maxprice}</p>
+        <p>{maxRangeValue}</p>
       </div>
       <div className="range__box">
         <input
           min={min}
           max={max}
-          value={lowprice}
+          value={lowRangeValue}
           step={1}
           type="range"
           className="filters__range-1"
+          onInput={(e) => calculateInputValue(e)}
           onChange={calculateInputValue}
         />
         <input
           min={min}
           max={max}
-          value={maxprice}
+          value={maxRangeValue}
           step={1}
           type="range"
           className="filters__range-2"
+          onInput={(e) => calculateInputValue(e)}
           onChange={calculateInputValue}
         />
       </div>
