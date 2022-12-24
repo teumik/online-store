@@ -1,20 +1,17 @@
-import FiltersView from '../../../components/MainPage/Filters/Filters';
-import DataController from '../../../controller/data.controller';
-import productsData from '../../../lib/data/productsData.json';
+import { useContext } from 'react';
+import FiltersView from '../../../components/MainPage/Filters/FiltersView';
+import DataContext from '../../../context/data.context';
 
-const dataController = new DataController(productsData.products);
-
-function Filters() {
+export default function Filters() {
+  const ctx = useContext(DataContext);
   return (
     <FiltersView
-      categories={dataController.getUniqCategories()}
-      brands={dataController.getUniqBrands()}
-      minPrice={dataController.getLowPrice()}
-      maxPrice={dataController.getMaxPrice()}
-      minStock={dataController.getLowStock()}
-      maxStock={dataController.getMaxStock()}
+      categories={ctx.getUniqCategories()}
+      brands={ctx.getUniqBrands()}
+      minPrice={ctx.getLowPrice()}
+      maxPrice={ctx.getMaxPrice()}
+      minStock={ctx.getLowStock()}
+      maxStock={ctx.getMaxStock()}
     />
   );
 }
-
-export default Filters;

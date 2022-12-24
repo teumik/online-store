@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import ProductsContext from '../../../context/products.context';
 import './products.scss';
 import { ProductsProp } from './types/products.interface';
 
@@ -8,6 +10,7 @@ function Products({
 }: ProductsProp) {
   return (
     <section className="products">
+
       <ul className="products__header">
         <li className="products__items sorts">
           {buttonsElements}
