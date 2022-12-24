@@ -33,5 +33,4 @@ const useRangeValues = (min: number, max: number, title: string) => {
     calculateInputValue,
   };
 };
-// console.log(e.currentTarget.value);
 export default useRangeValues;
