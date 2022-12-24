@@ -4,10 +4,10 @@ import { SortButtonsType } from './types/sortButton.interface';
 function SortButtons({
   content, isActive, reverseSort, toggleClassState, isSort,
 }: Required<SortButtonsType>) {
-  const classProp = isSort ? `sorts__types${isActive ? '_increase' : '_decrease'}` : '';
+  const className = isSort ? `sorts__types${isActive ? '_increase' : '_decrease'}` : '';
   return (
     <button
-      className={`products__buttons sorts__types ${classProp}`}
+      className={`products__buttons sorts__types ${className}`}
       onClick={(event) => {
         reverseSort();
         toggleClassState(event);

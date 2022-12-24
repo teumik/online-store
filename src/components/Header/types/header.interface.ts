@@ -1,3 +1,4 @@
-export interface HeaderProps {
-  children: JSX.Element[] | JSX.Element | null;
-}
+import { CartType } from '../Cart/types/cart.interface';
+import { LogoType } from '../Logo/types/logo.interface';
+
+export interface HeaderType extends CartType, LogoType { }

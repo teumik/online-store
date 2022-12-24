@@ -38,7 +38,15 @@ function Products() {
       {view.map((el) => (
         <ProductsArticle
           key={el.id}
-          article={el}
+          id={el.id}
+          title={el.title}
+          brand={el.brand}
+          category={el.category}
+          description={el.description}
+          price={el.price}
+          stock={el.stock}
+          thumbnail={el.thumbnail}
+          discountPercentage={el.discountPercentage.toFixed()}
         />
       ))}
     </ProductsView>

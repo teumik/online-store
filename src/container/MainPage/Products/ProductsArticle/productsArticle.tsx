@@ -1,17 +1,39 @@
 import ProductsArticleView from '../../../../components/MainPage/Products/ProductsArticle/ProductsArticle';
-import { IData } from '../../../../controller/types/data.interface';
+import { ProductsArticleType } from '../../../../components/MainPage/Products/ProductsArticle/types/productsArticle.interface';
 import CartButton from './CartButton/CartButton';
 
-interface PropData {
-  article: IData;
-}
-
-function ProductsArticle({ article }: PropData) {
+function ProductsArticle({
+  id,
+  title,
+  brand,
+  category,
+  description,
+  price,
+  stock,
+  thumbnail,
+  discountPercentage,
+}: Omit<ProductsArticleType, 'currency' | 'children' | 'isDiscount' | 'discountPrice'>) {
   const currency = '$';
+  const discountPrice = price * (1 - Number((discountPercentage || 0)) / 100);
+  const isDiscount = discountPrice !== price;
 
   return (
-    <ProductsArticleView article={article} currency={currency}>
-      <CartButton id={article.id} />
+    <ProductsArticleView
+      title={title}
+      brand={brand}
+      category={category}
+      description={description}
+      price={price}
+      stock={stock}
+      thumbnail={thumbnail}
+      discountPercentage={discountPercentage}
+      currency={currency}
+      isDiscount={isDiscount}
+      discountPrice={discountPrice.toFixed()}
+    >
+      <CartButton
+        id={id}
+      />
     </ProductsArticleView>
   );
 }

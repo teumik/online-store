@@ -1,20 +1,27 @@
 import './productsArticle.scss';
-import { PropData } from './types/productsArticle.interface';
+import { ProductsArticleType } from './types/productsArticle.interface';
 
-function ProductsArticle({ article, currency, children }: PropData) {
-  const {
-    title, brand, category, description, price, stock, thumbnail, discountPercentage,
-  } = article;
-  const discountPrice = price * (1 - Number((discountPercentage || 0).toFixed()) / 100);
-  const isDiscount = discountPrice !== price;
-
+function ProductsArticle({
+  title,
+  brand,
+  category,
+  description,
+  price,
+  stock,
+  thumbnail,
+  discountPercentage,
+  currency,
+  children,
+  isDiscount,
+  discountPrice,
+}: Omit<ProductsArticleType, 'id'>) {
   return (
     <article className="item item_list">
       <div className="item__section picture">
         <div className="picture__wrapper">
           <img className="item__image picture__image" src={thumbnail} alt="description" />
         </div>
-        <div className="item__discount picture__discount">{`-${discountPercentage.toFixed()}%`}</div>
+        <div className="item__discount picture__discount">{`-${discountPercentage}%`}</div>
       </div>
       <div className="item__section about">
         <h3 className="item__title about__title">{title}</h3>
@@ -28,7 +35,7 @@ function ProductsArticle({ article, currency, children }: PropData) {
           {
             (isDiscount) ? (
               <span className="item__price_discount purchase__price_discount">
-                {` ${currency}${discountPrice.toFixed()}`}
+                {` ${currency}${discountPrice}`}
               </span>
             ) : null
           }

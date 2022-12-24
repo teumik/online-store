@@ -10,7 +10,6 @@ function CartButton({
   isInCart,
 }: CartButtonType) {
   const activeHandler = isInCart || isActive;
-
   return (
     <button
       id={String(id)}

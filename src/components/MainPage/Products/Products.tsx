@@ -1,11 +1,11 @@
 import './products.scss';
-import { ProductsProp } from './types/products.interface';
+import { ProductsType } from './types/products.interface';
 
 function Products({
   countDisplayItems,
   buttonsElements,
   children,
-}: ProductsProp) {
+}: ProductsType) {
   return (
     <section className="products">
       <ul className="products__header">

@@ -1,21 +1,33 @@
 import './header.scss';
-import { HeaderProps } from './types/header.interface';
+import Cart from './Cart/Cart';
+import Logo from './Logo/Logo';
+import { HeaderType } from './types/header.interface';
 
-function Header({ children = null }: HeaderProps) {
-  let key = 0;
-  const listItems = Array.isArray(children) ? children?.map((node) => {
-    key += 1;
-    return (
-      <li key={key} className="header__items">
-        {node}
-      </li>
-    );
-  }) : children;
-
+function Header(
+  {
+    totalPrice,
+    currency,
+    totalDiscount,
+    itemsCount,
+    title,
+  }: HeaderType
+) {
   return (
     <header className="header">
       <ul className="header__list">
-        {listItems}
+        <li className="header__items">
+          <Logo
+            title={title}
+          />
+        </li>
+        <li className="header__items">
+          <Cart
+            totalPrice={totalPrice}
+            currency={currency}
+            totalDiscount={totalDiscount}
+            itemsCount={itemsCount}
+          />
+        </li>
       </ul>
     </header>
   );
