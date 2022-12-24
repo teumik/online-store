@@ -6,14 +6,14 @@ import ProductsArticle from './ProductsArticle/productsArticle';
 import DataContext from '../../../context/data.context';
 
 function Products() {
-  const ctx = useContext(DataContext);
   const {
+    getCount,
     view,
     sortPriceAscending, sortPriceDescending,
     sortStockAscending, sortStockDescending,
-  } = ctx;
+  } = useContext(DataContext);
 
-  const countDisplayItems = ctx.getCount;
+  const countDisplayItems = getCount;
   const buttonsContent = [
     { name: 'Price', hook: useReverseState, sort: [sortPriceAscending, sortPriceDescending] },
     { name: 'Stock', hook: useReverseState, sort: [sortStockAscending, sortStockDescending] },
