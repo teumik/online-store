@@ -17,6 +17,19 @@
     gap: 0.2rem;
   }
 
+  &__articles {
+
+    &_grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+
+      .item {
+        grid-template-columns: 1fr;
+        grid-template-rows: 150px 1fr auto;
+      }
+    }
+  }
+
   &__buttons {
     padding: 0.1rem 0.4rem;
     background: none;

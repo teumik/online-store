@@ -4,6 +4,8 @@ import { ProductsType } from './types/products.interface';
 function Products({
   countDisplayItems,
   buttonsElements,
+  buttonsView,
+  className,
   children,
 }: ProductsType) {
   return (
@@ -13,12 +15,11 @@ function Products({
           {buttonsElements}
         </li>
         <li className="products__items">{`Results found: ${countDisplayItems}`}</li>
-        <li className="products__items">
-          <button className="products__buttons" type="button">B</button>
-          <button className="products__buttons" type="button">L</button>
+        <li className="products__items views">
+          {buttonsView}
         </li>
       </ul>
-      <div>
+      <div className={`products__articles ${className ? 'products__articles_grid' : ''}`}>
         {children}
       </div>
     </section>

@@ -1,39 +1,47 @@
 import { useContext } from 'react';
 import ProductsView from '../../../components/MainPage/Products/Products';
-import useReverseState from '../../../hooks/useReversePrice';
 import SortButtons from './SortButton/sortButton';
 import ProductsArticle from './ProductsArticle/productsArticle';
 import DataContext from '../../../context/data.context';
+import useViewButton from '../../../hooks/useViewButton';
+import GridButton from '../../../components/MainPage/Products/GridButton/GridButton';
+import useToggleSort from '../../../hooks/useToggleSort';
 
 function Products() {
   const {
     getCount,
     view,
-    sortPriceAscending, sortPriceDescending,
-    sortStockAscending, sortStockDescending,
   } = useContext(DataContext);
 
-  const countDisplayItems = getCount;
+  const { viewState, toggleView } = useViewButton();
+  const buttonsView = (
+    <GridButton
+      viewState={viewState}
+      toggleView={toggleView}
+    />
+  );
+
   const buttonsContent = [
-    { name: 'Price', hook: useReverseState, sort: [sortPriceAscending, sortPriceDescending] },
-    { name: 'Stock', hook: useReverseState, sort: [sortStockAscending, sortStockDescending] },
+    { name: 'Price', mode: 'price' as const },
+    { name: 'Stock', mode: 'count' as const },
   ];
-  const buttonsElements = buttonsContent.map((el) => {
-    const hook = el.hook(el.sort[0], el.sort[1]);
-    return (
-      <SortButtons
-        key={el.name.toLowerCase()}
-        content={el.name}
-        isActive={hook.isActive}
-        reverseSort={hook.reverseSort}
-      />
-    );
-  });
+  const { toggleSort, classState } = useToggleSort();
+  const buttonsElements = buttonsContent.map((el) => (
+    <SortButtons
+      key={el.name}
+      content={el.name}
+      mode={el.mode}
+      toggleSort={toggleSort}
+      classState={classState}
+    />
+  ));
 
   return (
     <ProductsView
-      countDisplayItems={countDisplayItems}
+      countDisplayItems={getCount}
       buttonsElements={buttonsElements}
+      buttonsView={buttonsView}
+      className={viewState}
     >
       {view.map((el) => (
         <ProductsArticle
