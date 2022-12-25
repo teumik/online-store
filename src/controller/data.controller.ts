@@ -66,11 +66,11 @@ export default class DataController {
       this.view = this.data.filter((prod) => {
         if (this.activeBrandsFilters.includes(prod.brand)
           && this.activeCategoryFilters.includes(prod.category)) {
-          if (prod.price <= this.rangeFilters.Price[0]) return false;
-          if (prod.price >= this.rangeFilters.Price[1]) return false;
-          if (prod.stock <= this.rangeFilters.Stock[0]) return false;
-          if (prod.stock >= this.rangeFilters.Stock[1]) return false;
-          return prod;
+          if (prod.price < this.rangeFilters.Price[0]) return false;
+          if (prod.price > this.rangeFilters.Price[1]) return false;
+          if (prod.stock < this.rangeFilters.Stock[0]) return false;
+          if (prod.stock > this.rangeFilters.Stock[1]) return false;
+          return true;
         }
         return false;
       });
@@ -78,20 +78,20 @@ export default class DataController {
       this.view = this.data.filter((prod) => {
         if (this.activeBrandsFilters.includes(prod.brand)
           || this.activeCategoryFilters.includes(prod.category)) {
-          if (prod.price <= this.rangeFilters.Price[0]) return false;
-          if (prod.price >= this.rangeFilters.Price[1]) return false;
-          if (prod.stock <= this.rangeFilters.Stock[0]) return false;
-          if (prod.stock >= this.rangeFilters.Stock[1]) return false;
-          return prod;
+          if (prod.price < this.rangeFilters.Price[0]) return false;
+          if (prod.price > this.rangeFilters.Price[1]) return false;
+          if (prod.stock < this.rangeFilters.Stock[0]) return false;
+          if (prod.stock > this.rangeFilters.Stock[1]) return false;
+          return true;
         }
         return false;
       });
     } else {
       this.view = this.data.filter((prod) => {
-        if (prod.price <= this.rangeFilters.Price[0]) return false;
-        if (prod.price >= this.rangeFilters.Price[1]) return false;
-        if (prod.stock <= this.rangeFilters.Stock[0]) return false;
-        if (prod.stock >= this.rangeFilters.Stock[1]) return false;
+        if (prod.price < this.rangeFilters.Price[0]) return false;
+        if (prod.price > this.rangeFilters.Price[1]) return false;
+        if (prod.stock < this.rangeFilters.Stock[0]) return false;
+        if (prod.stock > this.rangeFilters.Stock[1]) return false;
         return prod;
       });
     }

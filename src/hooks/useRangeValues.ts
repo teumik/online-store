@@ -14,12 +14,13 @@ const useRangeValues = (min: number, max: number, title: string) => {
     if (target.classList.contains('filters__range-1')) {
       if (value > maxprice) return;
       setLowPrice(value);
+      ctx.onChangeFiltersRange(title, [value, maxprice]);
     }
     if (target.classList.contains('filters__range-2')) {
       if (value < lowprice) return;
       setMaxPrice(value);
+      ctx.onChangeFiltersRange(title, [lowprice, value]);
     }
-    ctx.onChangeFiltersRange(title, [lowprice, maxprice]);
     updateProducts();
   }
   return {

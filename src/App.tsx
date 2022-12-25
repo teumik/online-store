@@ -17,9 +17,6 @@ function App() {
         <Header />
       </CartContext.Provider>
       <main className="main">
-        <CartContext.Provider value={ctx}>
-          <Products />
-        </CartContext.Provider>
         <ProductsContext.Provider value={useUpdateProducts()}>
           <Filters />
           <CartContext.Provider value={ctx}>
