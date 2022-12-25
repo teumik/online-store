@@ -1,11 +1,13 @@
 import './products.scss';
-import { ProductsProp } from './types/products.interface';
+import { ProductsType } from './types/products.interface';
 
 function Products({
   countDisplayItems,
   buttonsElements,
-  articles,
-}: ProductsProp) {
+  buttonsView,
+  className,
+  children,
+}: ProductsType) {
   return (
     <section className="products">
       <ul className="products__header">
@@ -13,13 +15,12 @@ function Products({
           {buttonsElements}
         </li>
         <li className="products__items">{`Results found: ${countDisplayItems}`}</li>
-        <li className="products__items">
-          <button className="products__buttons" type="button">B</button>
-          <button className="products__buttons" type="button">L</button>
+        <li className="products__items views">
+          {buttonsView}
         </li>
       </ul>
-      <div>
-        {articles}
+      <div className={`products__articles ${className ? 'products__articles_grid' : ''}`}>
+        {children}
       </div>
     </section>
   );

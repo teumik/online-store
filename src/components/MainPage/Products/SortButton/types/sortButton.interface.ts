@@ -1,5 +1,13 @@
+import { SortType } from '../../../../../hooks/useToggleSort';
+
+type ClassType = boolean | null;
+
+type ValueType = 'price' | 'count';
+
 export interface SortButtonsType {
   content: string;
-  isActive: boolean;
-  reverseSort: () => void;
+  mode: ValueType;
+  toggleSort: (label: keyof SortType) => void;
+  classState: (label: keyof SortType) => ClassType;
+  classes?: string;
 }

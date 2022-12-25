@@ -1,6 +1,6 @@
-export interface CartProps {
+export interface CartType {
   totalPrice: number;
   currency: string;
-  totalDiscount: number;
+  totalDiscount: string;
   itemsCount: number;
 }

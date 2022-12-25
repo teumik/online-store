@@ -1,13 +1,12 @@
 import './cart.scss';
-import { CartProps } from './types/cart.interface';
+import { CartType } from './types/cart.interface';
 
-function Cart(props: CartProps): JSX.Element {
-  const {
-    totalPrice,
-    currency,
-    totalDiscount,
-    itemsCount,
-  } = props;
+function Cart({
+  totalPrice,
+  currency,
+  totalDiscount,
+  itemsCount,
+}: CartType) {
   return (
     <div className="cart">
       <span className="cart__total">{`Total price: ${currency}${totalPrice}`}</span>

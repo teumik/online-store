@@ -1,7 +1,7 @@
-import { filtersProps } from '../../../types/types';
 import './filters.scss';
+import { filtersProps } from '../../../types/types';
 import FiltersList from '../../../container/MainPage/Filters/FiltersList/FiltersList';
-import FilterRange from './FiltersRange/FilterRange'; // <=============
+import FilterRange from './FiltersRange/FilterRange';
 
 function FiltersView({
   categories, brands, minPrice, maxPrice, minStock, maxStock,

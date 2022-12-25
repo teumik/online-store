@@ -3,19 +3,22 @@ import Header from './container/Header/Header';
 import Footer from './container/Footer/Footer';
 import Filters from './container/MainPage/Filters/Filters';
 import Products from './container/MainPage/Products/Products';
-import DataController from './controller/data.controller';
-import productsData from './lib/data/productsData.json';
+import useUpdateCart from './hooks/useUpdateCart';
+import CartContext from './context/cart.context';
 
 function App() {
-  const dataController = new DataController(productsData.products);
-  const data = dataController.getData;
+  const ctx = useUpdateCart();
 
   return (
     <>
-      <Header />
+      <CartContext.Provider value={ctx}>
+        <Header />
+      </CartContext.Provider>
       <main className="main">
         <Filters />
-        <Products data={data} />
+        <CartContext.Provider value={ctx}>
+          <Products />
+        </CartContext.Provider>
       </main>
       <Footer />
     </>

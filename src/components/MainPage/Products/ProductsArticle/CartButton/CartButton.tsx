@@ -2,19 +2,27 @@ import './cartButton.scss';
 import { CartButtonType } from './types/cartButton.interface';
 
 function CartButton({
+  id,
   isActive,
   buttonHandler,
   getInnerText,
+  updateCart,
+  isInCart,
 }: CartButtonType) {
+  const activeHandler = isInCart || isActive;
   return (
     <button
-      className={`item__button purchase__button ${isActive ? 'purchase__button_active' : ''}`}
+      id={String(id)}
+      className={`item__button purchase__button ${activeHandler ? 'purchase__button_active' : ''}`}
       type="button"
-      onClick={buttonHandler}
+      onClick={(event) => {
+        buttonHandler(event, isInCart);
+        updateCart();
+      }}
       onMouseEnter={buttonHandler}
       onMouseLeave={buttonHandler}
     >
-      {getInnerText()}
+      {getInnerText(isInCart)}
     </button>
   );
 }

@@ -41,6 +41,7 @@
     width: 2rem;
     height: 2rem;
     color: white;
+    font-size: 0.8rem;
     text-align: center;
     line-height: 2rem;
     background: orangered;
@@ -48,6 +49,8 @@
   }
 
   &__wrapper {
+    width: 100%;
+    height: 100%;
     overflow: hidden;
   }
 }
@@ -83,10 +86,20 @@
 
   &__price {
     margin: 0;
+
+    &_crossed {
+      text-decoration: line-through;
+    }
+
+    &_discount {
+      color: red;
+    }
   }
 
   &__button {
     place-self: start;
+    width: 100%;
+    max-width: 5rem;
     background: none;
     border: 1px solid salmon;
     cursor: pointer;

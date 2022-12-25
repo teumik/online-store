@@ -1,7 +1,7 @@
 .sorts {
   &__types {
     position: relative;
-    padding-right: 1rem;
+    padding: 0 1rem;
 
 
     &::after {
@@ -14,14 +14,14 @@
     &_increase {
 
       &::after {
-        content: '↓';
+        content: '↑';
       }
     }
 
     &_decrease {
 
       &::after {
-        content: '↑';
+        content: '↓';
       }
     }
   }
