@@ -2,9 +2,9 @@
   "compilerOptions": {
     "target": "ES5",
     "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
+      "DOM",
+      "DOM.Iterable",
+      "ESNext"
     ],
     "sourceMap": true,
     "removeComments": true,
