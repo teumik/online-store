@@ -1,5 +1,5 @@
 import './cartList.scss';
-import CartListItem from '../CartListItem/CartListItem';
+import CartListItem from '../CartListItem/CartListItemView';
 
 function CartListView() {
   return (

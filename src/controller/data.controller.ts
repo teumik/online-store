@@ -6,10 +6,19 @@ interface CartType {
   idArray: number[];
 }
 
+interface RangeFilters {
+  Price: number[];
+  Stock: number[];
+}
+
 export default class DataController {
   private readonly data;
-  public view: Readonly<IData>[];
+  public view;
   public cart: CartType;
+  rangeFilters: RangeFilters;
+  listFilters: string[];
+  activeBrandsFilters: string[];
+  activeCategoryFilters: string[];
   constructor(data: IData[]) {
     this.data = data;
     this.view = [...this.data];
@@ -17,6 +26,75 @@ export default class DataController {
       currency: '$',
       idArray: [],
     };
+    this.rangeFilters = {
+      Price: [0, 10000],
+      Stock: [0, 10000],
+    };
+    this.listFilters = [];
+    this.activeBrandsFilters = [];
+    this.activeCategoryFilters = [];
+  }
+
+  onChangeFiltersRange(label: string, value: number[]) {
+    this.rangeFilters = {
+      ...this.rangeFilters,
+      [label]: value,
+    };
+    this.filterAllProducts();
+  }
+
+  onChangeFiltersList(label: string, categoryTitle: string) {
+    if (categoryTitle === 'Brand') {
+      if (!this.activeBrandsFilters.includes(label)) {
+        this.activeBrandsFilters.push(label);
+      } else {
+        this.activeBrandsFilters = this.activeBrandsFilters.filter((i) => i !== label);
+      }
+      this.filterAllProducts();
+    } else {
+      if (!this.activeCategoryFilters.includes(label)) {
+        this.activeCategoryFilters.push(label);
+      } else {
+        this.activeCategoryFilters = this.activeCategoryFilters.filter((i) => i !== label);
+      }
+      this.filterAllProducts();
+    }
+  }
+
+  filterAllProducts() {
+    if (this.activeBrandsFilters.length > 0 && this.activeCategoryFilters.length > 0) {
+      this.view = this.data.filter((prod) => {
+        if (this.activeBrandsFilters.includes(prod.brand)
+          && this.activeCategoryFilters.includes(prod.category)) {
+          if (prod.price <= this.rangeFilters.Price[0]) return false;
+          if (prod.price >= this.rangeFilters.Price[1]) return false;
+          if (prod.stock <= this.rangeFilters.Stock[0]) return false;
+          if (prod.stock >= this.rangeFilters.Stock[1]) return false;
+          return prod;
+        }
+        return false;
+      });
+    } else if (this.activeBrandsFilters.length > 0 || this.activeCategoryFilters.length > 0) {
+      this.view = this.data.filter((prod) => {
+        if (this.activeBrandsFilters.includes(prod.brand)
+          || this.activeCategoryFilters.includes(prod.category)) {
+          if (prod.price <= this.rangeFilters.Price[0]) return false;
+          if (prod.price >= this.rangeFilters.Price[1]) return false;
+          if (prod.stock <= this.rangeFilters.Stock[0]) return false;
+          if (prod.stock >= this.rangeFilters.Stock[1]) return false;
+          return prod;
+        }
+        return false;
+      });
+    } else {
+      this.view = this.data.filter((prod) => {
+        if (prod.price <= this.rangeFilters.Price[0]) return false;
+        if (prod.price >= this.rangeFilters.Price[1]) return false;
+        if (prod.stock <= this.rangeFilters.Stock[0]) return false;
+        if (prod.stock >= this.rangeFilters.Stock[1]) return false;
+        return prod;
+      });
+    }
   }
 
   set cartUpdate(cartItems: number[]) {
@@ -107,6 +185,14 @@ export default class DataController {
 
   getMaxStock() {
     return Math.max(...this.data.map((item) => item.stock));
+  }
+
+  getMaxSense(title: string) {
+    return this.data.filter((prod) => prod.brand === title || prod.category === title).length;
+  }
+
+  getCurrentSense(title: string) {
+    return this.view.filter((prod) => prod.brand === title || prod.category === title).length;
   }
 }
 

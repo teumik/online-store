@@ -37,6 +37,7 @@ function Products() {
   ));
 
   return (
+
     <ProductsView
       countDisplayItems={getCount}
       buttonsElements={buttonsElements}

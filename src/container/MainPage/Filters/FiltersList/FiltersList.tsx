@@ -1,9 +1,28 @@
-import FiltersListView from '../../../../components/MainPage/Filters/FiltersList/FiltersList';
-import { filterListProps } from '../../../../types/types';
+import { useContext } from 'react';
+import FiltersListView from '../../../../components/MainPage/Filters/FiltersList/FiltersListView';
+import DataContext from '../../../../context/data.context';
+import ProductsContext from '../../../../context/products.context';
 
-function FiltersList(props: filterListProps) {
-  const { filterTitle, values } = props;
-  return <FiltersListView filterTitle={filterTitle} values={values} />;
+export interface filterListProps {
+  filterTitle: string;
+  values: string[];
 }
 
-export default FiltersList;
+export default function FiltersList(props: filterListProps) {
+  const { filterTitle, values } = props;
+  const DataCtx = useContext(DataContext);
+  const { updateProducts } = useContext(ProductsContext);
+
+  const inputHandler = (title: string, categoryTitle: string) => {
+    DataCtx.onChangeFiltersList(title, categoryTitle);
+    updateProducts();
+  };
+
+  return (
+    <FiltersListView
+      filterTitle={filterTitle}
+      values={values}
+      inputHandler={inputHandler}
+    />
+  );
+}

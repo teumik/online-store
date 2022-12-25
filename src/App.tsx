@@ -5,6 +5,8 @@ import Filters from './container/MainPage/Filters/Filters';
 import Products from './container/MainPage/Products/Products';
 import useUpdateCart from './hooks/useUpdateCart';
 import CartContext from './context/cart.context';
+import useUpdateProducts from './hooks/useUpdateProducts';
+import ProductsContext from './context/products.context';
 
 function App() {
   const ctx = useUpdateCart();
@@ -15,10 +17,15 @@ function App() {
         <Header />
       </CartContext.Provider>
       <main className="main">
-        <Filters />
         <CartContext.Provider value={ctx}>
           <Products />
         </CartContext.Provider>
+        <ProductsContext.Provider value={useUpdateProducts()}>
+          <Filters />
+          <CartContext.Provider value={ctx}>
+            <Products />
+          </CartContext.Provider>
+        </ProductsContext.Provider>
       </main>
       <Footer />
     </>
