@@ -113,6 +113,17 @@ export default class DataController {
     return this.cartItems.length;
   }
 
+  getItemByID(id: number) {
+    return this.data.find((article) => article.id === id);
+  }
+
+  getDiscountPriceByID(id: number) {
+    const item = this.getItemByID(id);
+    if (!item) return null;
+    const discountPrice = item.discountPercentage;
+    return discountPrice ? (item.price * (1 - discountPrice / 100)).toFixed() : null;
+  }
+
   get cartTotalDiscount() {
     const discountPrice = (article: IData) => (
       article.price * (1 - article.discountPercentage / 100)
