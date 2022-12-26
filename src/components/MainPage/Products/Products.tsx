@@ -1,5 +1,3 @@
-import { useContext } from 'react';
-import ProductsContext from '../../../context/products.context';
 import './products.scss';
 import { ProductsType } from './types/products.interface';
 
