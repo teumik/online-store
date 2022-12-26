@@ -55,7 +55,7 @@ function Products() {
           price={el.price}
           stock={el.stock}
           thumbnail={el.thumbnail}
-          discountPercentage={el.discountPercentage.toFixed()}
+          discountPercentage={el.discountPercentage}
         />
       ))}
     </ProductsView>

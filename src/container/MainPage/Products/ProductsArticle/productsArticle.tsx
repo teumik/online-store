@@ -14,7 +14,7 @@ function ProductsArticle({
   discountPercentage,
 }: Omit<ProductsArticleType, 'currency' | 'children' | 'isDiscount' | 'discountPrice'>) {
   const currency = '$';
-  const discountPrice = price * (1 - Number((discountPercentage || 0)) / 100);
+  const discountPrice = price * (1 - (discountPercentage || 0) / 100);
   const isDiscount = discountPrice !== price;
 
   return (
