@@ -113,6 +113,11 @@ export default class DataController {
     return this.cartItems.length;
   }
 
+  removeCartItem(id: number) {
+    this.cart.idArray = this.cart.idArray.filter((item) => item !== id);
+    console.log(this.cart.idArray);
+  }
+
   getItemByID(id: number) {
     return this.data.find((article) => article.id === id);
   }
