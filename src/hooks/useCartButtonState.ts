@@ -23,7 +23,6 @@ function useCartButtonState() {
         toggleState((state) => ({ ...state, isActive: !state.isActive }));
       }
     }
-    // toggleState((state) => ({ ...state, isActive: !state.isActive }));
   };
 
   const getInnerText = (isInCart: boolean) => {
