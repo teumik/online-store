@@ -1,7 +1,18 @@
 import './cartList.scss';
-import CartListItem from '../CartListItem/CartListItemView';
 
-function CartListView() {
+interface CartListViewProps {
+  elements: JSX.Element[][];
+  itemsCount: number;
+  onSelectPage: (index: number) => void;
+  currentPage: number;
+}
+
+function CartListView({
+  elements,
+  itemsCount,
+  onSelectPage,
+  currentPage,
+}: CartListViewProps) {
   return (
     <div className="productsCart">
       <div className="productsCart__header">
@@ -9,21 +20,32 @@ function CartListView() {
         <div className="productsCart__controls">
           <div className="productsCar__count">
             ITEMS:
-            <span>1</span>
+            <span>{itemsCount}</span>
           </div>
           <div className="productsCart__pages">
             PAGE:
             <button className="prev-page" type="button">Prev</button>
-            <span>1</span>
+            <span>{currentPage + 1}</span>
             <button className="next-page" type="button">Next</button>
           </div>
         </div>
       </div>
 
       <ul className="productsCart__list">
-        <CartListItem />
-        <CartListItem />
-        <CartListItem />
+        {elements[currentPage] ? elements[currentPage] : elements[elements.length - 1]}
+      </ul>
+
+      <ul className="productsCart__pages">
+        {elements.map((_, index) => (
+          <button
+            className={index === currentPage ? 'active' : ''}
+            type="button"
+            onClick={() => onSelectPage(index)}
+            key={_.toString() + index.toString()}
+          >
+            {index + 1}
+          </button>
+        ))}
       </ul>
     </div>
 

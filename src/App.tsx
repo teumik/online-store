@@ -7,6 +7,7 @@ import useUpdateCart from './hooks/useUpdateCart';
 import CartContext from './context/cart.context';
 import useUpdateProducts from './hooks/useUpdateProducts';
 import ProductsContext from './context/products.context';
+import CartPageView from './components/CartPage/CartPageView';
 
 function App() {
   const ctx = useUpdateCart();
@@ -18,11 +19,13 @@ function App() {
       </CartContext.Provider>
       <main className="main">
         <ProductsContext.Provider value={useUpdateProducts()}>
-          <Filters />
+          {/* <Filters /> */}
           <CartContext.Provider value={ctx}>
             <Products />
+            <CartPageView />
           </CartContext.Provider>
         </ProductsContext.Provider>
+
       </main>
       <Footer />
     </>

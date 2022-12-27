@@ -1,4 +1,4 @@
-import CartList from './CartList/CartListView';
+import CartList from '../../container/CartPage/CartList/CartList';
 import CartSummary from './CartSummary/CartSummaryView';
 import './cartPage.scss';
 
