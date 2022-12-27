@@ -1,3 +1,5 @@
+import { useContext } from 'react';
+import DataContext from '../../../../../context/data.context';
 import './cartButton.scss';
 import { CartButtonType } from './types/cartButton.interface';
 
@@ -10,10 +12,12 @@ function CartButton({
   isInCart,
 }: CartButtonType) {
   const activeHandler = isInCart || isActive;
+  // const ctx = useContext(DataContext);
   return (
     <button
       id={String(id)}
-      className={`item__button purchase__button ${activeHandler ? 'purchase__button_active' : ''}`}
+      className={`item__button purchase__button ${isInCart ? 'purchase__button_active' : ''}`}
+      // className={ctx.cart.idArray.includes(id) ? 'active' : ''}
       type="button"
       onClick={(event) => {
         buttonHandler(event, isInCart);
