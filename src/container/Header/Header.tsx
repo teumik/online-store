@@ -5,6 +5,7 @@ import CartContext from '../../context/cart.context';
 function Header() {
   const title = 'Online Shop';
   const { cartState } = useContext(CartContext);
+
   return (
     <HeaderView
       totalPrice={cartState.cartTotalPrice}

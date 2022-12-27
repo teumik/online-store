@@ -5,24 +5,24 @@ function CartButton({
   id,
   isActive,
   buttonHandler,
-  getInnerText,
   updateCart,
   isInCart,
+  innerText,
 }: CartButtonType) {
   const activeHandler = isInCart || isActive;
   return (
     <button
       id={String(id)}
-      className={`item__button purchase__button ${activeHandler ? 'purchase__button_active' : ''}`}
+      className={`item__button purchase__button ${isInCart ? 'purchase__button_active' : ''}`}
       type="button"
       onClick={(event) => {
-        buttonHandler(event, isInCart);
+        buttonHandler(event, activeHandler);
         updateCart();
       }}
       onMouseEnter={buttonHandler}
       onMouseLeave={buttonHandler}
     >
-      {getInnerText(isInCart)}
+      {innerText}
     </button>
   );
 }

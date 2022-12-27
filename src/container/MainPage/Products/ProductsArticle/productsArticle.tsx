@@ -26,7 +26,7 @@ function ProductsArticle({
       price={price}
       stock={stock}
       thumbnail={thumbnail}
-      discountPercentage={discountPercentage}
+      discountPercentage={Number(discountPercentage.toFixed())}
       currency={currency}
       isDiscount={isDiscount}
       discountPrice={discountPrice.toFixed()}

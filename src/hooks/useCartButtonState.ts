@@ -6,12 +6,13 @@ function useCartButtonState() {
   const ctx = useContext(DataContext);
 
   const buttonHandler = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    event?: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     isInCart?: boolean
   ) => {
     if (event) {
       if (event.type === 'mouseenter' || event.type === 'mouseleave') {
         toggleState((state) => ({ ...state, isHover: !state.isHover }));
+        return;
       }
       if (event.type === 'click') {
         if (isInCart && !isActive) {
@@ -22,9 +23,14 @@ function useCartButtonState() {
         toggleState((state) => ({ ...state, isActive: !state.isActive }));
       }
     }
+    // toggleState((state) => ({ ...state, isActive: !state.isActive }));
   };
 
   const getInnerText = (isInCart: boolean) => {
+    if (isActive && !isInCart) {
+      return 'Add';
+    }
+
     if (isActive || isInCart) {
       if (isHover && isActive) return 'Remove';
       if (isHover && isInCart) return 'Remove';

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import CartButtonView from '../../../../../components/MainPage/Products/ProductsArticle/CartButton/CartButton';
 import useCartButtonState from '../../../../../hooks/useCartButtonState';
 import CartContext from '../../../../../context/cart.context';
@@ -12,13 +12,14 @@ function CartButton({ id }: Pick<CartButtonType, 'id'>) {
   } = useCartButtonState();
   const { cartState, updateCart } = useContext(CartContext);
   const isInCart = cartState.cart.idArray.includes(id);
+  const innerText = getInnerText(isInCart);
 
   return (
     <CartButtonView
       id={id}
       isActive={isActive}
       buttonHandler={buttonHandler}
-      getInnerText={getInnerText}
+      innerText={innerText}
       updateCart={updateCart}
       isInCart={isInCart}
     />
