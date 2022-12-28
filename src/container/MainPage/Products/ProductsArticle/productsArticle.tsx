@@ -1,5 +1,4 @@
 import ProductsArticleView from '../../../../components/MainPage/Products/ProductsArticle/ProductsArticle';
-import { ProductsArticleType } from '../../../../components/MainPage/Products/ProductsArticle/types/productsArticle.interface';
 import { IData } from '../../../../controller/types/data.interface';
 import CartButton from './CartButton/CartButton';
 
@@ -8,18 +7,6 @@ interface ArticleType {
 }
 
 function ProductsArticle({ article }: ArticleType) {
-//   id,
-//   title,
-//   brand,
-//   category,
-//   description,
-//   price,
-//   stock,
-//   thumbnail,
-//   discountPercentage,
-// }: Omit<ProductsArticleType, 'currency' | 'children' | 'isDiscount' | 'discountPrice'>) {
-  console.log(article);
-
   const {
     id,
     title,

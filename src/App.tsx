@@ -12,12 +12,28 @@ import useUpdateProducts from './hooks/useUpdateProducts';
 import ProductsContext from './context/products.context';
 import CartPageView from './components/CartPage/CartPageView';
 import MainPage from './components/MainPage/MainPage';
+import ProductsArticle from './container/MainPage/Products/ProductsArticle/productsArticle';
+import { dataController } from './controller/data.controller';
+
+function ArticlePage() {
+  const product = dataController.view.find((article) => article.id === 1);
+
+  if (!product) {
+    return (
+      <div>404</div>
+    );
+  }
+
+  return (
+    <ProductsArticle
+      article={product}
+    />
+  );
+}
 
 function App() {
   const cart = useUpdateCart();
   const products = useUpdateProducts();
-
-  console.log(products.productsState.view);
 
   return (
     <BrowserRouter>
@@ -54,7 +70,7 @@ function App() {
         </Route>
         <Route
           path="/articles/:articleId"
-          // element={< />}
+          element={<ArticlePage />}
         />
       </Routes>
       <Footer />
