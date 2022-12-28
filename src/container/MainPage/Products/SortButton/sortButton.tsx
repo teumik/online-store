@@ -13,10 +13,10 @@ function SortButtons({
   return (
     <SortButtonsView
       content={content}
-      toggleSort={toggleSort}
-      classState={classState}
       mode={mode}
       classes={className}
+      toggleSort={toggleSort}
+      classState={classState}
     />
   );
 }

@@ -11,17 +11,38 @@ interface RangeFilters {
   Stock: number[];
 }
 
+interface Storage {
+  products: {
+    layout: boolean;
+    sort: {
+      price: boolean | undefined;
+      count: boolean | undefined;
+    };
+  };
+}
+
 export default class DataController {
   private readonly data;
-  public view;
+  storage: Storage;
+  public view: IData[];
   public cart: CartType;
   rangeFilters: RangeFilters;
   listFilters: string[];
   activeBrandsFilters: string[];
   activeCategoryFilters: string[];
+
   constructor(data: IData[]) {
     this.data = data;
     this.view = [...this.data];
+    this.storage = {
+      products: {
+        layout: false,
+        sort: {
+          price: undefined,
+          count: undefined,
+        },
+      },
+    };
     this.cart = {
       currency: '$',
       idArray: [],

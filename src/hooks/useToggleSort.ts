@@ -1,5 +1,5 @@
-import { useContext, useState } from 'react';
-import DataContext from '../context/data.context';
+import { useState } from 'react';
+import { dataController } from '../controller/data.controller';
 
 export interface SortType {
   price: undefined | boolean;
@@ -7,8 +7,11 @@ export interface SortType {
 }
 
 export default function useToggleSort() {
-  const ctx = useContext(DataContext);
-  const [isSort, setSort] = useState({} as SortType);
+  const ctx = dataController;
+  const { sort } = ctx.storage.products;
+  const storage = sort.price === undefined && sort.count === undefined ? {} : sort;
+
+  const [isSort, setSort] = useState(storage as SortType);
   const sortMap = {
     price: {
       up: ctx.sortPriceAscending.bind(ctx),
@@ -33,13 +36,11 @@ export default function useToggleSort() {
 
   function toggleSort(label: keyof SortType) {
     setSort((state) => {
-      if (isSort === undefined) {
-        return {
-          price: undefined,
-          count: undefined,
-          [label]: true,
-        };
-      }
+      Object.assign(sort, {
+        price: undefined,
+        count: undefined,
+        [label]: !state[label],
+      });
       return {
         price: undefined,
         count: undefined,

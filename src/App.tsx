@@ -50,6 +50,10 @@ function App() {
             )}
           />
         </Route>
+        <Route
+          path="/articles/:articleId"
+          // element={< />}
+        />
       </Routes>
       <Footer />
     </BrowserRouter>
