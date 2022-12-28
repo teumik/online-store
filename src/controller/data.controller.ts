@@ -16,7 +16,7 @@ export default class DataController {
   public view;
   public cart: CartType;
   rangeFilters: RangeFilters;
-  listFilters: string[];
+  activeFiltersList: string[];
   activeBrandsFilters: string[];
   activeCategoryFilters: string[];
   constructor(data: IData[]) {
@@ -27,12 +27,13 @@ export default class DataController {
       idArray: [],
     };
     this.rangeFilters = {
-      Price: [0, 10000],
-      Stock: [0, 10000],
+      Price: [this.getLowPrice(), this.getMaxPrice()],
+      Stock: [this.getLowPrice(), this.getMaxPrice()],
     };
-    this.listFilters = [];
+
     this.activeBrandsFilters = [];
     this.activeCategoryFilters = [];
+    this.activeFiltersList = [];
   }
 
   onChangeFiltersRange(label: string, value: number[]) {

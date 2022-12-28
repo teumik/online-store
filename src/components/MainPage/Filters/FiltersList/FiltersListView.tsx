@@ -1,5 +1,4 @@
-import { useContext } from 'react';
-import DataContext from '../../../../context/data.context';
+import FilterListItem from '../../../../container/MainPage/Filters/FilterListItem/FilterListItem';
 import './filtersList.scss';
 
 export interface filterListPropsView {
@@ -13,21 +12,17 @@ export default function FiltersListView({
   values,
   inputHandler,
 }: filterListPropsView) {
-  const ctx = useContext(DataContext);
   return (
     <div className="filters__item">
       <h3 className="filters__title">{filterTitle}</h3>
       <div className="filters__list">
         {values.sort().map((title) => (
-          <li className="filters__list-item" key={title}>
-            <input onChange={() => inputHandler(title, filterTitle)} type="checkbox" className="filters__list-checkbox" id={title} />
-            <label htmlFor={title} className="filters__list-label">{` ${title} `}</label>
-            <p className="filters__list-stock">
-              {ctx.getCurrentSense(title)}
-              /
-              {ctx.getMaxSense(title)}
-            </p>
-          </li>
+          <FilterListItem
+            key={title}
+            title={title}
+            filterTitle={filterTitle}
+            inputHandler={inputHandler}
+          />
         ))}
       </div>
     </div>
