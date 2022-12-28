@@ -11,7 +11,7 @@
     line-height: 2rem;
   }
 
-  &__button {
+  &__link {
     position: relative;
     display: flex;
     justify-content: center;
@@ -21,9 +21,15 @@
     width: 4rem;
     height: 4rem;
     padding: 0;
+    color: inherit;
+    text-decoration: none;
     border: 1px solid green;
     border-radius: 50%;
-    cursor: pointer;
+
+    &_active {
+      color: green;
+      pointer-events: none;
+    }
   }
 
   &__count {

@@ -4,7 +4,7 @@ import './cartPage.scss';
 
 function CartPageView() {
   return (
-    <div className="cart">
+    <div className="cart-page">
       <CartList />
       <CartSummary />
     </div>
