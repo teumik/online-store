@@ -18,7 +18,11 @@ const config = {
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: isProduction ? 'static/js/[contenthash].js' : 'static/js/[name].[contenthash].js',
+    publicPath: '/',
     clean: true,
+  },
+  devServer: {
+    historyApiFallback: true,
   },
   plugins: [
     new HtmlWebpackPlugin({
