@@ -1,18 +1,36 @@
 import ProductsArticleView from '../../../../components/MainPage/Products/ProductsArticle/ProductsArticle';
 import { ProductsArticleType } from '../../../../components/MainPage/Products/ProductsArticle/types/productsArticle.interface';
+import { IData } from '../../../../controller/types/data.interface';
 import CartButton from './CartButton/CartButton';
 
-function ProductsArticle({
-  id,
-  title,
-  brand,
-  category,
-  description,
-  price,
-  stock,
-  thumbnail,
-  discountPercentage,
-}: Omit<ProductsArticleType, 'currency' | 'children' | 'isDiscount' | 'discountPrice'>) {
+interface ArticleType {
+  article: IData;
+}
+
+function ProductsArticle({ article }: ArticleType) {
+//   id,
+//   title,
+//   brand,
+//   category,
+//   description,
+//   price,
+//   stock,
+//   thumbnail,
+//   discountPercentage,
+// }: Omit<ProductsArticleType, 'currency' | 'children' | 'isDiscount' | 'discountPrice'>) {
+  console.log(article);
+
+  const {
+    id,
+    title,
+    brand,
+    category,
+    description,
+    price,
+    stock,
+    thumbnail,
+    discountPercentage,
+  } = article;
   const currency = '$';
   const discountPrice = price * (1 - (discountPercentage || 0) / 100);
   const isDiscount = discountPrice !== price;

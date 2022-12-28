@@ -44,18 +44,10 @@ function Products() {
       buttonsView={buttonsView}
       className={viewState}
     >
-      {view.map((el) => (
+      {view.map((article) => (
         <ProductsArticle
-          key={el.id}
-          id={el.id}
-          title={el.title}
-          brand={el.brand}
-          category={el.category}
-          description={el.description}
-          price={el.price}
-          stock={el.stock}
-          thumbnail={el.thumbnail}
-          discountPercentage={el.discountPercentage}
+          key={article.id}
+          article={article}
         />
       ))}
     </ProductsView>

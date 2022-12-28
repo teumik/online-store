@@ -17,6 +17,8 @@ function App() {
   const cart = useUpdateCart();
   const products = useUpdateProducts();
 
+  console.log(products.productsState.view);
+
   return (
     <BrowserRouter>
       <CartContext.Provider value={cart}>
