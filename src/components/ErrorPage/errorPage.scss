@@ -1,0 +1,9 @@
+.error {
+  width: 100%;
+
+  &__message {
+    font-size: 4rem;
+    color: red;
+    text-align: center;
+  }
+}
