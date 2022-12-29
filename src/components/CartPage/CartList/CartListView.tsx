@@ -1,7 +1,21 @@
 import './cartList.scss';
-import CartListItem from '../CartListItem/CartListItemView';
+import { useContext } from 'react';
+import CartContext from '../../../context/cart.context';
+import ProductsArticle from '../../../container/MainPage/Products/ProductsArticle/productsArticle';
 
 function CartListView() {
+  const { cartState } = useContext(CartContext);
+  const articles = cartState.cartItems.map((article) => {
+    if (!article) return null;
+    return (
+      <ProductsArticle
+        key={article.id}
+        article={article}
+        isActive={false}
+      />
+    );
+  });
+
   return (
     <div className="productsCart">
       <div className="productsCart__header">
@@ -21,9 +35,7 @@ function CartListView() {
       </div>
 
       <ul className="productsCart__list">
-        <CartListItem />
-        <CartListItem />
-        <CartListItem />
+        {articles}
       </ul>
     </div>
 
