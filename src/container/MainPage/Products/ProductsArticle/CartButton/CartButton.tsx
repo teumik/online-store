@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import CartButtonView from '../../../../../components/MainPage/Products/ProductsArticle/CartButton/CartButton';
 import useCartButtonState from '../../../../../hooks/useCartButtonState';
 import CartContext from '../../../../../context/cart.context';
