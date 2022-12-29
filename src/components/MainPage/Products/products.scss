@@ -24,8 +24,14 @@
       grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
 
       .item {
+        height: 100%;
         grid-template-columns: 1fr;
-        grid-template-rows: 150px 1fr auto;
+        grid-template-rows: 1fr auto;
+
+        &__link {
+          grid-template-columns: 1fr;
+          grid-template-rows: 150px 1fr;
+        }
       }
     }
   }

@@ -1,6 +1,9 @@
 import './App.scss';
 import {
-  BrowserRouter, Routes, Route
+  BrowserRouter,
+  Routes,
+  Route,
+  Link
 } from 'react-router-dom';
 import Header from './container/Header/Header';
 import Footer from './container/Footer/Footer';
@@ -12,24 +15,9 @@ import useUpdateProducts from './hooks/useUpdateProducts';
 import ProductsContext from './context/products.context';
 import CartPageView from './components/CartPage/CartPageView';
 import MainPage from './components/MainPage/MainPage';
-import ProductsArticle from './container/MainPage/Products/ProductsArticle/productsArticle';
-import { dataController } from './controller/data.controller';
-
-function ArticlePage() {
-  const product = dataController.view.find((article) => article.id === 1);
-
-  if (!product) {
-    return (
-      <div>404</div>
-    );
-  }
-
-  return (
-    <ProductsArticle
-      article={product}
-    />
-  );
-}
+import BackButton from './components/BackButton/BackButton';
+import ErrorPage from './components/ErrorPage/ErrorPage';
+import ArticlePage from './container/ArticlePage/ArticlePage';
 
 function App() {
   const cart = useUpdateCart();
@@ -41,7 +29,9 @@ function App() {
         <Header />
       </CartContext.Provider>
       <Routes>
-        <Route path="/">
+        <Route
+          path="/"
+        >
           <Route
             index
             element={(
@@ -59,6 +49,9 @@ function App() {
             path="cart"
             element={(
               <MainPage>
+                <Link to="/">
+                  <BackButton preventNavigate />
+                </Link>
                 <ProductsContext.Provider value={products}>
                   <CartContext.Provider value={cart}>
                     <CartPageView />
@@ -69,8 +62,36 @@ function App() {
           />
         </Route>
         <Route
-          path="/articles/:articleId"
-          element={<ArticlePage />}
+          path="articles/:articleId"
+          element={(
+            <MainPage>
+              <ProductsContext.Provider value={products}>
+                <CartContext.Provider value={cart}>
+                  <ArticlePage />
+                </CartContext.Provider>
+              </ProductsContext.Provider>
+            </MainPage>
+          )}
+        />
+        <Route
+          path="cart/articles/:articleId"
+          element={(
+            <MainPage>
+              <ProductsContext.Provider value={products}>
+                <CartContext.Provider value={cart}>
+                  <ArticlePage />
+                </CartContext.Provider>
+              </ProductsContext.Provider>
+            </MainPage>
+          )}
+        />
+        <Route
+          path="*"
+          element={(
+            <MainPage>
+              <ErrorPage />
+            </MainPage>
+          )}
         />
       </Routes>
       <Footer />

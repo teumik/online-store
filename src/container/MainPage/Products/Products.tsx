@@ -48,6 +48,7 @@ function Products() {
         <ProductsArticle
           key={article.id}
           article={article}
+          isActive={false}
         />
       ))}
     </ProductsView>
