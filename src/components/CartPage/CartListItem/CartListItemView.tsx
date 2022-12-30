@@ -14,7 +14,7 @@ interface CartListItemViewProps {
   onChangeValue: (id: number, operator: string) => void;
 }
 
-function CartListItemView({
+export default function CartListItemView({
   title,
   description,
   rating,
@@ -26,7 +26,6 @@ function CartListItemView({
   id,
   value,
   onChangeValue,
-
 }: CartListItemViewProps) {
   return (
     <li className="productsCart__item productsItem">
@@ -48,9 +47,9 @@ function CartListItemView({
           {stock}
         </h6>
         <div className="stock__controls">
-          <button onClick={() => onChangeValue(id!, '+')} className="stock__add" type="button"> + </button>
-          <span>{value}</span>
           <button onClick={() => onChangeValue(id!, '-')} className="stock__remove" type="button"> - </button>
+          <span>{value}</span>
+          <button onClick={() => onChangeValue(id!, '+')} disabled={value >= stock!} className="stock__add" type="button"> + </button>
         </div>
         <p className="stock__price">
           $
@@ -60,5 +59,3 @@ function CartListItemView({
     </li>
   );
 }
-
-export default CartListItemView;

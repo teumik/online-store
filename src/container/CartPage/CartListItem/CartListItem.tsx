@@ -1,8 +1,8 @@
 import { useContext, useState } from 'react';
 import CartListItemView from '../../../components/CartPage/CartListItem/CartListItemView';
 import CartContext from '../../../context/cart.context';
-import DataContext from '../../../context/data.context';
 import { IData } from '../../../controller/types/data.interface';
+import useCartButtonState from '../../../hooks/useCartButtonState';
 
 interface CartListItemProps {
   article: IData;
@@ -11,8 +11,8 @@ interface CartListItemProps {
 }
 
 function CartListItem({ article, position, removeItemHandler }: CartListItemProps) {
-  const ctx = useContext(DataContext);
   const { updateCart } = useContext(CartContext);
+  const { increaseItemCount, getCount } = useCartButtonState();
   const {
     title,
     description,
@@ -24,23 +24,18 @@ function CartListItem({ article, position, removeItemHandler }: CartListItemProp
     id,
   } = article;
 
-  // const initialCount = ctx.getInitialCountItemInCart(id);
-  // const [value, setValue] = useState(initialCount);
   const [value, setValue] = useState(1);
 
   const onChangeValue = (ID: number, operator: string): void => {
     if (operator === '+') {
       setValue((oldValue) => oldValue + 1);
       if (value + 1) {
-        // ctx.cart.idArray.push({ id: ID, count: value });
+        increaseItemCount(ID);
       }
     } else {
       setValue((oldValue) => (oldValue - 1));
-      if (value - 1 < 1) {
-        removeItemHandler(id);
-      }
+      removeItemHandler(ID);
     }
-
     updateCart();
   };
 
@@ -55,7 +50,7 @@ function CartListItem({ article, position, removeItemHandler }: CartListItemProp
       thumbnail={thumbnail}
       position={position}
       id={id}
-      value={value}
+      value={getCount(id) || 1}
       onChangeValue={onChangeValue}
     />
   );
