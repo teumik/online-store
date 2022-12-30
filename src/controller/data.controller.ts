@@ -1,9 +1,15 @@
 import { IData } from './types/data.interface';
 import productsData from '../lib/data/productsData.json';
+import roundNumber from '../lib/numberHelpers';
+
+interface CartItemType {
+  id: number;
+  count: number;
+}
 
 interface CartType {
   currency: '$';
-  idArray: number[];
+  idArray: CartItemType[];
 }
 
 interface RangeFilters {
@@ -11,17 +17,39 @@ interface RangeFilters {
   Stock: number[];
 }
 
+interface Storage {
+  products: {
+    layout: boolean;
+    sort: {
+      price: boolean | undefined;
+      count: boolean | undefined;
+    };
+  };
+}
+
 export default class DataController {
   private readonly data;
-  public view;
+  storage: Storage;
+  public view: IData[];
   public cart: CartType;
   rangeFilters: RangeFilters;
+  listFilters: string[];
   activeFiltersList: string[];
   activeBrandsFilters: string[];
   activeCategoryFilters: string[];
+
   constructor(data: IData[]) {
     this.data = data;
     this.view = [...this.data];
+    this.storage = {
+      products: {
+        layout: false,
+        sort: {
+          price: undefined,
+          count: undefined,
+        },
+      },
+    };
     this.cart = {
       currency: '$',
       idArray: [],
@@ -30,7 +58,7 @@ export default class DataController {
       Price: [this.getLowPrice(), this.getMaxPrice()],
       Stock: [this.getLowStock(), this.getMaxStock()],
     };
-
+    this.listFilters = [];
     this.activeBrandsFilters = [];
     this.activeCategoryFilters = [];
     this.activeFiltersList = [];
@@ -98,25 +126,42 @@ export default class DataController {
     }
   }
 
-  set cartUpdate(cartItems: number[]) {
+  set cartUpdate(cartItems: CartItemType[]) {
     this.cart.idArray = cartItems;
   }
 
+  isDisabled(id: number, value: number): boolean {
+    const article = this.getItemByID(id);
+    if (article) {
+      if (article.stock > value) return false;
+    }
+    return true;
+  }
+
   get cartItems() {
-    return this.cart.idArray.map((id) => this.data.find((article) => article.id === id));
+    return this.cart.idArray.map((el) => this.data.find((article) => article.id === el.id));
   }
 
   get cartTotalPrice() {
-    return this.cartItems.reduce((acc, article) => (acc + (article ? article.price : 0)), 0);
+    const result = this.cart.idArray.reduce((acc, el) => {
+      const item = this.getItemByID(el.id);
+      if (!item) return 0;
+      return (acc + item.price * el.count);
+    }, 0);
+    return roundNumber(result);
+  }
+
+  get cartTotalDiscountPrice() {
+    const result = this.cart.idArray.reduce((acc, el) => {
+      const item = this.getItemByID(el.id);
+      if (!item) return 0;
+      return acc + item.price * el.count * (1 - item.discountPercentage / 100);
+    }, 0);
+    return roundNumber(result);
   }
 
   get cartItemsCount() {
-    return this.cartItems.length;
-  }
-
-  removeCartItem(id: number) {
-    this.cart.idArray = this.cart.idArray.filter((item) => item !== id);
-    console.log(this.cart.idArray);
+    return this.cart.idArray.reduce((acc, el) => acc + el.count, 0);
   }
 
   getItemByID(id: number) {
@@ -127,25 +172,54 @@ export default class DataController {
     const item = this.getItemByID(id);
     if (!item) return null;
     const discountPrice = item.discountPercentage;
-    return discountPrice ? (item.price * (1 - discountPrice / 100)).toFixed() : null;
+    if (!discountPrice) return item.price;
+    const result = item.price * (1 - discountPrice / 100);
+    return roundNumber(result);
   }
 
   get cartTotalDiscount() {
-    const discountPrice = (article: IData) => (
-      article.price * (1 - article.discountPercentage / 100)
-    );
-    const totalDiscountPrice = this.cartItems
-      .reduce((acc, article) => acc + (article ? discountPrice(article) : 0), 0);
-    return 100 - (totalDiscountPrice * 100) / this.cartTotalPrice || 0;
+    const result = 100 - (this.cartTotalDiscountPrice * 100) / this.cartTotalPrice || 0;
+    return roundNumber(result);
   }
 
   setCartItem(idValue: string) {
     const id = Number(idValue);
-    if (this.cart.idArray.includes(id)) {
-      this.cartUpdate = this.cart.idArray.filter((cartId) => cartId !== id);
+    if (this.cart.idArray.find((el) => el.id === id)) {
+      this.cartUpdate = this.cart.idArray.filter((el) => el.id !== id);
       return;
     }
-    this.cart.idArray.push(id);
+    this.cart.idArray.push({ id, count: 1 });
+  }
+
+  findCartItem(idValue: number) {
+    return this.cart.idArray.find((el) => el.id === idValue);
+  }
+
+  increaseItemCount(idValue: number) {
+    const item = this.findCartItem(idValue);
+
+    if (item?.count) {
+      const article = this.getItemByID(idValue);
+      if (!article) return;
+      if (item.count >= article.stock) return;
+      item.count += 1;
+    }
+  }
+
+  decreaseItemCount(idValue: number) {
+    const item = this.findCartItem(idValue);
+    if (item?.count) {
+      if (item.count === 1) {
+        this.setCartItem(String(idValue));
+        return;
+      }
+      item.count -= 1;
+    }
+  }
+
+  getItemCount(idValue: number) {
+    const item = this.findCartItem(idValue);
+    return item?.count;
   }
 
   get getData() {
