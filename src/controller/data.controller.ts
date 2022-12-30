@@ -28,7 +28,7 @@ export default class DataController {
     };
     this.rangeFilters = {
       Price: [this.getLowPrice(), this.getMaxPrice()],
-      Stock: [this.getLowPrice(), this.getMaxPrice()],
+      Stock: [this.getLowStock(), this.getMaxStock()],
     };
 
     this.activeBrandsFilters = [];
