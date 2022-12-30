@@ -11,7 +11,7 @@ function CartButton({ id }: Pick<CartButtonType, 'id'>) {
     getInnerText,
   } = useCartButtonState();
   const { cartState, updateCart } = useContext(CartContext);
-  const isInCart = cartState.cart.idArray.includes(id);
+  const isInCart = Boolean(cartState.cart.idArray.find((el) => el.id === id));
 
   return (
     <CartButtonView
