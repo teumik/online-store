@@ -1,9 +1,8 @@
 import { useContext, useState } from 'react';
-
 import DataContext from '../../../context/data.context';
 import CartListView from '../../../components/CartPage/CartList/CartListView';
-import CartListItemView from '../../../components/CartPage/CartListItem/CartListItemView';
 import CartContext from '../../../context/cart.context';
+import CartListItem from '../CartListItem/CartListItem';
 
 function CartList() {
   const [currentPage, setCurrentPage] = useState(0);
@@ -31,29 +30,34 @@ function CartList() {
     updateCart();
   };
 
+  const buttonPageHandler = (oparator: string) => {
+    if (oparator === '+') {
+      if (currentPage + 1 > dataCtx.cart.idArray.length / itemsOnPage) return;
+      setCurrentPage((p) => p + 1);
+    } else {
+      if (currentPage === 0) return;
+      setCurrentPage((p) => p - 1);
+    }
+  };
+
   const cartListItems = dataCtx.cartItems
     .map((item, index) => (
-      <CartListItemView
+      <CartListItem
+        article={item!}
         position={index + 1}
-        title={item?.title}
         key={item?.id}
-        description={item?.description}
-        rating={item?.rating}
-        discount={item?.discountPercentage}
-        stock={item?.stock}
-        price={item?.price}
-        thumbnail={item?.thumbnail}
-        id={item?.id}
         removeItemHandler={removeItemHandler}
       />
     ));
 
-  function sliceIntoChunks(arr: JSX.Element[], chunkSize: number) {
+  function sliceIntoChunks(arr: JSX.Element[], chunkSize: number): JSX.Element[][] {
     const res = [];
+
     for (let i = 0; i < arr.length; i += chunkSize) {
       const chunk = arr.slice(i, i + chunkSize);
       res.push(chunk);
     }
+
     return res;
   }
 
@@ -63,6 +67,7 @@ function CartList() {
       itemsCount={cartListItems.length}
       onSelectPage={onSelectPage}
       currentPage={currentPage}
+      buttonPageHandler={buttonPageHandler}
     />
   );
 }

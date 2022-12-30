@@ -4,6 +4,7 @@ interface CartListViewProps {
   elements: JSX.Element[][];
   itemsCount: number;
   onSelectPage: (index: number) => void;
+  buttonPageHandler: (operator: string) => void;
   currentPage: number;
 }
 
@@ -12,6 +13,7 @@ function CartListView({
   itemsCount,
   onSelectPage,
   currentPage,
+  buttonPageHandler,
 }: CartListViewProps) {
   return (
     <div className="productsCart">
@@ -24,9 +26,9 @@ function CartListView({
           </div>
           <div className="productsCart__pages">
             PAGE:
-            <button className="prev-page" type="button">Prev</button>
+            <button onClick={() => buttonPageHandler('-')} className="prev-page" type="button">Prev</button>
             <span>{currentPage + 1}</span>
-            <button className="next-page" type="button">Next</button>
+            <button onClick={() => buttonPageHandler('+')} className="next-page" type="button">Next</button>
           </div>
         </div>
       </div>

@@ -10,7 +10,8 @@ interface CartListItemViewProps {
   thumbnail: string | undefined;
   position: number | undefined;
   id: number | undefined;
-  removeItemHandler: (id: number) => void;
+  value: number;
+  onChangeValue: (id: number, operator: string) => void;
 }
 
 function CartListItemView({
@@ -23,7 +24,8 @@ function CartListItemView({
   thumbnail,
   position,
   id,
-  removeItemHandler,
+  value,
+  onChangeValue,
 
 }: CartListItemViewProps) {
   return (
@@ -46,13 +48,13 @@ function CartListItemView({
           {stock}
         </h6>
         <div className="stock__controls">
-          <button className="stock__add" type="button"> + </button>
-          <span>1</span>
-          <button onClick={() => removeItemHandler(id!)} className="stock__remove" type="button"> - </button>
+          <button onClick={() => onChangeValue(id!, '+')} className="stock__add" type="button"> + </button>
+          <span>{value}</span>
+          <button onClick={() => onChangeValue(id!, '-')} className="stock__remove" type="button"> - </button>
         </div>
         <p className="stock__price">
           $
-          {price}
+          {price! * value}
         </p>
       </div>
     </li>
