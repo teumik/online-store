@@ -21,6 +21,7 @@ function ProductsArticle({
   isActive,
 }: ProductsArticleType) {
   const alternative = `${title} ${brand} $${discountPrice}`;
+
   return isActive ? (
     <article className="item item_list article">
       <h3 className="article__title">{title}</h3>
@@ -36,7 +37,7 @@ function ProductsArticle({
           ))}
         </div>
         <img className="item__image picture__current" src={thumbnail} alt={alternative} />
-        <div className="item__discount picture__discount">{`-${discountPercentage}%`}</div>
+        {isDiscount ? <div className="item__discount picture__discount">{`${discountPercentage}%`}</div> : null}
       </div>
       <div className="item__section about">
         <h4 className="article__subtitle item__subtitle about__subtitle">
@@ -87,7 +88,7 @@ function ProductsArticle({
           <div className="picture__previews">
             <img className="item__image picture__image" src={thumbnail} alt={alternative} />
           </div>
-          <div className="item__discount picture__discount">{`-${discountPercentage}%`}</div>
+          {isDiscount ? <div className="item__discount picture__discount">{`${discountPercentage}%`}</div> : null}
         </div>
         <div className="item__section about">
           <h3 className="item__title about__title">{title}</h3>

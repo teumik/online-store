@@ -1,9 +1,15 @@
 import { IData } from './types/data.interface';
 import productsData from '../lib/data/productsData.json';
+import roundNumber from '../lib/numberHelpers';
+
+interface CartItemType {
+  id: number;
+  count: number;
+}
 
 interface CartType {
   currency: '$';
-  idArray: number[];
+  idArray: CartItemType[];
 }
 
 interface RangeFilters {
@@ -118,20 +124,34 @@ export default class DataController {
     }
   }
 
-  set cartUpdate(cartItems: number[]) {
+  set cartUpdate(cartItems: CartItemType[]) {
     this.cart.idArray = cartItems;
   }
 
   get cartItems() {
-    return this.cart.idArray.map((id) => this.data.find((article) => article.id === id));
+    return this.cart.idArray.map((el) => this.data.find((article) => article.id === el.id));
   }
 
   get cartTotalPrice() {
-    return this.cartItems.reduce((acc, article) => (acc + (article ? article.price : 0)), 0);
+    const result = this.cart.idArray.reduce((acc, el) => {
+      const item = this.getItemByID(el.id);
+      if (!item) return 0;
+      return (acc + item.price * el.count);
+    }, 0);
+    return roundNumber(result);
+  }
+
+  get cartTotalDiscountPrice() {
+    const result = this.cart.idArray.reduce((acc, el) => {
+      const item = this.getItemByID(el.id);
+      if (!item) return 0;
+      return acc + item.price * el.count * (1 - item.discountPercentage / 100);
+    }, 0);
+    return roundNumber(result);
   }
 
   get cartItemsCount() {
-    return this.cartItems.length;
+    return this.cart.idArray.reduce((acc, el) => acc + el.count, 0);
   }
 
   getItemByID(id: number) {
@@ -142,25 +162,50 @@ export default class DataController {
     const item = this.getItemByID(id);
     if (!item) return null;
     const discountPrice = item.discountPercentage;
-    return discountPrice ? (item.price * (1 - discountPrice / 100)).toFixed() : null;
+    if (!discountPrice) return item.price;
+    const result = item.price * (1 - discountPrice / 100);
+    return roundNumber(result);
   }
 
   get cartTotalDiscount() {
-    const discountPrice = (article: IData) => (
-      article.price * (1 - article.discountPercentage / 100)
-    );
-    const totalDiscountPrice = this.cartItems
-      .reduce((acc, article) => acc + (article ? discountPrice(article) : 0), 0);
-    return 100 - (totalDiscountPrice * 100) / this.cartTotalPrice || 0;
+    const result = 100 - (this.cartTotalDiscountPrice * 100) / this.cartTotalPrice || 0;
+    return roundNumber(result);
   }
 
   setCartItem(idValue: string) {
     const id = Number(idValue);
-    if (this.cart.idArray.includes(id)) {
-      this.cartUpdate = this.cart.idArray.filter((cartId) => cartId !== id);
+    if (this.cart.idArray.find((el) => el.id === id)) {
+      this.cartUpdate = this.cart.idArray.filter((el) => el.id !== id);
       return;
     }
-    this.cart.idArray.push(id);
+    this.cart.idArray.push({ id, count: 1 });
+  }
+
+  findCartItem(idValue: number) {
+    return this.cart.idArray.find((el) => el.id === idValue);
+  }
+
+  increaseItemCount(idValue: number) {
+    const item = this.findCartItem(idValue);
+    if (item?.count) {
+      item.count += 1;
+    }
+  }
+
+  decreaseItemCount(idValue: number) {
+    const item = this.findCartItem(idValue);
+    if (item?.count) {
+      if (item.count === 1) {
+        this.setCartItem(String(idValue));
+        return;
+      }
+      item.count -= 1;
+    }
+  }
+
+  getItemCount(idValue: number) {
+    const item = this.findCartItem(idValue);
+    return item?.count;
   }
 
   get getData() {

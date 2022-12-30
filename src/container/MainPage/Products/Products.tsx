@@ -36,6 +36,14 @@ function Products() {
     />
   ));
 
+  const articleItems = view.map((article) => (
+    <ProductsArticle
+      key={article.id}
+      article={article}
+      isActive={false}
+    />
+  ));
+
   return (
 
     <ProductsView
@@ -44,13 +52,7 @@ function Products() {
       buttonsView={buttonsView}
       className={viewState}
     >
-      {view.map((article) => (
-        <ProductsArticle
-          key={article.id}
-          article={article}
-          isActive={false}
-        />
-      ))}
+      {articleItems}
     </ProductsView>
   );
 }

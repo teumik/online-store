@@ -8,9 +8,9 @@ function Header() {
 
   return (
     <HeaderView
-      totalPrice={cartState.cartTotalPrice}
+      totalPrice={cartState.cartTotalDiscountPrice}
       currency={cartState.cart.currency}
-      totalDiscount={cartState.cartTotalDiscount.toFixed()}
+      totalDiscount={String(cartState.cartTotalDiscount)}
       itemsCount={cartState.cartItemsCount}
       title={title}
     />

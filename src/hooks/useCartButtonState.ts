@@ -1,9 +1,9 @@
-import { useContext, useState } from 'react';
-import DataContext from '../context/data.context';
+import { useState } from 'react';
+import { dataController } from '../controller/data.controller';
 
 function useCartButtonState() {
   const [{ isActive, isHover }, toggleState] = useState({ isActive: false, isHover: false });
-  const ctx = useContext(DataContext);
+  const ctx = dataController;
 
   const buttonHandler = (
     event?: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -15,11 +15,9 @@ function useCartButtonState() {
         return;
       }
       if (event.type === 'click') {
-        if (isInCart && !isActive) {
-          ctx.setCartItem(event.currentTarget.id);
-          return;
-        }
-        ctx.setCartItem(event.currentTarget.id);
+        const { id } = event.currentTarget;
+        ctx.setCartItem(id);
+        if (isInCart && !isActive) return;
         toggleState((state) => ({ ...state, isActive: !state.isActive }));
       }
     }
@@ -38,11 +36,23 @@ function useCartButtonState() {
     return 'Add';
   };
 
+  const getCount = (id: number) => ctx.getItemCount(id);
+
+  const increaseItemCount = (idValue: number) => {
+    ctx.increaseItemCount(idValue);
+  };
+  const decreaseItemCount = (idValue: number) => {
+    ctx.decreaseItemCount(idValue);
+  };
+
   return {
     isActive,
     isHover,
     buttonHandler,
     getInnerText,
+    increaseItemCount,
+    decreaseItemCount,
+    getCount,
   };
 }
 

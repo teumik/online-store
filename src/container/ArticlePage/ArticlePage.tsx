@@ -5,7 +5,7 @@ import { dataController } from '../../controller/data.controller';
 import ProductsArticle from '../MainPage/Products/ProductsArticle/productsArticle';
 import BackButton from '../../components/BackButton/BackButton';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
-import { capitalizer, deCapitalizer } from '../../lib/stringHandlers';
+import { capitalizer, deCapitalizer } from '../../lib/stringHelpers';
 
 function ArticlePage() {
   const { articleId } = useParams();

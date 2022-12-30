@@ -1,6 +1,9 @@
+import { useContext } from 'react';
 import ProductsArticleView from '../../../../components/MainPage/Products/ProductsArticle/ProductsArticle';
+import CartContext from '../../../../context/cart.context';
 import { IData } from '../../../../controller/types/data.interface';
 import CartButton from './CartButton/CartButton';
+import roundNumber from '../../../../lib/numberHelpers';
 
 interface ArticleType {
   article: IData;
@@ -21,8 +24,9 @@ function ProductsArticle({ article, isActive }: ArticleType) {
     discountPercentage,
     images,
   } = article;
-  const currency = '$';
-  const discountPrice = price * (1 - (discountPercentage || 0) / 100);
+  const { cartState } = useContext(CartContext);
+  const { currency } = cartState.cart;
+  const discountPrice = cartState.getDiscountPriceByID(id);
   const isDiscount = discountPrice !== price;
 
   return (
@@ -37,10 +41,10 @@ function ProductsArticle({ article, isActive }: ArticleType) {
       rating={rating}
       thumbnail={thumbnail}
       images={images}
-      discountPercentage={Number(discountPercentage.toFixed())}
+      discountPercentage={roundNumber(discountPercentage)}
       currency={currency}
       isDiscount={isDiscount}
-      discountPrice={discountPrice.toFixed()}
+      discountPrice={String(discountPrice)}
       isActive={isActive}
     >
       <CartButton
