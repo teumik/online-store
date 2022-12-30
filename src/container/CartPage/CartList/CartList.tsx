@@ -3,19 +3,20 @@ import DataContext from '../../../context/data.context';
 import CartListView from '../../../components/CartPage/CartList/CartListView';
 import CartContext from '../../../context/cart.context';
 import CartListItem from '../CartListItem/CartListItem';
+import useCartButtonState from '../../../hooks/useCartButtonState';
 
 function CartList() {
   const [currentPage, setCurrentPage] = useState(0);
   const itemsOnPage = 3;
   const dataCtx = useContext(DataContext);
   const { updateCart } = useContext(CartContext);
-
+  const { decreaseItemCount } = useCartButtonState();
   const onSelectPage = (index: number) => {
     setCurrentPage(index);
   };
 
   const removeItemHandler = (id: number) => {
-    dataCtx.removeCartItem(id);
+    decreaseItemCount(id);
     let page = 0;
 
     if ((dataCtx.cart.idArray.length / itemsOnPage) > currentPage) {
@@ -32,7 +33,7 @@ function CartList() {
 
   const buttonPageHandler = (oparator: string) => {
     if (oparator === '+') {
-      if (currentPage + 1 > dataCtx.cart.idArray.length / itemsOnPage) return;
+      if (currentPage + 1 >= dataCtx.cart.idArray.length / itemsOnPage) return;
       setCurrentPage((p) => p + 1);
     } else {
       if (currentPage === 0) return;
