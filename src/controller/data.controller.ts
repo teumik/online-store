@@ -188,6 +188,9 @@ export default class DataController {
   increaseItemCount(idValue: number) {
     const item = this.findCartItem(idValue);
     if (item?.count) {
+      const article = this.getItemByID(idValue);
+      if (!article) return;
+      if (item.count >= article.stock) return;
       item.count += 1;
     }
   }
