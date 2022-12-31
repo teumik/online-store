@@ -1,8 +1,8 @@
 import { MainPageType } from './types/mainPage.interface';
 
-function MainPage({ children }: MainPageType) {
+function MainPage({ children, className }: MainPageType) {
   return (
-    <main className="main">
+    <main className={className}>
       {children}
     </main>
   );
