@@ -132,6 +132,10 @@ export default class DataController {
     return this.cart.idArray.map((el) => this.data.find((article) => article.id === el.id));
   }
 
+  isInCart(id: number) {
+    return this.cart.idArray.findIndex((el) => el.id === id) !== -1;
+  }
+
   get cartTotalPrice() {
     const result = this.cart.idArray.reduce((acc, el) => {
       const item = this.getItemByID(el.id);

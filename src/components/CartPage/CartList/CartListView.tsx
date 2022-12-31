@@ -11,7 +11,6 @@ function CartListView() {
       <ProductsArticle
         key={article.id}
         article={article}
-        isActive={false}
       />
     );
   });

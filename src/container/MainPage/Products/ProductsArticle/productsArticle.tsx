@@ -7,10 +7,9 @@ import roundNumber from '../../../../lib/numberHelpers';
 
 interface ArticleType {
   article: IData;
-  isActive: boolean;
 }
 
-function ProductsArticle({ article, isActive }: ArticleType) {
+function ProductsArticle({ article }: ArticleType) {
   const {
     id,
     title,
@@ -19,10 +18,8 @@ function ProductsArticle({ article, isActive }: ArticleType) {
     description,
     price,
     stock,
-    rating,
     thumbnail,
     discountPercentage,
-    images,
   } = article;
   const { cartState } = useContext(CartContext);
   const { currency } = cartState.cart;
@@ -38,14 +35,11 @@ function ProductsArticle({ article, isActive }: ArticleType) {
       description={description}
       price={price}
       stock={stock}
-      rating={rating}
       thumbnail={thumbnail}
-      images={images}
       discountPercentage={roundNumber(discountPercentage)}
       currency={currency}
       isDiscount={isDiscount}
       discountPrice={String(discountPrice)}
-      isActive={isActive}
     >
       <CartButton
         id={id}

@@ -10,7 +10,6 @@ function Products({
 }: ProductsType) {
   return (
     <section className="products">
-
       <ul className="products__header">
         <li className="products__items sorts">
           {buttonsElements}

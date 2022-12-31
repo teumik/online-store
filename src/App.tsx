@@ -23,9 +23,7 @@ function App() {
     <ProductsContext.Provider value={products}>
       <CartContext.Provider value={cart}>
         <BrowserRouter>
-          <CartContext.Provider value={cart}>
-            <Header />
-          </CartContext.Provider>
+          <Header />
           <Routes>
             <Route path="/">
               <Route

@@ -1,13 +1,10 @@
 .item {
-  height: min-content;
+  display: grid;
+  grid-template-columns: 4fr 1fr;
   gap: 0.5rem;
+  height: min-content;
   padding: 0.5rem;
   border: 1px solid fuchsia;
-
-  &_list {
-    display: grid;
-    grid-template-columns: 4fr 1fr;
-  }
 
   &__link {
     display: grid;
@@ -15,10 +12,6 @@
     gap: 0.5rem;
     color: inherit;
     text-decoration: none;
-
-    &_active {
-      pointer-events: none;
-    }
   }
 
   &__section {
@@ -122,6 +115,10 @@
       &:hover {
         background: orange;
       }
+    }
+
+    &:hover {
+      color: red;
     }
   }
 

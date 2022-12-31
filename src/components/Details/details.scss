@@ -1,0 +1,30 @@
+.details {
+
+  &__path {
+    display: flex;
+    gap: 2rem;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    border: 1px solid darkcyan;
+  }
+
+  &__link {
+    position: relative;
+    color: red;
+    text-decoration: none;
+
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      transform: translate(150%, -50%);
+      width: 0.5rem;
+      height: 0.5rem;
+      background: blue;
+      border-radius: 50%;
+      color: black;
+      pointer-events: none;
+    }
+  }
+}
