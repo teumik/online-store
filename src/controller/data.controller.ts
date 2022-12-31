@@ -34,6 +34,7 @@ export default class DataController {
   public cart: CartType;
   rangeFilters: RangeFilters;
   listFilters: string[];
+  activeFiltersList: string[];
   activeBrandsFilters: string[];
   activeCategoryFilters: string[];
 
@@ -54,12 +55,13 @@ export default class DataController {
       idArray: [],
     };
     this.rangeFilters = {
-      Price: [0, 10000],
-      Stock: [0, 10000],
+      Price: [this.getLowPrice(), this.getMaxPrice()],
+      Stock: [this.getLowStock(), this.getMaxStock()],
     };
     this.listFilters = [];
     this.activeBrandsFilters = [];
     this.activeCategoryFilters = [];
+    this.activeFiltersList = [];
   }
 
   onChangeFiltersRange(label: string, value: number[]) {

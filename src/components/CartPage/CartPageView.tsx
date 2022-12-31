@@ -1,5 +1,5 @@
-import CartList from './CartList/CartListView';
-import CartSummary from './CartSummary/CartSummaryView';
+import CartList from '../../container/CartPage/CartList/CartList';
+import CartSummary from '../../container/CartPage/CartSummary/CartSummary';
 import './cartPage.scss';
 
 function CartPageView() {

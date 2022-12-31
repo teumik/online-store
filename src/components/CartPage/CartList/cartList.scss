@@ -1,7 +1,23 @@
+@import '../../../lib/styles/normalize.css';
+
 .productsCart {
   max-width: 800px;
   border: 1px solid black;
   border-radius: 10px;
+
+  &__pages {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+
+    button {
+      border: 1px solid black;
+      list-style: none;
+      padding: 5px;
+      cursor: pointer;
+    }
+  }
 
   p {
     margin: 0;
@@ -34,4 +50,10 @@
     align-items: center;
     gap: 20px;
   }
+}
+
+
+.active {
+  background-color: black;
+  color: #fff;
 }
