@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './cartListItem.scss';
 
 interface CartListItemViewProps {
@@ -30,7 +31,9 @@ export default function CartListItemView({
   return (
     <li className="productsCart__item productsItem">
       <p className="productsItem__pos">{position}</p>
-      <img src={thumbnail} alt="img" className="productsItem__thumbnail" />
+      <Link to={`/articles/${id}`}>
+        <img src={thumbnail} alt="img" className="productsItem__thumbnail" />
+      </Link>
       <div className="productsItem__info info">
         <h5 className="info__title">{title}</h5>
         <p className="info__descr">
