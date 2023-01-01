@@ -14,40 +14,46 @@ import MainRoute from './Routes/MainRoute/MainRoute';
 import ErrorRoute from './Routes/ErrorRoute/ErrorRoute';
 import CartRoute from './Routes/CartRoute/CartRoute';
 import ArticleRoute from './Routes/ArticleRoute/ArticleRoute';
+import useModalState from './hooks/useModalState';
+import ModalContext from './context/modal.context';
 
 function App() {
   const cart = useUpdateCart();
   const products = useUpdateProducts();
-
+  const modal = useModalState();
   return (
-    <ProductsContext.Provider value={products}>
-      <CartContext.Provider value={cart}>
-        <BrowserRouter>
-          <Header />
-          <Routes>
-            <Route path="/">
+    <ModalContext.Provider value={modal}>
+      <ProductsContext.Provider value={products}>
+        <CartContext.Provider value={cart}>
+          <BrowserRouter>
+            <Header />
+            <Routes>
+              <Route path="/">
+                <Route
+                  index
+                  element={<MainRoute />}
+                />
+                <Route
+                  path="cart"
+                  element={<CartRoute />}
+                />
+
+              </Route>
               <Route
-                index
-                element={<MainRoute />}
+                path="articles/:articleId"
+                element={<ArticleRoute />}
               />
               <Route
-                path="cart"
-                element={<CartRoute />}
+                path="*"
+                element={<ErrorRoute />}
               />
-            </Route>
-            <Route
-              path="articles/:articleId"
-              element={<ArticleRoute />}
-            />
-            <Route
-              path="*"
-              element={<ErrorRoute />}
-            />
-          </Routes>
-          <Footer />
-        </BrowserRouter>
-      </CartContext.Provider>
-    </ProductsContext.Provider>
+
+            </Routes>
+            <Footer />
+          </BrowserRouter>
+        </CartContext.Provider>
+      </ProductsContext.Provider>
+    </ModalContext.Provider>
   );
 }
 
