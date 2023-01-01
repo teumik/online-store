@@ -1,3 +1,6 @@
+import { useContext } from 'react';
+import ModalContext from '../../../context/modal.context';
+
 import './cartSummary.scss';
 
 interface CartSummaryViewProps {
@@ -9,6 +12,7 @@ function CartSummaryView({
   totalProducts,
   totalPrice,
 }: CartSummaryViewProps) {
+  const { setModal } = useContext(ModalContext);
   return (
     <div className="summary">
       <h2 className="summary__title">Summary</h2>
@@ -23,8 +27,9 @@ function CartSummaryView({
         </p>
         <input type="text" className="summary__input" placeholder="Enter promo code" />
         <p className="summary__input-placeholder">Promo for test: &quot;RS&quot; , &quot;ERM&quot;</p>
-        <button type="submit">BUY NOW</button>
       </form>
+      <button onClick={setModal} type="button">buy now</button>
+
     </div>
   );
 }

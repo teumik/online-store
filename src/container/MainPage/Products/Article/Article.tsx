@@ -6,6 +6,7 @@ import { IData } from '../../../../controller/types/data.interface';
 import roundNumber from '../../../../lib/numberHelpers';
 import ImageComponent from '../../../../components/MainPage/Products/ProductsArticle/Article/ImageComponent/ImageComponent';
 import BuyButton from '../../../../components/MainPage/Products/ProductsArticle/Article/BuyNowButton/BuyNowButton';
+import ModalContext from '../../../../context/modal.context';
 
 interface ArticleType {
   product: IData;
@@ -30,7 +31,7 @@ function Article({ product, children }: ArticleType) {
   const { currency } = cartState.cart;
   const discountPrice = cartState.getDiscountPriceByID(id);
   const isDiscount = discountPrice !== price;
-
+  const { setModal } = useContext(ModalContext);
   const [activeLink, setActiveLink] = useState(thumbnail);
   const alt = `${title} ${brand} $${discountPrice}`;
   const imagesItem = images.map((link) => {
@@ -74,6 +75,7 @@ function Article({ product, children }: ArticleType) {
           if (!cartState.isInCart(id)) cartState.setCartItem(String(id));
           updateCart();
           navigate('/cart');
+          setModal();
         }}
       />
     </ArticleView>
