@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import MainPage from '../../components/MainPage/MainPage';
 import BackButton from '../../components/BackButton/BackButton';
-import CartPageView from '../../components/CartPage/CartPageView';
+import CartPage from '../../container/CartPage/CartPage';
 
 function CartRoute() {
   return (
@@ -9,7 +9,7 @@ function CartRoute() {
       <Link to="/">
         <BackButton preventNavigate />
       </Link>
-      <CartPageView />
+      <CartPage />
     </MainPage>
   );
 }
