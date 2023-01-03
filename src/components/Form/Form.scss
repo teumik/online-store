@@ -1,0 +1,108 @@
+.form {
+  background-color: black;
+  gap: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__control {
+    width: 60%;
+  }
+
+  &__control-input {
+    padding: 5px 10px;
+    border-radius: 5px;
+    width: 100%;
+    text-align: center;
+  }
+
+  &__control-input::placeholder {
+    text-align: center;
+  }
+
+  &__control-error {
+    display: block;
+  }
+
+  &__credit-card {
+    width: 60%;
+    padding: 10px;
+    height: 150px;
+    display: flex;
+    border-radius: 5px;
+    justify-content: center;
+    flex-direction: column;
+    gap: 30px;
+    background: linear-gradient(90deg, rgb(0, 9, 36) 6%, rgb(9, 9, 121) 34%, rgb(0, 212, 255) 100%);
+  }
+
+}
+
+.card {
+  width: 60%;
+  padding: 10px;
+  height: 150px;
+  display: flex;
+  border-radius: 5px;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+
+  background: linear-gradient(90deg, rgb(0, 9, 36) 6%, rgb(9, 9, 121) 34%, rgb(0, 212, 255) 100%);
+
+
+  input {
+    text-align: center;
+  }
+
+  input::placeholder {
+    text-align: center;
+    color: black;
+    opacity: 0.5;
+
+  }
+
+  &-icon {
+    max-width: 50px;
+    max-height: 40px;
+  }
+
+  &-number {
+    flex-basis: 70%;
+  }
+
+  &__top,
+  &__bot {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    align-items: center;
+  }
+
+  &__top {
+    align-items: center;
+
+  }
+
+  &-valid {
+    max-width: 100px;
+  }
+
+  &-cvv {
+    max-width: 50px;
+
+  }
+
+  &__field-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+
+}
+
+.error-message {
+  color: red;
+  margin: 0;
+  text-align: center;
+}
