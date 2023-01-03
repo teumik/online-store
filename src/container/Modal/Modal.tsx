@@ -5,6 +5,9 @@ import PopupContext from '../../context/modal.context';
 export default function Modal() {
   const { modalState, closeModal } = useContext(PopupContext);
   return (
-    <ModalView isActive={modalState} closeModal={closeModal} />
+    <ModalView
+      isActive={modalState}
+      closeModal={closeModal}
+    />
   );
 }
