@@ -1,19 +1,39 @@
 .summary {
-    border: 1px solid black;
-    border-radius: 10px;
-    max-width: 250px;
-    text-align: center;
-    max-height: 260px;
+  border: 1px solid black;
+  border-radius: 10px;
+  max-width: 250px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 
 
-    &__title {
-        background-color: black;
-        color: #fff;
-        margin: 0;
-        padding: 20px 10px;
-    }
 
-    &__input {
-        max-width: 150px;
-    }
+  &__title {
+    background-color: black;
+    color: #fff;
+    margin: 0;
+    padding: 20px 10px;
+  }
+
+  &__input {
+    max-width: 150px;
+  }
+}
+
+.summary__promo-list {
+  margin: 0;
+  padding: 0;
+
+}
+
+.promocode {
+  display: flex;
+  list-style: none;
+  justify-content: space-evenly;
+}
+
+
+.lineThrough:first-child {
+  text-decoration: line-through;
 }

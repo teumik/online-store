@@ -16,6 +16,11 @@ interface RangeFilters {
   Price: number[];
   Stock: number[];
 }
+export interface PromoCode {
+  name: string;
+  discount: number;
+  description: string;
+}
 
 interface Storage {
   products: {
@@ -37,7 +42,8 @@ export default class DataController {
   activeFiltersList: string[];
   activeBrandsFilters: string[];
   activeCategoryFilters: string[];
-
+  validPromocodes: PromoCode[];
+  enteredPromocodes: PromoCode[];
   constructor(data: IData[]) {
     this.data = data;
     this.view = [...this.data];
@@ -62,6 +68,21 @@ export default class DataController {
     this.activeBrandsFilters = [];
     this.activeCategoryFilters = [];
     this.activeFiltersList = [];
+
+    this.validPromocodes = [
+      { name: 'RS', discount: 10, description: 'Rolling Scopes School - 10%' },
+      { name: 'EPM', discount: 10, description: 'EPAM Systems - 10%' },
+      { name: 'QQ', discount: 15, description: '15% discount' },
+    ];
+    this.enteredPromocodes = [];
+  }
+
+  removeValidPromocode(promo: PromoCode) {
+    this.validPromocodes = this.validPromocodes.filter((item) => item !== promo);
+  }
+
+  addValidPromocode(promo: PromoCode) {
+    this.validPromocodes = [...this.validPromocodes, promo];
   }
 
   onChangeFiltersRange(label: string, value: number[]) {

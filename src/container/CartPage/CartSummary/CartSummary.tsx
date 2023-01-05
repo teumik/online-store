@@ -1,18 +1,32 @@
 import { useContext } from 'react';
 import CartSummaryView from '../../../components/CartPage/CartSummary/CartSummaryView';
 import DataContext from '../../../context/data.context';
+import ModalContext from '../../../context/modal.context';
+import usePromoCodes from '../../../hooks/usePromoCodes';
 
-function CartSummary() {
+export default function CartSummary() {
   const ctx = useContext(DataContext);
-  const totalPrice = ctx.cartTotalPrice;
-  const totalProducts = ctx.cartItemsCount;
+  const { setModal } = useContext(ModalContext);
+  const {
+    value,
+    promocodes,
+    promoInputHandler,
+    onAddPromoCode,
+    onRemovePromoCode,
+    prices,
+  } = usePromoCodes();
 
   return (
     <CartSummaryView
-      totalProducts={totalProducts}
-      totalPrice={totalPrice}
+      totalProducts={ctx.cartItemsCount}
+      setModal={setModal}
+      value={value}
+      promocodes={promocodes}
+      promoInputHandler={promoInputHandler}
+      onAddPromoCode={onAddPromoCode}
+      onRemovePromoCode={onRemovePromoCode}
+      prices={prices}
+      enteredPromocodes={ctx.enteredPromocodes}
     />
   );
 }
-
-export default CartSummary;
