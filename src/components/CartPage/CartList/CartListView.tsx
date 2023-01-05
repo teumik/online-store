@@ -24,6 +24,7 @@ function CartListView({
         <input
           onChange={onChangeItemsOnPage}
           type="number"
+          min={1}
           placeholder="Items on page"
         />
         <div className="productsCart__controls">
