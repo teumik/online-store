@@ -6,6 +6,7 @@ interface CartListViewProps {
   onSelectPage: (index: number) => void;
   buttonPageHandler: (operator: string) => void;
   currentPage: number;
+  onChangeItemsOnPage: (e: { target: HTMLInputElement }) => void;
 }
 
 function CartListView({
@@ -14,11 +15,17 @@ function CartListView({
   onSelectPage,
   currentPage,
   buttonPageHandler,
+  onChangeItemsOnPage,
 }: CartListViewProps) {
   return (
     <div className="productsCart">
       <div className="productsCart__header">
         <h2 className="productsCart__title">Products In Cart</h2>
+        <input
+          onChange={onChangeItemsOnPage}
+          type="number"
+          placeholder="Items on page"
+        />
         <div className="productsCart__controls">
           <div className="productsCar__count">
             ITEMS:

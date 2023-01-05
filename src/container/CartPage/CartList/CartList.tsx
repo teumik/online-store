@@ -7,12 +7,17 @@ import useCartButtonState from '../../../hooks/useCartButtonState';
 
 function CartList() {
   const [currentPage, setCurrentPage] = useState(0);
-  const itemsOnPage = 3;
+  const [itemsOnPage, setItemsOnPage] = useState(3);
   const dataCtx = useContext(DataContext);
   const { updateCart } = useContext(CartContext);
   const { decreaseItemCount } = useCartButtonState();
   const onSelectPage = (index: number) => {
     setCurrentPage(index);
+  };
+
+  const onChangeItemsOnPage = (e: { target: HTMLInputElement }) => {
+    const itemOnPage = parseInt(e.target.value, 10);
+    setItemsOnPage(itemOnPage);
   };
 
   const removeItemHandler = (id: number) => {
@@ -53,7 +58,6 @@ function CartList() {
 
   function sliceIntoChunks(arr: JSX.Element[], chunkSize: number): JSX.Element[][] {
     const res = [];
-
     for (let i = 0; i < arr.length; i += chunkSize) {
       const chunk = arr.slice(i, i + chunkSize);
       res.push(chunk);
@@ -69,6 +73,7 @@ function CartList() {
       onSelectPage={onSelectPage}
       currentPage={currentPage}
       buttonPageHandler={buttonPageHandler}
+      onChangeItemsOnPage={onChangeItemsOnPage}
     />
   );
 }
