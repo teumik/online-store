@@ -44,6 +44,7 @@ export default class DataController {
   activeCategoryFilters: string[];
   validPromocodes: PromoCode[];
   enteredPromocodes: PromoCode[];
+  priceWithPromoCodes: number;
   constructor(data: IData[]) {
     this.data = data;
     this.view = [...this.data];
@@ -58,7 +59,7 @@ export default class DataController {
     };
     this.cart = {
       currency: '$',
-      idArray: [],
+      idArray: [{ id: 10, count: 1 }],
     };
     this.rangeFilters = {
       Price: [this.getLowPrice(), this.getMaxPrice()],
@@ -75,6 +76,7 @@ export default class DataController {
       { name: 'QQ', discount: 15, description: '15% discount' },
     ];
     this.enteredPromocodes = [];
+    this.priceWithPromoCodes = 0;
   }
 
   removeValidPromocode(promo: PromoCode) {
@@ -175,6 +177,13 @@ export default class DataController {
       return acc + item.price * el.count * (1 - item.discountPercentage / 100);
     }, 0);
     return roundNumber(result);
+  }
+
+  get cartTotalPriceWithPromoCodes() {
+    const price = this.cartTotalPrice;
+    const discount = this.enteredPromocodes.reduce((acc, item) => acc + item.discount, 0);
+
+    return price - ((price / 100) * discount);
   }
 
   get cartItemsCount() {

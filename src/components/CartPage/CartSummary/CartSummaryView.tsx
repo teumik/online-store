@@ -10,8 +10,9 @@ export interface CartSummaryViewProps {
   promoInputHandler: (e: FormEvent<HTMLInputElement>) => void;
   onAddPromoCode: () => void;
   onRemovePromoCode: (promo: PromoCode) => void;
-  prices: number[];
   enteredPromocodes: PromoCode[];
+  cartTotalPriceWithPromocodes: number;
+  cartTotalPrice: number;
 }
 
 export default function CartSummaryView({
@@ -22,23 +23,23 @@ export default function CartSummaryView({
   promoInputHandler,
   onAddPromoCode,
   onRemovePromoCode,
-  prices,
   enteredPromocodes,
-
+  cartTotalPriceWithPromocodes,
+  cartTotalPrice,
 }: CartSummaryViewProps) {
   return (
     <div className="summary">
       <h2 className="summary__title">Summary</h2>
       <div className="summary__items">
         Price:
-        {prices.map((price) => (
-          <div
-            className={prices.length > 1 ? 'lineThrough' : ''}
-            key={price}
-          >
-            {price.toFixed(0)}
-          </div>
-        ))}
+        <div className={cartTotalPriceWithPromocodes < cartTotalPrice
+          ? 'lineThrough' : ''}
+        >
+          {cartTotalPrice}
+        </div>
+        {cartTotalPriceWithPromocodes === cartTotalPrice
+          ? null
+          : <div>{cartTotalPriceWithPromocodes.toFixed(0)}</div>}
       </div>
       <p className="summary__price">
         Products:
@@ -59,7 +60,6 @@ export default function CartSummaryView({
             <button type="button" onClick={onAddPromoCode}>Add</button>
           </li>
         ) : null}
-
         {enteredPromocodes.map((item) => (
           <li className="promocode" key={item.name}>
             <p>{item.description}</p>

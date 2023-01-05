@@ -13,7 +13,6 @@ export default function CartSummary() {
     promoInputHandler,
     onAddPromoCode,
     onRemovePromoCode,
-    prices,
   } = usePromoCodes();
 
   return (
@@ -25,8 +24,9 @@ export default function CartSummary() {
       promoInputHandler={promoInputHandler}
       onAddPromoCode={onAddPromoCode}
       onRemovePromoCode={onRemovePromoCode}
-      prices={prices}
       enteredPromocodes={ctx.enteredPromocodes}
+      cartTotalPrice={ctx.cartTotalPrice}
+      cartTotalPriceWithPromocodes={ctx.cartTotalPriceWithPromoCodes}
     />
   );
 }
