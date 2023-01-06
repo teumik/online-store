@@ -27,7 +27,7 @@ export interface IErrors {
 const useForm = () => {
   const [errors, setErrors] = useState({} as IErrors);
   const [payment, setPayment] = useState(def);
-  const [submitted, setSubmitted] = useState(true);
+  const [submitted, setSubmitted] = useState(false);
   const [values, setValues] = useState({
     name: '',
     phone: '',

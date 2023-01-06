@@ -1,4 +1,4 @@
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useSearchParams } from 'react-router-dom';
 import { dataController } from '../../controller/data.controller';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
 import { capitalizer, deCapitalizer } from '../../lib/stringHelpers';
@@ -17,14 +17,25 @@ function ArticlePage() {
     brand,
     category,
   } = product;
-  const articlePath = ['Store', category, brand, title];
-  const links = articlePath.map((point, i) => (
+  const articlePath = [{ Store: 'Store' }, { category }, { brand }, { search: title }];
+
+  const makeQuery = (name: string, value: string) => `?${new URLSearchParams({ [name]: value }).toString()}`;
+  const queries = articlePath.map((el) => {
+    const name = Object.keys(el)[0];
+    const value = Object.values(el)[0];
+    return {
+      value,
+      query: makeQuery(name, value),
+    };
+  });
+
+  const links = queries.map((point) => (
     <Link
-      to={`/#${i !== 0 ? encodeURI(deCapitalizer(point)) : ''}`}
-      key={point}
+      to={point.value !== 'Store' ? `/${point.query}` : '/'}
+      key={point.value}
       className="details__link"
     >
-      <span className="details__point">{capitalizer(point)}</span>
+      <span className="details__point">{capitalizer(point.value)}</span>
     </Link>
   ));
 
