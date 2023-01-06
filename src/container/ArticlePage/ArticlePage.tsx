@@ -1,7 +1,7 @@
-import { useParams, Link, useSearchParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { dataController } from '../../controller/data.controller';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
-import { capitalizer, deCapitalizer } from '../../lib/stringHelpers';
+import { capitalizer } from '../../lib/stringHelpers';
 import Details from '../../components/Details/Details';
 import CartButton from '../MainPage/Products/ProductsArticle/CartButton/CartButton';
 import Article from '../MainPage/Products/Article/Article';
