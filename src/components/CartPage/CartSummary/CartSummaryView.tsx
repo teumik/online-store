@@ -3,11 +3,13 @@ import './cartSummary.scss';
 interface CartSummaryViewProps {
   totalProducts: number;
   totalPrice: number;
+  children: JSX.Element | JSX.Element[];
 }
 
 function CartSummaryView({
   totalProducts,
   totalPrice,
+  children,
 }: CartSummaryViewProps) {
   return (
     <div className="summary">
@@ -23,7 +25,7 @@ function CartSummaryView({
         </p>
         <input type="text" className="summary__input" placeholder="Enter promo code" />
         <p className="summary__input-placeholder">Promo for test: &quot;RS&quot; , &quot;ERM&quot;</p>
-        <button type="submit">BUY NOW</button>
+        {children}
       </form>
     </div>
   );

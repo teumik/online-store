@@ -1,11 +1,12 @@
 import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import ArticleView from '../../../../components/MainPage/Products/ProductsArticle/Article/Article';
 import CartContext from '../../../../context/cart.context';
 import { IData } from '../../../../controller/types/data.interface';
 import roundNumber from '../../../../lib/numberHelpers';
 import ImageComponent from '../../../../components/MainPage/Products/ProductsArticle/Article/ImageComponent/ImageComponent';
 import BuyButton from '../../../../components/MainPage/Products/ProductsArticle/Article/BuyNowButton/BuyNowButton';
+import ModalContext from '../../../../context/modal.context';
 
 interface ArticleType {
   product: IData;
@@ -50,6 +51,8 @@ function Article({ product, children }: ArticleType) {
 
   const navigate = useNavigate();
 
+  const { toggleOpen } = useContext(ModalContext);
+
   return (
     <ArticleView
       id={id}
@@ -74,6 +77,7 @@ function Article({ product, children }: ArticleType) {
           if (!cartState.isInCart(id)) cartState.setCartItem(String(id));
           updateCart();
           navigate('/cart');
+          toggleOpen();
         }}
       />
     </ArticleView>

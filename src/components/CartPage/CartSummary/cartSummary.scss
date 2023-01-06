@@ -1,19 +1,21 @@
 .summary {
-    border: 1px solid black;
-    border-radius: 10px;
-    max-width: 250px;
-    text-align: center;
-    max-height: 260px;
+  border: 1px solid black;
+  border-radius: 10px;
+  max-width: 250px;
+  text-align: center;
 
+  &__form {
+    padding: 0.5rem;
+  }
 
-    &__title {
-        background-color: black;
-        color: #fff;
-        margin: 0;
-        padding: 20px 10px;
-    }
+  &__title {
+    background-color: black;
+    color: #fff;
+    margin: 0;
+    padding: 20px 10px;
+  }
 
-    &__input {
-        max-width: 150px;
-    }
+  &__input {
+    max-width: 150px;
+  }
 }
