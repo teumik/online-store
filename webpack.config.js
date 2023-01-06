@@ -50,7 +50,9 @@ const config = {
       {
         test: /\.(tsx?|jsx?)$/i,
         exclude: ['/node_modules/'],
-        use: isProduction ? { loader: 'babel-loader' } : { loader: 'ts-loader' },
+        use: {
+          loader: 'babel-loader',
+        },
       },
       {
         test: /\.((s[ac])|c)ss$/i,

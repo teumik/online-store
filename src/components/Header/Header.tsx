@@ -10,6 +10,7 @@ function Header(
     totalDiscount,
     itemsCount,
     title,
+    onClick,
   }: HeaderType
 ) {
   return (
@@ -18,6 +19,7 @@ function Header(
         <li className="header__items">
           <Logo
             title={title}
+            onClick={onClick}
           />
         </li>
         <li className="header__items">

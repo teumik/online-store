@@ -1,11 +1,11 @@
 import './details.scss';
-import BackButton from '../BackButton/BackButton';
+import BackButton from '../../container/BackButton/BackButton';
 import { DetailsType } from './types/details.interface';
 
-function Details({ navigate, links, children }: DetailsType) {
+function Details({ links, children }: DetailsType) {
   return (
     <div className="details">
-      <BackButton preventNavigate={navigate} />
+      <BackButton />
       <div className="details__path">
         {links}
       </div>

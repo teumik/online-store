@@ -2,6 +2,12 @@
   width: 100%;
   border: 1px solid darkblue;
 
+  &__matchless {
+    padding: 1rem 0.5rem;
+    color: red;
+    text-align: center;
+  }
+
   &__header {
     display: flex;
     justify-content: space-between;
@@ -21,7 +27,7 @@
 
     &_grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(25%, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(25%, 0.5fr));
 
       .item {
         height: 100%;

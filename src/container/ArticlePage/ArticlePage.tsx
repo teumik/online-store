@@ -1,5 +1,4 @@
-import { useParams } from 'react-router';
-import { Link } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { dataController } from '../../controller/data.controller';
 import ErrorPage from '../../components/ErrorPage/ErrorPage';
 import { capitalizer, deCapitalizer } from '../../lib/stringHelpers';
@@ -18,7 +17,7 @@ function ArticlePage() {
     brand,
     category,
   } = product;
-  const articlePath = ['Store', title, brand, category];
+  const articlePath = ['Store', category, brand, title];
   const links = articlePath.map((point, i) => (
     <Link
       to={`/#${i !== 0 ? encodeURI(deCapitalizer(point)) : ''}`}

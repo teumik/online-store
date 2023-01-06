@@ -3,10 +3,10 @@
   border-radius: 10px;
   max-width: 250px;
   text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
 
+  &__form {
+    padding: 0.5rem;
+  }
 
 
   &__title {

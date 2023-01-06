@@ -1,3 +1,3 @@
-export interface BackButton {
-  preventNavigate: boolean;
+export interface BackButtonType {
+  onClick: () => void;
 }

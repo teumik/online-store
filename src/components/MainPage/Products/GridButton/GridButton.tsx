@@ -6,9 +6,7 @@ function GridButton({
 }: GridButtonType) {
   return (
     <button
-      onClick={() => {
-        toggleView();
-      }}
+      onClick={toggleView}
       className={`products__buttons views__buttons ${viewState ? 'views__buttons_active' : ''}`}
       type="button"
     >

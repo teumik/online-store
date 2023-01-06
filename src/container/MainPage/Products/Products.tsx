@@ -2,18 +2,16 @@ import { useContext } from 'react';
 import ProductsView from '../../../components/MainPage/Products/Products';
 import SortButtons from './SortButton/sortButton';
 import ProductsArticle from './ProductsArticle/productsArticle';
-import DataContext from '../../../context/data.context';
-import useViewButton from '../../../hooks/useViewButton';
 import GridButton from '../../../components/MainPage/Products/GridButton/GridButton';
-import useToggleSort from '../../../hooks/useToggleSort';
+import ProductsContext from '../../../context/products.context';
+import QueryContext from '../../../context/query.context';
 
 function Products() {
+  const { productsState } = useContext(ProductsContext);
   const {
-    getCount,
-    view,
-  } = useContext(DataContext);
+    viewState, toggleView, toggleSort, classState,
+  } = useContext(QueryContext);
 
-  const { viewState, toggleView } = useViewButton();
   const buttonsView = (
     <GridButton
       viewState={viewState}
@@ -25,7 +23,6 @@ function Products() {
     { name: 'Price', mode: 'price' as const },
     { name: 'Stock', mode: 'count' as const },
   ];
-  const { toggleSort, classState } = useToggleSort();
   const buttonsElements = buttonsContent.map((el) => (
     <SortButtons
       key={el.name}
@@ -36,7 +33,7 @@ function Products() {
     />
   ));
 
-  const articleItems = view.map((article) => (
+  const articleItems = productsState.view.map((article) => (
     <ProductsArticle
       key={article.id}
       article={article}
@@ -46,7 +43,7 @@ function Products() {
   return (
 
     <ProductsView
-      countDisplayItems={getCount}
+      countDisplayItems={productsState.getCount}
       buttonsElements={buttonsElements}
       buttonsView={buttonsView}
       className={viewState}

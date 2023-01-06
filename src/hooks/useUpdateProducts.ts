@@ -1,12 +1,11 @@
-import { useContext, useState } from 'react';
-import DataContext from '../context/data.context';
+import { useState } from 'react';
+import { dataController } from '../controller/data.controller';
 
 function useUpdateProducts() {
-  const ctx = useContext(DataContext);
-  const [productsState, updateState] = useState(ctx);
+  const [productsState, updateState] = useState(dataController);
   const updateProducts = () => {
-    const ctxCopy = Object.create(ctx);
-    updateState(ctxCopy);
+    const ctx = Object.create(dataController);
+    updateState(ctx);
   };
 
   return {

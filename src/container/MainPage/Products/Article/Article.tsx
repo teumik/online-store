@@ -1,5 +1,5 @@
 import { useContext, useState } from 'react';
-import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router-dom';
 import ArticleView from '../../../../components/MainPage/Products/ProductsArticle/Article/Article';
 import CartContext from '../../../../context/cart.context';
 import { IData } from '../../../../controller/types/data.interface';

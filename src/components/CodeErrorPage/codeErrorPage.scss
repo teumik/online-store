@@ -1,0 +1,14 @@
+.code-error {
+
+  &__message {
+    font-size: 3rem;
+    color: red;
+    text-align: center;
+    text-transform: capitalize;
+
+    &_god {
+      font-size: 2rem;
+      color: blue;
+    }
+  }
+}

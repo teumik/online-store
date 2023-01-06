@@ -25,10 +25,18 @@ export interface PromoCode {
 interface Storage {
   products: {
     layout: boolean;
-    sort: {
-      price: boolean | undefined;
-      count: boolean | undefined;
+    queries: string;
+    init: {
+      price: boolean;
+      count: boolean;
     };
+    sort: {
+      price: boolean;
+      count: boolean;
+    };
+  };
+  filters: {
+    search: string;
   };
 }
 
@@ -36,6 +44,7 @@ export default class DataController {
   private readonly data;
   storage: Storage;
   public view: IData[];
+  public searchFlow: IData[];
   public cart: CartType;
   rangeFilters: RangeFilters;
   listFilters: string[];
@@ -48,13 +57,22 @@ export default class DataController {
   constructor(data: IData[]) {
     this.data = data;
     this.view = [...this.data];
+    this.searchFlow = [];
     this.storage = {
       products: {
         layout: false,
-        sort: {
-          price: undefined,
-          count: undefined,
+        queries: '',
+        init: {
+          price: false,
+          count: false,
         },
+        sort: {
+          price: false,
+          count: false,
+        },
+      },
+      filters: {
+        search: '',
       },
     };
     this.cart = {
@@ -113,7 +131,7 @@ export default class DataController {
     }
   }
 
-  filterAllProducts() {
+  filterAllProducts(searchQuery = this.storage.filters.search) {
     if (this.activeBrandsFilters.length > 0 && this.activeCategoryFilters.length > 0) {
       this.view = this.data.filter((prod) => {
         if (this.activeBrandsFilters.includes(prod.brand)
@@ -147,6 +165,22 @@ export default class DataController {
         return prod;
       });
     }
+    const toLower = (value: string) => value.toLocaleLowerCase();
+    this.view = this.view.filter((product) => {
+      const entries = Object.entries(product);
+      return entries.some((map) => {
+        const [name, value] = map;
+        if (name !== 'thumbnail' && name !== 'images' && name !== 'id') {
+          return toLower(String(value)).includes(toLower(searchQuery));
+        }
+        return false;
+      });
+    });
+  }
+
+  search(searchQuery: string) {
+    if (searchQuery !== '') this.storage.filters.search = searchQuery;
+    this.filterAllProducts(searchQuery);
   }
 
   set cartUpdate(cartItems: CartItemType[]) {
@@ -253,6 +287,11 @@ export default class DataController {
 
   get getCount() {
     return this.view.length;
+  }
+
+  sortDefault() {
+    this.view.sort((a, b) => a.id - b.id);
+    this.data.sort((a, b) => a.id - b.id);
   }
 
   sortPriceAscending() {
