@@ -34,16 +34,18 @@ export default function CartListItemView({
       <Link to={`/articles/${id}`}>
         <img src={thumbnail} alt="img" className="productsItem__thumbnail" />
       </Link>
-      <div className="productsItem__info info">
-        <h5 className="info__title">{title}</h5>
-        <p className="info__descr">
-          {description}
-        </p>
-        <div className="info__addition">
-          <p className="info__rating">{rating}</p>
-          <p className="info__discount">{discount}</p>
+      <Link to={`/articles/${id}`}>
+        <div className="productsItem__info info">
+          <h5 className="info__title">{title}</h5>
+          <p className="info__descr">
+            {description}
+          </p>
+          <div className="info__addition">
+            <p className="info__rating">{rating}</p>
+            <p className="info__discount">{discount}</p>
+          </div>
         </div>
-      </div>
+      </Link>
       <div className="productsItem__stock stock">
         <h6 className="stock__value">
           stock :

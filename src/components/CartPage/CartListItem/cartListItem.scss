@@ -4,6 +4,11 @@
   align-items: center;
   gap: 20px;
 
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
   &__thumbnail {
     max-width: 100px;
   }
