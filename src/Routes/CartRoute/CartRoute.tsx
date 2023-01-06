@@ -1,14 +1,11 @@
-import { Link } from 'react-router-dom';
 import MainPage from '../../components/MainPage/MainPage';
-import BackButton from '../../components/BackButton/BackButton';
 import CartPageView from '../../components/CartPage/CartPageView';
+import BackButton from '../../container/BackButton/BackButton';
 
 function CartRoute() {
   return (
     <MainPage className="cart-route">
-      <Link to="/">
-        <BackButton preventNavigate />
-      </Link>
+      <BackButton />
       <CartPageView />
     </MainPage>
   );
