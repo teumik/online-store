@@ -1636,7 +1636,6 @@
       "images": [
         "https://i.dummyjson.com/data/products/89/1.jpg",
         "https://i.dummyjson.com/data/products/89/2.jpg",
-        "https://i.dummyjson.com/data/products/89/3.jpg",
         "https://i.dummyjson.com/data/products/89/4.jpg",
         "https://i.dummyjson.com/data/products/89/thumbnail.jpg"
       ]
@@ -1681,7 +1680,7 @@
     },
     {
       "id": 92,
-      "title": "HOT SALE IN EUROPE electric racing motorcycle",
+      "title": "electric racing motorcycle",
       "description": "HOT SALE IN EUROPE electric racing motorcycle electric motorcycle for sale adult electric motorcycles",
       "price": 920,
       "discountPercentage": 14.4,
@@ -1691,7 +1690,6 @@
       "category": "motorcycle",
       "thumbnail": "https://i.dummyjson.com/data/products/92/thumbnail.jpg",
       "images": [
-        "https://i.dummyjson.com/data/products/92/1.jpg",
         "https://i.dummyjson.com/data/products/92/2.jpg",
         "https://i.dummyjson.com/data/products/92/3.jpg",
         "https://i.dummyjson.com/data/products/92/4.jpg",
