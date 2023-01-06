@@ -4,7 +4,7 @@
   "scripts": {
     "init": "npm install",
     "build:dev": "webpack --mode=development",
-    "build:prod": "webpack --mode=production --define-process-env-node-env=production",
+    "build:prod": "webpack --mode=production --define-process-env-node-env=production && tsc --noemit && cp netlify.toml dist/netlify.toml && cp -R public dist/public",
     "serve": "webpack serve --open",
     "serve:prod": "webpack serve --open --mode=production --define-process-env-node-env=production",
     "watch": "webpack --watch",
