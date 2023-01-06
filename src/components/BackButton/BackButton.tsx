@@ -1,15 +1,14 @@
 import './backButton.scss';
-import { useNavigate } from 'react-router';
-import { BackButton } from './types/backButton.interface';
+import { useNavigate } from 'react-router-dom';
+import { BackButtonType } from './types/backButton.interface';
 
-function BackButton(props: BackButton) {
-  const { preventNavigate = true } = props;
+function BackButton({ onClick }: BackButtonType) {
   const navigate = useNavigate();
 
   return (
     <button
       className="button button_back"
-      onClick={() => (preventNavigate ? null : navigate(-1))}
+      onClick={onClick}
       type="button"
     >
       Back
