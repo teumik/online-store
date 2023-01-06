@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { dataController } from '../controller/data.controller';
 
 export interface SortType {
@@ -6,12 +7,14 @@ export interface SortType {
   count: undefined | boolean;
 }
 
+export interface MethodType {
+  up: () => void;
+  down: () => void;
+}
+
 export default function useToggleSort() {
   const ctx = dataController;
-  const { sort } = ctx.storage.products;
-  const storage = sort.price === undefined && sort.count === undefined ? {} : sort;
-
-  const [isSort, setSort] = useState(storage as SortType);
+  const { init, sort } = ctx.storage.products;
   const sortMap = {
     price: {
       up: ctx.sortPriceAscending.bind(ctx),
@@ -22,37 +25,73 @@ export default function useToggleSort() {
       down: ctx.sortStockDescending.bind(ctx),
     },
   };
+  const [query, setQuery] = useSearchParams();
+  const sortQuery = query.get('sort');
+  const typeQuery = query.get('type');
 
-  const classState = (label: keyof SortType) => {
-    if (isSort?.[label] === undefined) return null;
-    return !!isSort?.[label];
+  const valueInit = {
+    price: false,
+    count: false,
   };
+  const valueSort = {
+    price: false,
+    count: false,
+  };
+  Object.assign(valueInit, init);
+  Object.assign(valueSort, sort);
 
-  function setSortDirection(label: keyof SortType) {
-    const bool = isSort[label];
-    const prop = bool ? 'up' : 'down';
-    sortMap[label][prop]();
+  if ((!valueInit.count || !valueInit.price) && !sortQuery) {
+    ctx.sortDefault();
+    Object.assign(valueInit, {
+      price: false,
+      count: false,
+    });
   }
 
+  if (sortQuery && typeQuery) {
+    valueInit[sortQuery as keyof SortType] = true;
+    const value = typeQuery === 'down';
+    valueSort[sortQuery as keyof SortType] = value;
+    sortMap[sortQuery as keyof SortType][typeQuery as keyof MethodType]();
+  }
+
+  const [sortState, setSort] = useState(valueSort);
+  const [initState, setInit] = useState(valueInit);
+
+  const classState = (label: keyof SortType) => {
+    if (!initState[label]) return null;
+    return !sortState[label];
+  };
+
   function toggleSort(label: keyof SortType) {
+    setInit(() => {
+      const temp = {
+        price: false,
+        count: false,
+        [label]: true,
+      };
+      Object.assign(init, temp);
+      return temp;
+    });
     setSort((state) => {
-      Object.assign(sort, {
-        price: undefined,
-        count: undefined,
-        [label]: !state[label],
-      });
-      return {
-        price: undefined,
-        count: undefined,
+      const temp = {
+        ...state,
         [label]: !state[label],
       };
+      Object.assign(sort, temp);
+      return temp;
     });
-    setSortDirection(label);
+    const sortMethod = sortState[label] ? 'up' : 'down';
+    sortMap[label][sortMethod]();
+    query.set('sort', label);
+    query.set('type', sortMethod);
+    setQuery(query);
   }
 
   return {
-    isSort,
     toggleSort,
     classState,
+    setSort,
+    setInit,
   };
 }

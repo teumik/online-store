@@ -19,9 +19,17 @@ function Products({
           {buttonsView}
         </li>
       </ul>
-      <div className={`products__articles ${className ? 'products__articles_grid' : ''}`}>
-        {children}
-      </div>
+      {countDisplayItems < 1 ? (
+        <div
+          className="products__matchless"
+        >
+          No Results Matching Your Request
+        </div>
+      ) : (
+        <div className={`products__articles ${className ? 'products__articles_grid' : ''}`}>
+          {children}
+        </div>
+      )}
     </section>
   );
 }

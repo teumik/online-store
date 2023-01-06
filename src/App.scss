@@ -10,3 +10,11 @@
 .cart-route {
   flex-grow: 1;
 }
+
+.main-route {
+  &__filters-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}

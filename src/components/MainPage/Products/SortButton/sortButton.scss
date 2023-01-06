@@ -8,20 +8,21 @@
       position: absolute;
       top: 50%;
       right: 0;
-      transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%) rotate(45deg);
     }
 
     &_increase {
 
       &::after {
-        content: '↑';
+        content: '↓';
+        transform: translate(-50%, -50%) rotate(315deg);
       }
     }
 
     &_decrease {
 
       &::after {
-        content: '↓';
+        content: '↑';
       }
     }
   }
