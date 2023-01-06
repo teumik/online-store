@@ -1,5 +1,4 @@
 import { FormEvent, useState } from 'react';
-import { useNavigate } from 'react-router';
 import validate from '../lib/validate';
 import visa from '../assets/images/paymentSystemsIcons/visa.svg';
 import masterCard from '../assets/images/paymentSystemsIcons/masterCard.svg';
