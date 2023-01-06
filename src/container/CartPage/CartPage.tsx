@@ -1,10 +1,9 @@
 import { useContext } from 'react';
 import CartPageView from '../../components/CartPage/CartPageView';
-import DataContext from '../../context/data.context';
+import CartContext from '../../context/cart.context';
 
 export default function CartPage() {
-  const ctx = useContext(DataContext);
-  const hasItems = ctx.cart.idArray.length > 0;
+  const { cartState } = useContext(CartContext);
 
-  return <CartPageView hasItems={hasItems} />;
+  return <CartPageView hasItems={cartState.cartItemsCount > 0} />;
 }
