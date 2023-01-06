@@ -21,7 +21,10 @@ const useRangeValues = (min: number, max: number, title: string) => {
       setMaxPrice(value);
       ctx.onChangeFiltersRange(title, [lowprice, value]);
     }
-    updateProducts();
+
+    setTimeout(() => {
+      updateProducts();
+    }, 0);
   }
   return {
     lowprice,

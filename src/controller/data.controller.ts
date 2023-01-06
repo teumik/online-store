@@ -77,7 +77,7 @@ export default class DataController {
     };
     this.cart = {
       currency: '$',
-      idArray: [{ id: 10, count: 1 }],
+      idArray: [],
     };
     this.rangeFilters = {
       Price: [this.getLowPrice(), this.getMaxPrice()],
