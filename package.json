@@ -1,6 +1,8 @@
 {
   "name": "react-typescript-project",
   "description": "ReactJS TypeScript Template",
+  "homepage": "https://teumik.github.io/online-store",
+  "private": false,
   "scripts": {
     "init": "npm install",
     "build:dev": "webpack --mode=development",
@@ -8,7 +10,9 @@
     "serve": "webpack serve --open",
     "serve:prod": "webpack serve --open --mode=production --define-process-env-node-env=production",
     "watch": "webpack --watch",
-    "lint": "npx eslint src/. --ext .tsx,.ts,.jsx,.js --fix && tsc --noemit"
+    "lint": "npx eslint src/. --ext .tsx,.ts,.jsx,.js --fix && tsc --noemit",
+    "predeploy": "npm run build:prod",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "postcss-preset-env": "^7.8.3",
@@ -44,6 +48,7 @@
     "eslint-plugin-react": "^7.31.11",
     "eslint-plugin-react-hooks": "^4.6.0",
     "file-loader": "^6.2.0",
+    "gh-pages": "^4.0.0",
     "html-loader": "^4.2.0",
     "html-webpack-plugin": "^5.5.0",
     "mini-css-extract-plugin": "^2.7.0",
