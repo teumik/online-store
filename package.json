@@ -1,7 +1,7 @@
 {
   "name": "react-typescript-project",
   "description": "ReactJS TypeScript Template",
-  "homepage": "https://teumik.github.io/online-store",
+  "homepage": "https://teumik.github.io/",
   "private": false,
   "scripts": {
     "init": "npm install",
