@@ -6,7 +6,7 @@ function loader({ request }: { request: Request }) {
       globalThis.location.replace(url.href);
     }
   };
-  const isFake = (name: string) => !['search', 'view', 'sort', 'type', 'category', 'brand', 'price', 'stock'].includes(name);
+  const isFake = (name: string) => !['search', 'view', 'sort', 'type', 'category', 'brand', 'price', 'stock', 'page', 'limit'].includes(name);
 
   const view = url.searchParams.get('view');
   const sort = url.searchParams.get('sort');
