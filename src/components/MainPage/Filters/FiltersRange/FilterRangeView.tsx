@@ -1,5 +1,3 @@
-import { useContext } from 'react';
-import DataContext from '../../../../context/data.context';
 import useRangeValues from '../../../../hooks/useRangeValues';
 import './filterRange.scss';
 
@@ -17,20 +15,20 @@ export default function FilterRangeView({
     maxprice,
     calculateInputValue,
   } = useRangeValues(min, max, title);
-  const ctx = useContext(DataContext);
+
   return (
     <div className="filters__item">
       <h3 className="filters__title">{title}</h3>
       <div className="filters__range-values">
-        <p>{title === 'Price' ? ctx.rangeFilters.Price[0] : ctx.rangeFilters.Stock[0]}</p>
+        <p>{lowprice}</p>
         ?
-        <p>{title === 'Price' ? ctx.rangeFilters.Price[1] : ctx.rangeFilters.Stock[1]}</p>
+        <p>{maxprice}</p>
       </div>
       <div className="range__box">
         <input
           min={min}
           max={max}
-          value={title === 'Price' ? ctx.rangeFilters.Price[0] : ctx.rangeFilters.Stock[0]}
+          value={lowprice}
           step={1}
           type="range"
           className="filters__range-1"
@@ -39,7 +37,7 @@ export default function FilterRangeView({
         <input
           min={min}
           max={max}
-          value={title === 'Price' ? ctx.rangeFilters.Price[1] : ctx.rangeFilters.Stock[1]}
+          value={maxprice}
           step={1}
           type="range"
           className="filters__range-2"
