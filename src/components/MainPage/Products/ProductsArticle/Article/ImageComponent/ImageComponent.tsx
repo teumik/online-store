@@ -14,6 +14,7 @@ function ImageComponent({
         className={className}
         src={link}
         alt={alt}
+        loading="lazy"
       />
     </button>
   );

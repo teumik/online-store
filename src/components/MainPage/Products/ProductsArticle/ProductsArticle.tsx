@@ -27,7 +27,7 @@ function ProductsArticle({
       >
         <div className="item__section picture">
           <div className="picture__previews">
-            <img className="item__image picture__image" src={thumbnail} alt={alternative} />
+            <img className="item__image picture__image" src={thumbnail} alt={alternative} loading="lazy" />
           </div>
           {isDiscount ? <div className="item__discount picture__discount">{`${discountPercentage}%`}</div> : null}
         </div>
