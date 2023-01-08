@@ -14,7 +14,6 @@ function Article({
   currency,
   children,
   isDiscount,
-  discountPrice,
   imagesItem,
   alt,
 }: ArticleType) {
@@ -52,16 +51,7 @@ function Article({
       </div>
       <div className="article__section purchase">
         <h3 className="article__price purchase__price">
-          <span className={` ${isDiscount ? 'purchase__price_crossed' : ''}`}>
-            {`${currency}${price}`}
-          </span>
-          {
-            isDiscount ? (
-              <span className="article__price_discount purchase__price_discount">
-                {` ${currency}${discountPrice}`}
-              </span>
-            ) : null
-          }
+          {`${currency}${price}`}
         </h3>
         {children}
       </div>

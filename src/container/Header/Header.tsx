@@ -11,7 +11,7 @@ function Header() {
 
   return (
     <HeaderView
-      totalPrice={cartState.cartTotalDiscountPrice}
+      totalPrice={cartState.cartTotalPrice}
       currency={cartState.cart.currency}
       totalDiscount={String(cartState.cartTotalDiscount)}
       itemsCount={cartState.cartItemsCount}
