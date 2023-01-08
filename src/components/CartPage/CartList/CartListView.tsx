@@ -1,3 +1,4 @@
+import { ChangeEvent, FormEvent } from 'react';
 import './cartList.scss';
 
 interface CartListViewProps {
@@ -6,7 +7,9 @@ interface CartListViewProps {
   onSelectPage: (index: number) => void;
   buttonPageHandler: (operator: string) => void;
   currentPage: number;
+  // onChangeItemsOnPage: (e: ChangeEvent<HTMLSelectElement>) => void;
   onChangeItemsOnPage: (e: { target: HTMLInputElement }) => void;
+  itemsOnPage: number;
 }
 
 function CartListView({
@@ -16,17 +19,21 @@ function CartListView({
   currentPage,
   buttonPageHandler,
   onChangeItemsOnPage,
+  itemsOnPage,
 }: CartListViewProps) {
   return (
     <div className="productsCart">
       <div className="productsCart__header">
         <h2 className="productsCart__title">Products In Cart</h2>
         <input
-          onChange={onChangeItemsOnPage}
           type="number"
+          onChange={onChangeItemsOnPage}
           min={1}
-          placeholder="Items on page"
+          max={10}
+          value={itemsOnPage}
+
         />
+
         <div className="productsCart__controls">
           <div className="productsCar__count">
             ITEMS:
