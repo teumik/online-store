@@ -1,28 +1,47 @@
-.filters__item {
-  border: 1px solid black;
-  overflow: hidden;
-
-  .filters__title {
-    margin: 0;
-  }
-}
-
-.filters__list {
-  padding: 0;
-  overflow: auto;
-  max-height: 150px;
-}
-
 .filters__list-item {
   list-style-type: none;
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0 10px;
+  position: relative;
+
+  input {
+    opacity: 0;
+  }
 
   label {
     cursor: pointer;
   }
+
+  // label::before {
+  //   position: absolute;
+  //   content: '';
+  //   width: 10px;
+  //   height: 10px;
+  //   border: 1px solid #ccc;
+  //   left: 10px;
+  //   top: 5px;
+  //   display: block;
+  //   z-index: 1;
+  // }
+
+  label::after {
+    position: absolute;
+    content: url('/src/assets/images/checked.svg');
+
+    left: 10px;
+    opacity: 0;
+    z-index: 2;
+  }
+
+
+  input:checked + label::after {
+    opacity: 1;
+  }
+
+
+
 
   p {
     margin: 0;
@@ -33,4 +52,7 @@
   padding: 0;
   overflow: auto;
   max-height: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }

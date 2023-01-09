@@ -31,15 +31,22 @@ export default function CartSummaryView({
     <div className="summary">
       <h2 className="summary__title">Summary</h2>
       <div className="summary__items">
-        Price:
+        Total price:
         <div className={cartTotalPriceWithPromocodes < cartTotalPrice
           ? 'lineThrough' : ''}
         >
           {cartTotalPrice}
+          $
         </div>
         {cartTotalPriceWithPromocodes === cartTotalPrice
           ? null
-          : <div>{cartTotalPriceWithPromocodes.toFixed(0)}</div>}
+          : (
+            <div>
+              {cartTotalPriceWithPromocodes.toFixed(0)}
+              $
+            </div>
+          )}
+
       </div>
       <p className="summary__price">
         Products:
@@ -57,17 +64,17 @@ export default function CartSummaryView({
         {promocodes ? (
           <li key={promocodes} style={{ listStyle: 'none' }}>
             {promocodes}
-            <button type="button" onClick={onAddPromoCode}>Add</button>
+            <button className="btn" type="button" onClick={onAddPromoCode}>Add</button>
           </li>
         ) : null}
         {enteredPromocodes.map((item) => (
           <li className="promocode" key={item.name}>
             <p>{item.description}</p>
-            <button onClick={() => onRemovePromoCode(item)} type="button">Remove</button>
+            <button className="btn" onClick={() => onRemovePromoCode(item)} type="button">Remove</button>
           </li>
         ))}
       </ul>
-      <button onClick={setModal} type="button">buy now</button>
+      <button className="btn" onClick={setModal} type="button">buy now</button>
     </div>
   );
 }

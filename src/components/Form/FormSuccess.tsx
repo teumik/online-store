@@ -16,6 +16,12 @@ export default function FormSuccess() {
   });
 
   return (
-    <h1 style={{ textAlign: 'center' }}> Form completed successfully</h1>
+    <h1
+      className="success__message"
+    >
+      {' '}
+      Form completed successfully
+
+    </h1>
   );
 }

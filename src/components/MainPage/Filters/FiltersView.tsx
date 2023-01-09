@@ -59,7 +59,7 @@ export default function FiltersView({
     <aside className="filters">
       <div className="filters__control">
         <button
-          className="filters__control-btn"
+          className="filters__control-btn btn"
           type="button"
           onClick={() => {
             clearView();
@@ -73,7 +73,7 @@ export default function FiltersView({
           Reset filters
         </button>
         <button
-          className="filters__control-btn"
+          className="filters__control-btn btn"
           type="button"
           onClick={() => {
             navigator.clipboard.writeText(globalThis.location.href);

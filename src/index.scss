@@ -8,3 +8,18 @@
   @include PoppinsMedium;
   color: $purpleTextColor;
 }
+
+
+.btn {
+  background-color: $blueColorPrimary;
+  color: #fff;
+  padding: 5px 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  border: none;
+  transition: all .5s;
+}
+
+.btn:hover {
+  background-color: $yellow
+}

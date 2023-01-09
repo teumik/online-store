@@ -1,10 +1,12 @@
 .form {
-  background-color: black;
+  background-color: #fff;
   gap: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  color: black;
 
   &__control {
     width: 60%;
@@ -13,8 +15,10 @@
   &__control-input {
     padding: 5px 10px;
     border-radius: 5px;
+    border: none;
     width: 100%;
     text-align: center;
+    box-shadow: rgb(50 50 93 / 25%) 0px 30px 60px -12px inset, rgb(0 0 0 / 30%) 0px 18px 36px -18px inset;
   }
 
   &__control-input::placeholder {
@@ -105,4 +109,10 @@
   color: red;
   margin: 0;
   text-align: center;
+}
+
+.success__message {
+  text-align: center;
+  border-radius: 10px;
+  color: black;
 }

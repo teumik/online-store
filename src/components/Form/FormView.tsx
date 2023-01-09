@@ -120,7 +120,7 @@ export default function FormView({
           </div>
         </div>
       </div>
-      <button type="submit">CONFIRM</button>
+      <button className="btn" type="submit">CONFIRM</button>
     </form>
   );
 }
