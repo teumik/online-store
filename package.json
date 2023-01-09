@@ -11,9 +11,11 @@
     "watch": "webpack --watch",
     "lint": "npx eslint src/. --ext .tsx,.ts,.jsx,.js --fix && tsc --noemit",
     "predeploy": "npm run build:prod",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist",
+    "test": "jest"
   },
   "dependencies": {
+    "eslint-plugin-jest": "^27.2.1",
     "postcss-preset-env": "^7.8.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
