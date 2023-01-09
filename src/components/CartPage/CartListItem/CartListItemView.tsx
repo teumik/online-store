@@ -53,13 +53,14 @@ export default function CartListItemView({
           {stock}
         </h6>
         <div className="stock__controls">
-          <button onClick={() => onChangeValue(id!, '-')} className="stock__remove" type="button"> - </button>
+          <button onClick={() => onChangeValue(id!, '-')} className="stock__remove btn" type="button"> - </button>
           <span>{value}</span>
-          <button onClick={() => onChangeValue(id!, '+')} disabled={value >= stock!} className="stock__add" type="button"> + </button>
+          <button onClick={() => onChangeValue(id!, '+')} disabled={value >= stock!} className="stock__add btn" type="button"> + </button>
         </div>
         <p className="stock__price">
-          $
+
           {price! * value}
+          $
         </p>
       </div>
     </li>

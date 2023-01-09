@@ -1,20 +1,16 @@
-import { ChangeEvent, FormEvent } from 'react';
 import './cartList.scss';
 
 interface CartListViewProps {
   elements: JSX.Element[][];
-  itemsCount: number;
   onSelectPage: (index: number) => void;
   buttonPageHandler: (operator: string) => void;
   currentPage: number;
-  // onChangeItemsOnPage: (e: ChangeEvent<HTMLSelectElement>) => void;
   onChangeItemsOnPage: (e: { target: HTMLInputElement }) => void;
   itemsOnPage: number;
 }
 
 function CartListView({
   elements,
-  itemsCount,
   onSelectPage,
   currentPage,
   buttonPageHandler,
@@ -25,25 +21,20 @@ function CartListView({
     <div className="productsCart">
       <div className="productsCart__header">
         <h2 className="productsCart__title">Products In Cart</h2>
-        <input
-          type="number"
-          onChange={onChangeItemsOnPage}
-          min={1}
-          max={10}
-          value={itemsOnPage}
-
-        />
 
         <div className="productsCart__controls">
-          <div className="productsCar__count">
-            ITEMS:
-            <span>{itemsCount}</span>
-          </div>
+          <input
+            type="number"
+            className="productsCart__itemsOnPage"
+            onChange={onChangeItemsOnPage}
+            min={1}
+            max={10}
+            value={itemsOnPage}
+          />
           <div className="productsCart__pages">
-            PAGE:
-            <button onClick={() => buttonPageHandler('-')} className="prev-page" type="button">Prev</button>
+            <button onClick={() => buttonPageHandler('-')} className="prev-page btn" type="button">Prev</button>
             <span>{currentPage + 1}</span>
-            <button onClick={() => buttonPageHandler('+')} className="next-page" type="button">Next</button>
+            <button onClick={() => buttonPageHandler('+')} className="next-page btn" type="button">Next</button>
           </div>
         </div>
       </div>
@@ -55,7 +46,7 @@ function CartListView({
       <ul className="productsCart__pages">
         {elements.map((_, index) => (
           <button
-            className={index === currentPage ? 'active' : ''}
+            className={index === currentPage ? 'active btn' : 'btn'}
             type="button"
             onClick={() => onSelectPage(index)}
             key={_.toString() + index.toString()}

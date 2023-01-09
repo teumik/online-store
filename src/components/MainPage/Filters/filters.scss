@@ -1,23 +1,52 @@
-.filters {
-    max-width: 250px;
-    border: 1px solid black;
-    padding: 10px;
+@import '../../../lib/styles/variables.scss';
 
+.filters {
+  max-width: 250px;
+  box-shadow: rgb(50 50 93 / 25%) 0px 6px 12px -2px, rgb(0 0 0 / 30%) 0px 3px 7px -3px;
+  padding: 10px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: 10px;
+
+
+  ::-webkit-scrollbar {
+    width: 10px;
+
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: $blueColorPrimary;
+    border-radius: 9em;
+    box-shadow: inset 1px 1px 10px #f3faf7;
+
+  }
+
+  ::-webkit-scrollbar-thumb:active {
+    background-color: $green;
+  }
+
+  &__control {
     display: flex;
-    flex-direction: column;
-    gap: 10px;
+    justify-content: space-between;
+  }
+
+  .filters__item {
+    box-shadow: rgb(50 50 93 / 25%) 0px 6px 12px -2px, rgb(0 0 0 / 30%) 0px 3px 7px -3px;
+    overflow: hidden;
     border-radius: 10px;
 
-    .filters__item {
-        border: 1px solid black;
-        overflow: hidden;
-        border-radius: 10px;
-
-        .filters__title {
-            margin: 0;
-            background-color: black;
-            color: #fff;
-        }
+    .filters__title {
+      margin: 0;
+      text-align: center;
     }
+  }
 
+}
+
+
+.inActive {
+  color: gray;
+  opacity: 0.5;
 }

@@ -15,7 +15,7 @@ function FilterListItem({
   const ctx = useContext(DataContext);
 
   return (
-    <li className="filters__list-item" key={title}>
+    <li className={ctx.getCurrentSense(title) ? 'filters__list-item' : 'filters__list-item inActive'} key={title}>
       <input
         onChange={() => {
           inputHandler(title, filterTitle);

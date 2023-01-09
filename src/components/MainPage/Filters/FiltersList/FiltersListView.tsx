@@ -18,7 +18,7 @@ export default function FiltersListView({
   return (
     <div className="filters__item">
       <h3 className="filters__title">{filterTitle}</h3>
-      <div className="filters__list">
+      <ul className="filters__list">
         {values.sort().map((title) => (
           <FilterListItem
             key={title}
@@ -28,7 +28,7 @@ export default function FiltersListView({
             initial={initial}
           />
         ))}
-      </div>
+      </ul>
     </div>
   );
 }
