@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import './article.scss';
 import { ArticleType } from './types/article.interface';
 

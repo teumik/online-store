@@ -53,10 +53,6 @@ function Article({ product, children }: ArticleType) {
 
   const [openState, setState] = useState(false);
 
-  const openModal = () => {
-    setState((state) => !state);
-  };
-
   return (
     <ArticleView
       id={id}

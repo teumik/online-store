@@ -4,6 +4,7 @@ module.exports = {
     browser: true,
     node: true,
     es2022: true,
+    'jest/globals': true,
   },
   settings: {
     'import/resolver': {
@@ -31,6 +32,7 @@ module.exports = {
   plugins: [
     'react',
     '@typescript-eslint',
+    'jest',
   ],
   rules: {
     /*
