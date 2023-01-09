@@ -5,4 +5,6 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
+  @include PoppinsMedium;
+  color: $purpleTextColor;
 }

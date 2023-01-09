@@ -1,12 +1,13 @@
+@import '../../App.scss';
+
 .header {
-  padding: 0.5rem;
-  border: 1px solid red;
+  padding: $paddingBasic;
 
   &__list {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    gap: 1rem;
+    gap: $gap * 2;
     margin: 0;
     padding: 0;
     list-style: none;

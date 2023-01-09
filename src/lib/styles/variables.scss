@@ -1,2 +1,63 @@
-$blueColorPrimary: blue;
-$blueColorSecondary: blue;
+$blueColorPrimary: #0064D2;
+$blueColorOpacity: #0066d21a;
+$whiteTextColor: #ffffff;
+$blackTextColor: #000000;
+$blueTextColor: $blueColorPrimary;
+$purpleTextColor: #2F294D;
+$purpleTextColorOpacity: #2f294d80;
+$whiteBackgroundColor: $whiteTextColor;
+$greyBackgroundColor: #f3f3f3;
+$blueBackgroundColor: $blueColorOpacity;
+$redColorBasic: #E53238;
+$orangeColorBasic: #F5AF02;
+$yellowColorBasic: #F2C94C;
+$greenColorBasic: #86B817;
+$aditionalColorOpacity: #1E1F4B;
+
+$paddingBasic: 0.5rem;
+$gap: 0.5rem;
+$borderRadius: 5px;
+
+$transition: 0.3s;
+
+$logoColors: $redColorBasic, $blueTextColor, $orangeColorBasic, $greenColorBasic;
+$logoColorsLength: length($logoColors);
+
+
+@font-face {
+  font-family: 'Poppins', sans-serif;
+  src:
+    url('/src/assets/fonts/Poppins/Poppins-Medium.ttf'),
+    url('/src/assets/fonts/Poppins/Poppins-Regular.ttf'),
+    url('/src/assets/fonts/Poppins/Poppins-SemiBold.ttf');
+}
+
+@mixin PoppinsMedium {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+@mixin PoppinsRegular {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+@mixin PoppinsSemiBold {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+%MainText {
+  @include PoppinsMedium;
+  font-size: 1rem;
+}
+
+%DetailsHeaders {
+  @include PoppinsRegular;
+  font-size: 1rem;
+}
+
+@mixin Logo {
+  @include PoppinsRegular;
+  font-size: 2.5rem;
+}

@@ -6,7 +6,7 @@ interface ActiveLinkType {
   isActive: boolean;
 }
 
-function Logo({ title, onClick }: LogoType) {
+function Logo({ onClick }: LogoType) {
   const active = ({ isActive }: ActiveLinkType) => (isActive ? 'logo__link logo__link_active' : 'logo__link');
   return (
     <div className="logo">
@@ -15,8 +15,12 @@ function Logo({ title, onClick }: LogoType) {
         className={active}
         onClick={onClick}
       >
-        <div className="logo__svg"><span>LOGO</span></div>
-        <h1 className="logo__header">{title}</h1>
+        <div className="logo__header">
+          <span className="logo__header_color">e</span>
+          <span className="logo__header_color">b</span>
+          <span className="logo__header_color">a</span>
+          <span className="logo__header_color">y</span>
+        </div>
       </NavLink>
     </div>
   );
