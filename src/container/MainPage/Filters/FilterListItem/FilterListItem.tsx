@@ -17,10 +17,10 @@ function FilterListItem({
   return (
     <li className="filters__list-item" key={title}>
       <input
-        onClick={() => {
+        onChange={() => {
           inputHandler(title, filterTitle);
         }}
-        defaultChecked={
+        checked={
           ctx.activeBrandsFilters.includes(title)
           || ctx.activeCategoryFilters.includes(title)
           || initial.includes(title)
