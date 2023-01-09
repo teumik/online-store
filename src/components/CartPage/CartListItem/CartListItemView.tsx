@@ -13,6 +13,7 @@ interface CartListItemViewProps {
   id: number | undefined;
   value: number;
   onChangeValue: (id: number, operator: string) => void;
+
 }
 
 export default function CartListItemView({

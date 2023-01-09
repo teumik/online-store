@@ -1,24 +1,29 @@
 import { useContext } from 'react';
+
 import DataContext from '../../../../context/data.context';
 
 interface FilterListItemProps {
   title: string;
   filterTitle: string;
   inputHandler: (title: string, categoryTitle: string) => void;
+  initial: string[];
 }
 
-function FilterListItem({ title, filterTitle, inputHandler }: FilterListItemProps) {
+function FilterListItem({
+  title, filterTitle, inputHandler, initial,
+}: FilterListItemProps) {
   const ctx = useContext(DataContext);
 
   return (
     <li className="filters__list-item" key={title}>
       <input
-        onClick={() => {
+        onChange={() => {
           inputHandler(title, filterTitle);
         }}
-        defaultChecked={
-          !!ctx.activeBrandsFilters.includes(title)
-          || !!ctx.activeCategoryFilters.includes(title)
+        checked={
+          ctx.activeBrandsFilters.includes(title)
+          || ctx.activeCategoryFilters.includes(title)
+          || initial.includes(title)
         }
         type="checkbox"
         className="filters__list-checkbox"

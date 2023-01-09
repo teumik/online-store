@@ -5,12 +5,15 @@ export interface filterListPropsView {
   filterTitle: string;
   values: string[];
   inputHandler: (title: string, categoryTitle: string) => void;
+  initial: string[];
 }
 
 export default function FiltersListView({
   filterTitle,
   values,
   inputHandler,
+  initial,
+
 }: filterListPropsView) {
   return (
     <div className="filters__item">
@@ -22,6 +25,7 @@ export default function FiltersListView({
             title={title}
             filterTitle={filterTitle}
             inputHandler={inputHandler}
+            initial={initial}
           />
         ))}
       </div>
