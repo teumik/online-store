@@ -14,7 +14,7 @@ function Products({
         <li className="products__items sorts">
           {buttonsElements}
         </li>
-        <li className="products__items">{`Results found: ${countDisplayItems}`}</li>
+        <li className="products__items">{`Found: ${countDisplayItems}`}</li>
         <li className="products__items views">
           {buttonsView}
         </li>
@@ -23,7 +23,12 @@ function Products({
         <div
           className="products__matchless"
         >
-          No Results Matching Your Request
+          <div>
+            No Results Matching Your Request
+          </div>
+          <div>
+            Try Again
+          </div>
         </div>
       ) : (
         <div className={`products__articles ${className ? 'products__articles_grid' : ''}`}>

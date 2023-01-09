@@ -17,6 +17,7 @@ function SortButtons({
       classes={className}
       toggleSort={toggleSort}
       classState={classState}
+      stateValue={stateValue}
     />
   );
 }

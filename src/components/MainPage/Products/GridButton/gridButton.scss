@@ -1,6 +1,11 @@
+@import '../../../../App.scss';
+
 .views {
 
   &__buttons {
-    min-width: 3rem;
+    @extend %SecondaryButton;
+    transition: color $transition;
+
+    @extend %SvgIntaractiveStates;
   }
 }

@@ -1,3 +1,5 @@
+@import '../../App.scss';
+
 .search {
   display: flex;
   justify-content: center;
@@ -6,17 +8,24 @@
     position: relative;
     display: flex;
     justify-content: center;
-    gap: 0.5rem;
-    width: min-content;
+    gap: $gap;
   }
 
   &__input {
-    padding: 0.25rem 2rem 0.25rem 0.8rem;
-    border: 1px solid green;
+    padding: 0.25rem 1.75rem 0.25rem 0.75rem;
+    background: $greyBackgroundColor;
+    color: inherit;
+    border: 2px solid transparent;
+    outline: transparent;
+    border-radius: $borderRadius;
+    transition: border $transition;
+
+    &:hover {
+      border: 2px solid $orangeColorBasic;
+    }
 
     &:focus {
-      border: 1px solid blue;
-      outline: transparent;
+      border: 2px solid $blueColorPrimary;
     }
 
     &::-webkit-search-cancel-button,
@@ -35,14 +44,6 @@
     border: 0 solid transparent;
     background: transparent;
     cursor: pointer;
-
-    &:hover {
-      color: blue;
-    }
-
-    &:active {
-      color: green;
-    }
   }
 
   &__reset {
@@ -50,5 +51,24 @@
     top: 50%;
     right: 0;
     transform: translate(0, -50%);
+
+    svg {
+      fill: $blueColorPrimary;
+      transition: fill $transition;
+    }
+
+    &:hover {
+
+      svg {
+        fill: $redColorBasic;
+      }
+    }
+
+    &:active {
+
+      svg {
+        fill: $greenColorBasic;
+      }
+    }
   }
 }

@@ -9,5 +9,6 @@ export interface SortButtonsType {
   mode: ValueType;
   toggleSort: (label: keyof SortType) => void;
   classState: (label: keyof SortType) => ClassType;
+  stateValue?: boolean | null;
   classes?: string;
 }

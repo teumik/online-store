@@ -22,7 +22,7 @@ $paddingBasic: 0.5rem;
 $gap: 0.5rem;
 $borderRadius: 5px;
 
-$transition: 0.3s;
+$transition: 0.2s;
 
 $logoColors: $redColorBasic, $blueTextColor, $orangeColorBasic, $greenColorBasic;
 $logoColorsLength: length($logoColors);
@@ -64,4 +64,34 @@ $logoColorsLength: length($logoColors);
 @mixin Logo {
   @include PoppinsRegular;
   font-size: 2.5rem;
+}
+
+%SecondaryButton {
+  padding: 0.25rem;
+  color: $blueColorPrimary;
+  background: $blueColorOpacity;
+  border-radius: $borderRadius;
+}
+
+%SvgIntaractiveStates {
+  svg {
+    fill: $blueColorPrimary;
+    transition: fill $transition;
+  }
+
+  &:hover {
+    color: $orangeColorBasic;
+
+    svg {
+      fill: $orangeColorBasic;
+    }
+  }
+
+  &:active {
+    color: $greenColorBasic;
+
+    svg {
+      fill: $greenColorBasic;
+    }
+  }
 }

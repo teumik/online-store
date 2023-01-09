@@ -1,29 +1,21 @@
+@import '../../../../App.scss';
+
 .sorts {
   &__types {
     position: relative;
-    padding: 0 1rem;
+    padding: 0.25rem 2rem;
+    @extend %SecondaryButton;
+    transition: color $transition;
 
-
-    &::after {
+    svg {
+      fill: $blueColorPrimary;
       position: absolute;
+      height: 80%;
       top: 50%;
       right: 0;
-      transform: translate(-50%, -50%) rotate(45deg);
+      transform: translate(-15%, -50%);
     }
 
-    &_increase {
-
-      &::after {
-        content: '↓';
-        transform: translate(-50%, -50%) rotate(315deg);
-      }
-    }
-
-    &_decrease {
-
-      &::after {
-        content: '↑';
-      }
-    }
+    @extend %SvgIntaractiveStates;
   }
 }
