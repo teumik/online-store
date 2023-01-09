@@ -17,7 +17,7 @@ function Cart({
   return (
     <div className="cart">
       <span className="cart__total">{`${currency}${totalPrice}`}</span>
-      <span className="cart__discount">{`${totalDiscount}%`}</span>
+      <span className="cart__discount">{`${totalDiscount}`}</span>
       <NavLink
         to="cart"
         className={active}

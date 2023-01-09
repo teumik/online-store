@@ -1,8 +1,10 @@
+@import '../../App.scss';
+
 .button {
   &_back {
+    @extend %PrimaryButton;
+    border: transparent;
     padding: 0.5rem 1rem;
-    background: transparent;
-    border: 1px solid blue;
     cursor: pointer;
   }
 }

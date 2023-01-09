@@ -1,10 +1,10 @@
 $blueColorPrimary: #0064D2;
-$blueColorOpacity: #0066d21a;
+$blueColorOpacity: rgba(0, 101, 209, 0.1);
 $whiteTextColor: #ffffff;
 $blackTextColor: #000000;
 $blueTextColor: $blueColorPrimary;
 $purpleTextColor: #2F294D;
-$purpleTextColorOpacity: #2f294d80;
+$purpleTextColorOpacity: rgba(47, 41, 77, 0.502);
 $whiteBackgroundColor: $whiteTextColor;
 $greyBackgroundColor: #f3f3f3;
 $blueBackgroundColor: $blueColorOpacity;
@@ -12,7 +12,7 @@ $redColorBasic: #E53238;
 $orangeColorBasic: #F5AF02;
 $yellowColorBasic: #F2C94C;
 $greenColorBasic: #86B817;
-$aditionalColorOpacity: #1E1F4B;
+$aditionalColorOpacity: rgba(31, 31, 77, 0.5);
 
 $blueColorSecondary: $blueColorOpacity;
 $yellow: $orangeColorBasic;
@@ -70,28 +70,68 @@ $logoColorsLength: length($logoColors);
   padding: 0.25rem;
   color: $blueColorPrimary;
   background: $blueColorOpacity;
+  border: transparent;
   border-radius: $borderRadius;
+  transition: color $transition, background $transition;
+
+  &:hover {
+    color: $whiteTextColor;
+    background: $orangeColorBasic;
+  }
+
+  &:active {
+    color: $whiteTextColor;
+    background: $greenColorBasic;
+  }
 }
 
-%SvgIntaractiveStates {
+%PrimaryButton {
+  @extend %SecondaryButton;
+  color: $whiteTextColor;
+  background: $blueColorPrimary;
+}
+
+%Svgs {
   svg {
     fill: $blueColorPrimary;
     transition: fill $transition;
   }
 
   &:hover {
-    color: $orangeColorBasic;
-
     svg {
-      fill: $orangeColorBasic;
+      fill: $whiteTextColor;
     }
   }
 
   &:active {
-    color: $greenColorBasic;
-
     svg {
-      fill: $greenColorBasic;
+      fill: $whiteTextColor;
+    }
+  }
+}
+
+%Links {
+  color: $blueColorPrimary;
+  text-decoration: none;
+
+  &:hover {
+    color: $orangeColorBasic;
+  }
+
+  &:active {
+    color: $greenColorBasic;
+  }
+}
+
+@mixin AddButtons {
+  @extend %SecondaryButton;
+
+  &_active {
+    color: $whiteTextColor;
+    background: $greenColorBasic;
+
+    &:hover {
+      background: $redColorBasic;
     }
   }
 }

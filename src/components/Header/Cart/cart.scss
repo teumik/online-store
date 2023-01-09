@@ -16,6 +16,21 @@ $lineHeight: calc($cartSize / 2);
     color: $blueColorPrimary;
   }
 
+  &__total {
+    &::first-letter {
+      margin-right: 0.1rem;
+      font-size: 0.8rem;
+    }
+  }
+
+  &__discount {
+    &::after {
+      content: '%';
+      margin-left: 0.1rem;
+      font-size: 0.8rem;
+    }
+  }
+
   &__svg {
     width: 100%;
     height: 100%;

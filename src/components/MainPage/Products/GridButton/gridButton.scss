@@ -4,8 +4,6 @@
 
   &__buttons {
     @extend %SecondaryButton;
-    transition: color $transition;
-
-    @extend %SvgIntaractiveStates;
+    @extend %Svgs;
   }
 }

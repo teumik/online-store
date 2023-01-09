@@ -16,20 +16,22 @@
     justify-content: space-between;
     align-items: center;
     margin: 0;
-    padding: 0.2rem;
+    padding: 0.25rem;
     list-style: none;
   }
 
   &__items {
     display: flex;
-    gap: 0.2rem;
+    gap: calc($gap / 2);
   }
 
   &__articles {
+    display: grid;
+    gap: $gap;
 
     &_grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(25%, 0.5fr));
+      grid-template-columns: repeat(auto-fit, minmax(150px, 0.5fr));
 
       .item {
         height: 100%;

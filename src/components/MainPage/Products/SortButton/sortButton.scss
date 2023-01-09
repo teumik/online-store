@@ -5,7 +5,7 @@
     position: relative;
     padding: 0.25rem 2rem;
     @extend %SecondaryButton;
-    transition: color $transition;
+    @extend %Svgs;
 
     svg {
       fill: $blueColorPrimary;
@@ -15,7 +15,5 @@
       right: 0;
       transform: translate(-15%, -50%);
     }
-
-    @extend %SvgIntaractiveStates;
   }
 }

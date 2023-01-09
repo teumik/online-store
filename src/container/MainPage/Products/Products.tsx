@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import ProductsView from '../../../components/MainPage/Products/Products';
 import SortButtons from './SortButton/sortButton';
-import ProductsArticle from './ProductsArticle/productsArticle';
+import ProductsArticle from './ProductsArticle/ProductsArticle';
 import GridButton from '../../../components/MainPage/Products/GridButton/GridButton';
 import ProductsContext from '../../../context/products.context';
 import QueryContext from '../../../context/query.context';

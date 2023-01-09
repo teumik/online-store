@@ -91,7 +91,7 @@ function CartList() {
   return (
     <CartListView
       elements={sliceIntoChunks(cartListItems, itemsOnPage)}
-      itemsCount={cartListItems.length}
+      // itemsCount={cartListItems.length}
       onSelectPage={onSelectPage}
       currentPage={currentPage}
       buttonPageHandler={buttonPageHandler}
