@@ -7,4 +7,7 @@ export interface ArticleType extends Omit<IData, 'images'> {
   children: (JSX.Element | JSX.Element[])[];
   imagesItem: JSX.Element | JSX.Element[];
   alt: string;
+  activeLink: string;
+  openState: boolean;
+  toggleModal: () => void;
 }

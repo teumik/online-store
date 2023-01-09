@@ -51,6 +51,12 @@ function Article({ product, children }: ArticleType) {
 
   const navigate = useNavigate();
 
+  const [openState, setState] = useState(false);
+
+  const openModal = () => {
+    setState((state) => !state);
+  };
+
   return (
     <ArticleView
       id={id}
@@ -68,6 +74,9 @@ function Article({ product, children }: ArticleType) {
       currency={currency}
       imagesItem={imagesItem}
       alt={alt}
+      activeLink={activeLink}
+      openState={openState}
+      toggleModal={() => setState((state) => !state)}
     >
       {children}
       <BuyButton

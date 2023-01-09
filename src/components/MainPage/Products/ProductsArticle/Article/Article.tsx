@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import './article.scss';
 import { ArticleType } from './types/article.interface';
 
@@ -16,15 +17,42 @@ function Article({
   isDiscount,
   imagesItem,
   alt,
+  activeLink,
+  openState,
+  toggleModal,
 }: ArticleType) {
   return (
     <article className="article">
+      {openState ? (
+        <div
+          className="overlay"
+          onClick={toggleModal}
+          aria-hidden="true"
+          role="button"
+        >
+          <div className="modal">
+            <img className="article__image picture__open modal__image" src={activeLink} alt={alt} />
+            <button
+              className="modal__close"
+              type="button"
+            >
+              ✖
+            </button>
+          </div>
+        </div>
+      ) : null}
       <h3 className="article__title">{title}</h3>
       <div className="article__section picture">
         <div className="picture__previews">
           {imagesItem}
         </div>
-        <img className="article__image picture__current" src={thumbnail} alt={alt} />
+        <button
+          className="article__button picture__button"
+          type="button"
+          onClick={toggleModal}
+        >
+          <img className="article__image picture__current" src={thumbnail} alt={alt} />
+        </button>
         {isDiscount ? <div className="article__discount picture__discount">{`${discountPercentage}%`}</div> : null}
       </div>
       <div className="article__section about">
