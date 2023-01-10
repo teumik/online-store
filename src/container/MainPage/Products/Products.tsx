@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import ProductsView from '../../../components/MainPage/Products/Products';
-import SortButtons from './SortButton/sortButton';
+import SortButtons from './SortButton/SortButton';
 import ProductsArticle from './ProductsArticle/ProductsArticle';
 import GridButton from '../../../components/MainPage/Products/GridButton/GridButton';
 import ProductsContext from '../../../context/products.context';
