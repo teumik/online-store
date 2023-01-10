@@ -1,6 +1,7 @@
 .main-route,
 .error-route,
-.article-route {
+.article-route,
+.cart-route {
   display: flex;
   flex-grow: 1;
   gap: 0.5rem;
@@ -8,7 +9,9 @@
 }
 
 .cart-route {
-  flex-grow: 1;
+  display: grid;
+  align-items: start;
+  grid-template-rows: min-content;
 }
 
 .main-route {

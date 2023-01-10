@@ -5,7 +5,9 @@ import BackButton from '../../container/BackButton/BackButton';
 function CartRoute() {
   return (
     <MainPage className="cart-route">
-      <BackButton />
+      <div className="back-wrapper">
+        <BackButton />
+      </div>
       <CartPage />
     </MainPage>
   );
