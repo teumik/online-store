@@ -342,6 +342,22 @@ export default class DataController {
     return Math.max(...this.data.map((item) => item.stock));
   }
 
+  getLowPriceView(): number {
+    return Math.min(...this.view.map((item) => item.price));
+  }
+
+  getMaxPriceView() {
+    return Math.max(...this.view.map((item) => item.price));
+  }
+
+  getLowStockView(): number {
+    return Math.min(...this.view.map((item) => item.stock));
+  }
+
+  getMaxStockView() {
+    return Math.max(...this.view.map((item) => item.stock));
+  }
+
   getMaxSense(title: string) {
     return this.data.filter((prod) => prod.brand === title || prod.category === title).length;
   }
