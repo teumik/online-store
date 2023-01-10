@@ -64,3 +64,13 @@ function App() {
 }
 
 export default App;
+
+const getRandom = () => Math.random() * 2000;
+const test = Array.from(
+  new Set(
+    Array(100)
+      .fill(null)
+      .map(getRandom)
+  )
+);
+console.log(test);

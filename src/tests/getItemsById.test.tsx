@@ -2,10 +2,12 @@ import { dataController } from '../controller/data.controller';
 
 describe('When given exist id', () => {
   it('returns item with in range', () => {
+    const getRandom = () => Math.floor(Math.random() * 100) + 1;
     const idx = Array.from(
       new Set(
         Array(dataController.view.length)
-          .fill(Math.floor(Math.random() * 100) + 1)
+          .fill(null)
+          .map(getRandom)
       )
     );
     const results = idx.map((id) => dataController.getItemByID(id));
