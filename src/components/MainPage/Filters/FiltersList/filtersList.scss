@@ -3,7 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 10px;
+  padding: 0 0 0 2rem;
   position: relative;
 
   input {
@@ -12,36 +12,24 @@
 
   label {
     cursor: pointer;
+    text-align: left;
+    flex-grow: 1;
   }
-
-  // label::before {
-  //   position: absolute;
-  //   content: '';
-  //   width: 10px;
-  //   height: 10px;
-  //   border: 1px solid #ccc;
-  //   left: 10px;
-  //   top: 5px;
-  //   display: block;
-  //   z-index: 1;
-  // }
 
   label::after {
-    position: absolute;
     content: url('/src/assets/images/checked.svg');
-
+    position: absolute;
+    top: 50%;
     left: 10px;
-    opacity: 0;
     z-index: 2;
+    transform: translateY(-45%);
+    height: min-content;
+    opacity: 0;
   }
-
 
   input:checked + label::after {
     opacity: 1;
   }
-
-
-
 
   p {
     margin: 0;
