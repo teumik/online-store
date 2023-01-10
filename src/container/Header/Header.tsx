@@ -12,7 +12,7 @@ function Header() {
   const { updateProducts } = useContext(ProductsContext);
   const [queryParams, setQueryParams] = useSearchParams();
   const {
-    updateQuery, updateSearch,
+    updateQuery, updateSearch, setSort, setInit,
   } = useContext(QueryContext);
 
   function clearSearch() {
@@ -22,6 +22,17 @@ function Header() {
     updateSearch('');
     setQueryParams(queryParams);
     updateProducts();
+  }
+
+  function clearSort() {
+    queryParams.delete('sort');
+    queryParams.delete('type');
+    const temp = {
+      price: false,
+      count: false,
+    };
+    setInit(temp);
+    setSort(temp);
   }
 
   return (
@@ -34,6 +45,7 @@ function Header() {
       onClick={() => {
         dataController.search('');
         clearSearch();
+        clearSort();
         updateProducts();
       }}
     />
