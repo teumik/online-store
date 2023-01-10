@@ -17,8 +17,11 @@ describe('Correct implementation of functions', () => {
   });
   it('returns with 2 digits precision', () => {
     results.map((result) => {
-      const [[precision]] = Array.from(String(result).matchAll(/(?<=\.)\d*/g));
-      return expect(precision.length).toBeLessThan(3);
+      if (!Number.isInteger(result)) {
+        const [[precision]] = Array.from(String(result).matchAll(/(?<=\.)\d*/g));
+        return expect(Array.from(precision).length).toBeLessThan(3);
+      }
+      return result;
     });
   });
 });

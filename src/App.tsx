@@ -47,30 +47,29 @@ const router = createBrowserRouter(
   )
 );
 
-function App() {
-  const cart = useUpdateCart();
-  const products = useUpdateProducts();
-  const modal = useModalState();
+// function App() {
+//   const cart = useUpdateCart();
+//   const products = useUpdateProducts();
+//   const modal = useModalState();
 
+//   return (
+//     <ProductsContext.Provider value={products}>
+//       <CartContext.Provider value={cart}>
+//         <ModalContext.Provider value={modal}>
+//           <RouterProvider router={router} />
+//         </ModalContext.Provider>
+//       </CartContext.Provider>
+//     </ProductsContext.Provider>
+//   );
+// }
+
+function App() {
   return (
-    <ProductsContext.Provider value={products}>
-      <CartContext.Provider value={cart}>
-        <ModalContext.Provider value={modal}>
-          <RouterProvider router={router} />
-        </ModalContext.Provider>
-      </CartContext.Provider>
-    </ProductsContext.Provider>
+    <>
+      <button type="button">Click Me</button>
+      <input type="text" />
+    </>
   );
 }
 
 export default App;
-
-const getRandom = () => Math.random() * 2000;
-const test = Array.from(
-  new Set(
-    Array(100)
-      .fill(null)
-      .map(getRandom)
-  )
-);
-console.log(test);

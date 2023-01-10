@@ -1,5 +1,5 @@
 import { capitalizer, deCapitalizer } from '../lib/stringHelpers';
-import words from './mocks';
+import { words } from '../mocks/mocks';
 
 describe('Correct implementation of functions', () => {
   it('returns first character in upper case', () => {
