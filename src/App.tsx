@@ -47,28 +47,19 @@ const router = createBrowserRouter(
   )
 );
 
-// function App() {
-//   const cart = useUpdateCart();
-//   const products = useUpdateProducts();
-//   const modal = useModalState();
-
-//   return (
-//     <ProductsContext.Provider value={products}>
-//       <CartContext.Provider value={cart}>
-//         <ModalContext.Provider value={modal}>
-//           <RouterProvider router={router} />
-//         </ModalContext.Provider>
-//       </CartContext.Provider>
-//     </ProductsContext.Provider>
-//   );
-// }
-
 function App() {
+  const cart = useUpdateCart();
+  const products = useUpdateProducts();
+  const modal = useModalState();
+
   return (
-    <>
-      <button type="button">Click Me</button>
-      <input type="text" />
-    </>
+    <ProductsContext.Provider value={products}>
+      <CartContext.Provider value={cart}>
+        <ModalContext.Provider value={modal}>
+          <RouterProvider router={router} />
+        </ModalContext.Provider>
+      </CartContext.Provider>
+    </ProductsContext.Provider>
   );
 }
 

@@ -30,11 +30,21 @@ $logoColorsLength: length($logoColors);
 
 
 @font-face {
-  font-family: 'Poppins', sans-serif;
-  src:
-    url('/src/assets/fonts/Poppins/Poppins-Medium.ttf'),
-    url('/src/assets/fonts/Poppins/Poppins-Regular.ttf'),
-    url('/src/assets/fonts/Poppins/Poppins-SemiBold.ttf');
+  font-family: 'Poppins';
+  src: url('/src/assets/fonts/Poppins/Poppins-Medium.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/src/assets/fonts/Poppins/Poppins-Regular.ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/src/assets/fonts/Poppins/Poppins-SemiBold.ttf');
+  font-weight: 600;
 }
 
 @mixin PoppinsMedium {
