@@ -3,12 +3,11 @@
 .article {
   display: grid;
   grid-template-columns: 3fr 2fr 1fr;
-  gap: $gap;
+  gap: $gap * 2;
   height: min-content;
   padding: 0.5rem;
   box-shadow: 0px 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
   border-radius: $borderRadius;
-  transition: box-shadow $transition;
 
   &__link {
     display: grid;
@@ -22,13 +21,8 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
-    border-radius: $borderRadius;
     cursor: pointer;
-
-    &_active {
-      border: transparent;
-      outline: 1px solid orangered;
-    }
+    transition: transform $transition;
 
     &:hover {
       transform: scale(1.1);
@@ -55,22 +49,27 @@
 
   .picture {
     display: grid;
-    grid-template-columns: 2fr 5fr;
+    grid-template-columns: minmax(100px, 2fr) minmax(200px, 5fr);
     gap: $gap;
 
     &__button {
+      display: flex;
       padding: 0;
-      border: none;
-      background: none;
-    }
+      border: 0.25rem solid $blueColorOpacity;
+      border-radius: $borderRadius;
+      background: transparent;
+      box-shadow: 0px 0.25rem 0.5rem rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: border $transition;
 
-    &__current {
-      transform: none;
+      &_active {
+        border: 0.25rem solid $orangeColorBasic;
+      }
     }
 
     &__previews {
       display: grid;
-      gap: $gap;
+      gap: $gap * 2;
       height: auto;
       padding: 0.5rem;
     }
@@ -115,11 +114,11 @@
 }
 
 .modal {
-  position: relative;
-  height: 100%;
-  max-width: 90vw;
-  max-height: 60vh;
-  text-align: center;
+  display: flex;
+  position: absolute;
+  align-items: center;
+  justify-content: center;
+  width: 90vw;
 
   &__image {
 
@@ -134,13 +133,10 @@
     right: 1rem;
     z-index: 1;
     font-size: 2rem;
-    color: red;
     background: transparent;
     border: 0;
+    cursor: pointer;
 
-    &:hover {
-      color: green;
-      cursor: pointer;
-    }
+    @extend %CloseSvg;
   }
 }

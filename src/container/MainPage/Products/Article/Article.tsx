@@ -35,8 +35,10 @@ function Article({ product, children }: ArticleType) {
   const [activeLink, setActiveLink] = useState(thumbnail);
   const alt = `${title} ${brand} $${discountPrice}`;
   const imagesItem = images.map((link) => {
-    const baseClass = 'article__image picture__image';
-    const activeClass = 'article__image article__image_active picture__image';
+    // const baseClass = 'article__image picture__image';
+    // const activeClass = 'article__image article__image_active picture__image';
+    const baseClass = 'article__button picture__button';
+    const activeClass = 'article__button picture__button picture__button_active';
     const className = activeLink === link ? activeClass : baseClass;
     return (
       <ImageComponent

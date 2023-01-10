@@ -110,6 +110,25 @@ $logoColorsLength: length($logoColors);
   }
 }
 
+%CloseSvg {
+  svg {
+    fill: $blueColorPrimary;
+    transition: fill $transition;
+  }
+
+  &:hover {
+    svg {
+      fill: $orangeColorBasic;
+    }
+  }
+
+  &:active {
+    svg {
+      fill: $greenColorBasic;
+    }
+  }
+}
+
 %Links {
   color: $blueColorPrimary;
   text-decoration: none;
