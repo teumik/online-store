@@ -1,15 +1,24 @@
+import './layout.scss';
+import { useContext } from 'react';
 import { Outlet } from 'react-router';
 import Footer from '../container/Footer/Footer';
 import Header from '../container/Header/Header';
-import './layout.scss';
+import QueryContext from '../context/query.context';
+import useQueryContext from '../hooks/useQueryContext';
+import DataContext from '../context/data.context';
 
 function Layout() {
+  const query = useQueryContext();
+  const ctx = useContext(DataContext);
+  ctx.activeBrandsFilters = [];
+  ctx.activeCategoryFilters = [];
+
   return (
-    <>
+    <QueryContext.Provider value={query}>
       <Header />
       <Outlet />
       <Footer />
-    </>
+    </QueryContext.Provider>
   );
 }
 
