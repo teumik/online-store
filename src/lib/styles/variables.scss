@@ -129,6 +129,26 @@ $logoColorsLength: length($logoColors);
   }
 }
 
+
+%FooterSvgs {
+  svg {
+    fill: $purpleTextColor;
+    transition: fill $transition;
+  }
+
+  &:hover {
+    svg {
+      fill: $orangeColorBasic;
+    }
+  }
+
+  &:active {
+    svg {
+      fill: $greenColorBasic;
+    }
+  }
+}
+
 %Links {
   color: $blueColorPrimary;
   text-decoration: none;

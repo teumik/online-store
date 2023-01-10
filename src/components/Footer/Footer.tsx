@@ -21,7 +21,7 @@ function Footer({ date }: FooterType) {
             </li>
           </ul>
         </li>
-        <li className="footer__items">{`${date} ©DreamTeam`}</li>
+        <li className="footer__items">{`${date} ©Teumik & Andrey`}</li>
         <li className="footer__items">
           <a className="footer__links" href="https://rs.school/js/" target="_blank" rel="noreferrer">
             <div className="wrapper_adjust">

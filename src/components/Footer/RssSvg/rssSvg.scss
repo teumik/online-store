@@ -20,7 +20,7 @@
 
 .st5 {
   fill: #fff; // BACKGROUND COLOR
-  stroke: #000; // STROKE COLOR
+  stroke: inherit; // STROKE COLOR
   stroke-width: 4;
   stroke-miterlimit: 10;
 }
@@ -32,7 +32,7 @@
 .st6,
 .st7 {
   fill: none; // BACKGROUND COLOR
-  stroke: #000; // STROKE COLOR
+  stroke: inherit; // STROKE COLOR
   stroke-width: 4;
   stroke-miterlimit: 10;
 }
@@ -44,7 +44,7 @@
 
 .st9 {
   fill: none; // BACKGROUND COLOR
-  stroke: #000; // STROKE COLOR
+  stroke: inherit; // STROKE COLOR
   stroke-width: 4;
   stroke-miterlimit: 10;
 }
