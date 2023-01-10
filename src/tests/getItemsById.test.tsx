@@ -10,8 +10,7 @@ describe('When given exist id', () => {
     );
     const results = idx.map((id) => dataController.getItemByID(id));
     const expected = [...idx];
-
-    results.forEach((result, i) => expect(result?.id).toEqual(expected[i]));
+    results.map((result, i) => expect(result?.id).toBe(expected[i]));
   });
 
   it('returns item with min and max range', () => {
@@ -21,8 +20,7 @@ describe('When given exist id', () => {
     ];
     const results = idx.map((id) => dataController.getItemByID(id));
     const expected = [...idx];
-
-    results.forEach((result, i) => expect(result?.id).toEqual(expected[i]));
+    results.map((result, i) => expect(result?.id).toBe(expected[i]));
   });
 });
 
@@ -33,8 +31,6 @@ describe('When given id out range', () => {
       Math.max(...dataController.view.map((el) => el.id)) + 1,
     ];
     const results = idx.map((id) => dataController.getItemByID(id));
-    const expected = undefined;
-
-    results.forEach((result) => expect(result).toEqual(expected));
+    results.map((result) => expect(result).toBeUndefined());
   });
 });
