@@ -47,6 +47,8 @@
       "category": "smartphones",
       "thumbnail": "https://i.dummyjson.com/data/products/3/thumbnail.jpg",
       "images": [
+        "https://m.media-amazon.com/images/I/51z358SS7fL._AC_.jpg",
+        "https://m.media-amazon.com/images/I/41oqIYe+Q7L._AC_.jpg",
         "https://i.dummyjson.com/data/products/3/thumbnail.jpg"
       ]
     },
@@ -1286,6 +1288,7 @@
       "thumbnail": "https://i.dummyjson.com/data/products/70/thumbnail.jpg",
       "images": [
         "https://i.dummyjson.com/data/products/70/2.jpg",
+        "https://s.alicdn.com/@sc04/kf/H2912d5691e6342a5bbd1dc74d27a2b56I.jpg_960x960.jpg",
         "https://i.dummyjson.com/data/products/70/thumbnail.jpg"
       ]
     },
@@ -1442,7 +1445,8 @@
       "category": "womens-jewellery",
       "thumbnail": "https://i.dummyjson.com/data/products/79/thumbnail.jpg",
       "images": [
-        "https://i.dummyjson.com/data/products/79/1.jpg",
+        "https://ae04.alicdn.com/kf/Sa3625e2c04fe492da3b47fd6ea32506aP/-.jpg",
+        "https://ae04.alicdn.com/kf/S060c6cf9a692477aa67fda8f6a9315b1y/-.jpg",
         "https://i.dummyjson.com/data/products/79/thumbnail.jpg"
       ]
     },
