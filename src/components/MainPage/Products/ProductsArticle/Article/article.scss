@@ -67,6 +67,10 @@
       }
     }
 
+    &__current {
+      max-height: 50vh;
+    }
+
     &__previews {
       display: grid;
       gap: $gap * 2;
@@ -118,9 +122,11 @@
   position: absolute;
   align-items: center;
   justify-content: center;
-  width: 90vw;
+  max-width: 90vw;
 
   &__image {
+    height: 100%;
+    max-height: 80vh;
 
     &:hover {
       transform: none;
