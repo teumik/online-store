@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 
 import DataContext from '../../../../context/data.context';
 
@@ -13,6 +13,13 @@ function FilterListItem({
   title, filterTitle, inputHandler, initial,
 }: FilterListItemProps) {
   const ctx = useContext(DataContext);
+  const [currentSense, setCurrentSense] = useState(ctx.getCurrentSense(title));
+  const [maxSense, setMaxSense] = useState(ctx.getMaxSense(title));
+
+  useEffect(() => {
+    setCurrentSense(ctx.getCurrentSense(title));
+    setMaxSense(ctx.getMaxSense(title));
+  }, [ctx.view]);
 
   return (
     <li className={ctx.getCurrentSense(title) ? 'filters__list-item' : 'filters__list-item inActive'} key={title}>
@@ -31,9 +38,9 @@ function FilterListItem({
       />
       <label htmlFor={title} className="filters__list-label">{` ${title} `}</label>
       <p className="filters__list-stock">
-        {ctx.getCurrentSense(title)}
+        {currentSense}
         /
-        {ctx.getMaxSense(title)}
+        {maxSense}
       </p>
     </li>
   );
