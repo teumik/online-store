@@ -1,38 +1,41 @@
 import { dataController } from '../controller/data.controller';
 
-test('some', () => {
-  const id = 4;
-  const res = dataController.getItemByID(id);
-  const ans = dataController.view[id - 1];
-  expect(res).toBe(ans);
-});
-
-describe('When given 2 numbers', () => {
+describe('When given id 4', () => {
   it('returns item with id 4', () => {
     const id = 4;
-    const res = dataController.getItemByID(id);
-    const ans = dataController.view[id - 1];
+    const result = dataController.getItemByID(id);
+    const expected = dataController.view[id - 1];
 
-    expect(res).toEqual(ans);
+    expect(result).toEqual(expected);
   });
 });
 
-describe('When given 2 numbers', () => {
+describe('When given id 69', () => {
+  it('returns item with id 69', () => {
+    const id = 69;
+    const result = dataController.getItemByID(id);
+    const expected = dataController.view[id - 1];
+
+    expect(result).toEqual(expected);
+  });
+});
+
+describe('When given id out range (0)', () => {
   it('returns undefined', () => {
     const id = 0;
-    const res = dataController.getItemByID(id);
-    const ans = dataController.view[id - 1];
+    const result = dataController.getItemByID(id);
+    const expected = dataController.view[id - 1];
 
-    expect(res).toEqual(ans);
+    expect(result).toEqual(expected);
   });
 });
 
-describe('When given 2 numbers', () => {
+describe('When given id out range (101)', () => {
   it('returns undefined', () => {
     const id = 101;
-    const res = dataController.getItemByID(id);
-    const ans = dataController.view[id - 1];
+    const result = dataController.getItemByID(id);
+    const expected = dataController.view[id - 1];
 
-    expect(res).toEqual(ans);
+    expect(result).toEqual(expected);
   });
 });
