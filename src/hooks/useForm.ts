@@ -78,14 +78,12 @@ const useForm = () => {
 
   const onCardDateChange = (e: FormEvent) => {
     const target = e.target as HTMLInputElement;
-    const re = /\d{2,2}(?=(\d{2})+(?!\d))/g;
-    target.value = target.value.replace(re, '$&/').replace(/[^/\d]/g, '');
 
-    if (target.value.length === 5) {
-      const month = target.value.slice(0, 2);
-      if (parseInt(month, 10) > 12) {
-        target.value = `12${target.value.slice(4)}`;
-      }
+    target.value = target.value.replace(/\D/g, '');
+    if (target.value !== '') {
+      target.value = target.value.match(/.{1,2}/g)!.join('/');
+    } else {
+      target.value = '';
     }
   };
 

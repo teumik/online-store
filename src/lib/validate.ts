@@ -46,6 +46,8 @@ export default function validate(values: IValues): IErrors {
     errors.cardData = emptyMessage;
   } else if (values.cardData.length !== 5) {
     errors.cardData = wrongMessage;
+  } else if (parseInt(values.cardData.slice(0, 2), 10) > 12) {
+    errors.cardData = wrongMessage;
   }
 
   if (!values.cardCvv) {
