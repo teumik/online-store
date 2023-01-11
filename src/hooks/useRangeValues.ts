@@ -22,15 +22,16 @@ const useRangeValues = (min: number, max: number, title: string) => {
   const { updateProducts } = useContext(ProductsContext);
 
   useEffect(() => {
-    if (title === 'Price') {
+    if (title === 'Price' && ctx.view.length > 0) {
       setLowPrice(ctx.getLowPriceView());
       setMaxPrice(ctx.getMaxPriceView());
     }
-    if (title === 'Stock') {
+
+    if (title === 'Stock' && ctx.view.length > 0) {
       setLowPrice(ctx.getLowStockView());
       setMaxPrice(ctx.getMaxStockView());
     }
-  }, [ctx.view]);
+  }, [ctx.activeBrandsFilters.length, ctx.activeCategoryFilters.length]);
 
   function calculateInputValue(e: { target: HTMLInputElement }): void {
     const { target } = e;
@@ -45,7 +46,7 @@ const useRangeValues = (min: number, max: number, title: string) => {
     if (target.classList.contains('filters__range-2')) {
       if (value < lowprice) return;
       setMaxPrice(value);
-      searchParams.set(title.toLowerCase(), [maxprice, value].join('↕'));
+      searchParams.set(title.toLowerCase(), [lowprice, value].join('↕'));
       setSearchParams(searchParams);
       ctx.onChangeFiltersRange(title, [lowprice, value]);
     }
