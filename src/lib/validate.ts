@@ -1,7 +1,8 @@
 import { IErrors, IValues } from '../hooks/useForm';
 
 const emailRegExp = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
-const phoneRegExp = /^(\+)[0-9]{8,16}\d/;
+const phoneRegExp = /^(\+)[0-9]{8,16}$/;
+
 const nameRegExp = /^[a-z,A-Z,а-я, А-Я]{3,30}\d*\s[a-z ,A-Z,а-я, А-Я]{3,30}\d*$/;
 const addressRegExp = /^([^\s]{5,20}\d*\s){2}[^\s]{5,20}\d*$/;
 
@@ -13,7 +14,7 @@ export default function validate(values: IValues): IErrors {
 
   if (!values.name) {
     errors.name = emptyMessage;
-  } else if (!nameRegExp.test(values.name)) {
+  } else if (!nameRegExp.test(values.name.trim())) {
     errors.name = wrongMessage;
   }
 
@@ -48,6 +49,8 @@ export default function validate(values: IValues): IErrors {
   }
 
   if (!values.cardCvv) {
+    errors.cardCvv = wrongMessage;
+  } else if (values.cardCvv.length !== 3) {
     errors.cardCvv = wrongMessage;
   }
 
