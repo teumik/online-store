@@ -21,7 +21,6 @@ function Header() {
     updateQuery('');
     updateSearch('');
     setQueryParams(queryParams);
-    updateProducts();
   }
 
   function clearSort() {

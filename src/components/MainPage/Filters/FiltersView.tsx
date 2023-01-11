@@ -1,10 +1,6 @@
 import './filters.scss';
-import { useSearchParams } from 'react-router-dom';
-import { useContext } from 'react';
 import FiltersList from '../../../container/MainPage/Filters/FiltersList/FiltersList';
 import FilterRange from '../../../container/MainPage/Filters/FiltersRange/FilterRange';
-import ProductsContext from '../../../context/products.context';
-import QueryContext from '../../../context/query.context';
 
 export interface filtersPropsView {
   categories: string[];
@@ -13,6 +9,9 @@ export interface filtersPropsView {
   maxPrice: number;
   minStock: number;
   maxStock: number;
+  resetHandler: () => void;
+  copyHandler: () => void;
+  linkState: boolean;
 }
 
 export default function FiltersView({
@@ -22,64 +21,26 @@ export default function FiltersView({
   maxPrice,
   minStock,
   maxStock,
+  resetHandler,
+  copyHandler,
+  linkState,
 }: filtersPropsView) {
-  const [queryParams, setQueryParams] = useSearchParams();
-  const { updateProducts } = useContext(ProductsContext);
-  const {
-    viewState, updateQuery, updateSearch, toggleView, setSort, setInit,
-  } = useContext(QueryContext);
-
-  function clearSearch() {
-    queryParams.delete('search');
-    updateQuery('');
-    updateSearch('');
-  }
-
-  function clearView() {
-    queryParams.delete('view');
-    if (viewState) toggleView();
-  }
-
-  function clearSort() {
-    queryParams.delete('sort');
-    queryParams.delete('type');
-    const temp = {
-      price: false,
-      count: false,
-    };
-    setInit(temp);
-    setSort(temp);
-  }
-
-  function clearAll() {
-    Array.from(queryParams.entries()).map(([q]) => queryParams.delete(q));
-  }
-
   return (
     <aside className="filters">
       <div className="filters__control">
         <button
           className="filters__control-btn btn"
           type="button"
-          onClick={() => {
-            clearView();
-            clearSearch();
-            clearSort();
-            clearAll();
-            setQueryParams(queryParams);
-            updateProducts();
-          }}
+          onClick={resetHandler}
         >
           Reset filters
         </button>
         <button
-          className="filters__control-btn btn"
+          className={linkState ? 'filters__control-btn filters__control-btn_active btn' : 'filters__control-btn btn'}
           type="button"
-          onClick={() => {
-            navigator.clipboard.writeText(globalThis.location.href);
-          }}
+          onClick={copyHandler}
         >
-          Copy link
+          {linkState ? 'Copied' : 'Copy link'}
         </button>
       </div>
       <FiltersList
