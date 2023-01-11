@@ -29,11 +29,11 @@ function ArticlePage() {
     };
   });
 
-  const links = queries.map((point) => (
+  const links = queries.map((point, i) => (
     <Link
-      to={point.value !== 'Store' ? `/${point.query}` : '/'}
+      to={i !== 0 ? `/${point.query}` : '/'}
       key={point.value}
-      className="details__link"
+      className={i === queries.length - 1 ? 'details__link details__link_active' : 'details__link'}
     >
       <span className="details__point">{capitalizer(point.value)}</span>
     </Link>
