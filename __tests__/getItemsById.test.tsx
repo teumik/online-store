@@ -1,4 +1,4 @@
-import { dataController } from '../controller/data.controller';
+import { dataController } from '../src/controller/data.controller';
 
 describe('When given exist id', () => {
   it('returns item with in range', () => {

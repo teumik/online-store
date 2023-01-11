@@ -1,5 +1,5 @@
-import { dataController } from '../controller/data.controller';
-import roundNumber from '../lib/numberHelpers';
+import { dataController } from '../src/controller/data.controller';
+import roundNumber from '../src/lib/numberHelpers';
 
 describe('Correct implementation of functions', () => {
   const getRandom = () => Math.random() * 100 * dataController.getMaxPrice();
