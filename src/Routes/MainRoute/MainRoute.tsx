@@ -9,15 +9,15 @@ function MainRoute() {
   const query = useQueryContext();
   return (
     <MainPage className="main-route">
-      <div
-        className="main-route__filters-wrapper"
-      >
-        <QueryContext.Provider value={query}>
+      <QueryContext.Provider value={query}>
+        <div
+          className="main-route__filters-wrapper"
+        >
           <Search />
           <Filters />
-        </QueryContext.Provider>
-      </div>
-      <Products />
+        </div>
+        <Products />
+      </QueryContext.Provider>
     </MainPage>
   );
 }
