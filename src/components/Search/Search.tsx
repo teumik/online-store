@@ -22,6 +22,7 @@ function Search({
           onChange={onChange}
         />
         <button
+          data-testid="search-reset"
           type="button"
           className="search__reset search__button"
           onClick={onReset}

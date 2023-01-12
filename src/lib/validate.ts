@@ -1,7 +1,7 @@
 import { IErrors, IValues } from '../hooks/useForm';
 
 const emailRegExp = /^([a-z0-9_-]+\.)*[a-z0-9_-]+@[a-z0-9_-]+(\.[a-z0-9_-]+)*\.[a-z]{2,6}$/;
-const phoneRegExp = /^(\+)[0-9]{8,16}$/;
+const phoneRegExp = /^(\+)[0-9]{9,16}$/;
 
 const nameRegExp = /^[a-z,A-Z,а-я, А-Я]{3,30}\d*\s[a-z ,A-Z,а-я, А-Я]{3,30}\d*$/;
 const addressRegExp = /^([^\s]{5,20}\d*\s){2}[^\s]{5,20}\d*$/;
