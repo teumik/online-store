@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { PropsWithChildren, useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ArticleView from '../../../../components/MainPage/Products/ProductsArticle/Article/Article';
 import CartContext from '../../../../context/cart.context';
@@ -10,10 +10,9 @@ import ModalContext from '../../../../context/modal.context';
 
 interface ArticleType {
   product: IData;
-  children: JSX.Element | JSX.Element[];
 }
 
-function Article({ product, children }: ArticleType) {
+function Article({ product, children }: PropsWithChildren<ArticleType>) {
   const {
     id,
     title,

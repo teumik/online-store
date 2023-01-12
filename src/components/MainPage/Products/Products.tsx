@@ -1,3 +1,4 @@
+import { PropsWithChildren } from 'react';
 import './products.scss';
 import { ProductsType } from './types/products.interface';
 
@@ -7,7 +8,7 @@ function Products({
   buttonsView,
   className,
   children,
-}: ProductsType) {
+}: PropsWithChildren<ProductsType>) {
   return (
     <section className="products">
       <ul className="products__header">

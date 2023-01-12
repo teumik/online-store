@@ -13,6 +13,7 @@ function Search({
         role="search"
       >
         <input
+          data-testid="search"
           type="search"
           name="search"
           placeholder="Search"

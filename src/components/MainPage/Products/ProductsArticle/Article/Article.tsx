@@ -1,3 +1,4 @@
+import { PropsWithChildren } from 'react';
 import './article.scss';
 import { ArticleType } from './types/article.interface';
 
@@ -19,7 +20,7 @@ function Article({
   activeLink,
   openState,
   toggleModal,
-}: ArticleType) {
+}: PropsWithChildren<ArticleType>) {
   return (
     <article className="article">
       {openState ? (
@@ -57,7 +58,7 @@ function Article({
         >
           <img className="article__image picture__current" src={thumbnail} alt={alt} />
         </button>
-        {isDiscount ? <div className="article__discount picture__discount">{`${discountPercentage}%`}</div> : null}
+        {isDiscount && <div className="article__discount picture__discount">{`${discountPercentage}%`}</div>}
       </div>
       <div className="article__section about">
         <h4 className="article__subtitle about__subtitle">
