@@ -5,7 +5,6 @@ function ImageComponent({
 }: ImageComponentType) {
   return (
     <button
-      // className="article__button picture__button"
       className={className}
       key={link}
       type="button"
@@ -13,7 +12,6 @@ function ImageComponent({
     >
       <img
         className="article__image picture__image"
-        // className={className}
         src={link}
         alt={alt}
         loading="lazy"
