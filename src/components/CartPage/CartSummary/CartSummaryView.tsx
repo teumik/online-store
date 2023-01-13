@@ -28,7 +28,7 @@ export default function CartSummaryView({
   cartTotalPrice,
 }: CartSummaryViewProps) {
   return (
-    <div className="summary">
+    <div data-testid="summary" className="summary">
       <h2 className="summary__title">Summary</h2>
       <div className="summary__items">
         Total price:

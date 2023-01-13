@@ -18,7 +18,7 @@ function CartListView({
   itemsOnPage,
 }: CartListViewProps) {
   return (
-    <div className="productsCart">
+    <div data-testid="productsCart" className="productsCart">
       <div className="productsCart__header">
         <h2 className="productsCart__title">Products In Cart</h2>
 
