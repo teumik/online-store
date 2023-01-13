@@ -1,5 +1,5 @@
 import { dataController } from '../src/controller/data.controller';
-import { testCart } from '../src/mocks/mocks';
+import { testCart } from '../__mocks__/customMocks';
 
 afterEach(() => {
   dataController.cart.idArray = [];

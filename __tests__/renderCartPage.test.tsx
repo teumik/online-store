@@ -1,12 +1,9 @@
 import { render, screen } from '@testing-library/react';
+import { BrowserRouter } from 'react-router-dom';
 import CartPageView from '../src/components/CartPage/CartPageView';
 import '@testing-library/jest-dom';
-// eslint-disable-next-line import/order
-import { BrowserRouter } from 'react-router-dom';
 
 describe('render CartPage component', () => {
-  const key = 'cart';
-
   it('render empty cart message', () => {
     render(
       <BrowserRouter>

@@ -35,6 +35,14 @@ const words = {
 
 const testCart = {
   reults: [6, 21, 1637],
+  fakeItemRequests: [
+    { expected: true, id: 1 },
+    { expected: true, id: 64 },
+    { expected: true, id: 43 },
+    { expected: false, id: 44 },
+    { expected: false, id: 0 },
+    { expected: false, id: 65 },
+  ],
   fakeCarts: [
     [
       { id: 1, count: 1 },
