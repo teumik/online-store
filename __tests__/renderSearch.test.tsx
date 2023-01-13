@@ -9,10 +9,8 @@ describe('Render component', () => {
     render(
       <Search />
     );
-    const input: HTMLInputElement = screen.getByTestId('search');
-    const reset = screen.getByTestId('search-reset');
-    expect(input).toBeInTheDocument();
-    expect(reset).toBeInTheDocument();
-    expect(input.value).toEqual('');
+    expect(screen.getByTestId('search')).toBeInTheDocument();
+    expect(screen.getByTestId('search-reset')).toBeInTheDocument();
+    expect((screen.getByTestId('search') as HTMLInputElement).value).toEqual('');
   });
 });
