@@ -10,6 +10,7 @@ interface CartItemType {
 interface CartType {
   currency: '$';
   idArray: CartItemType[];
+  initFlag: boolean;
 }
 
 interface RangeFilters {
@@ -78,6 +79,7 @@ export default class DataController {
     this.cart = {
       currency: '$',
       idArray: [],
+      initFlag: true,
     };
     this.rangeFilters = {
       Price: [this.getLowPrice(), this.getMaxPrice()],
