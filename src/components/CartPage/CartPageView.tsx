@@ -9,15 +9,14 @@ interface CartPageViewProps {
 
 function CartPageView({ hasItems }: CartPageViewProps) {
   return (
-    <>
-      <h1 className={hasItems ? 'hidden' : 'cart-page__title'}>Cart is empty</h1>
-      <div className={hasItems ? 'cart-page' : 'hidden'}>
+    hasItems ? (
+      <div className="cart-page">
         <CartList />
         <CartSummary />
         <Modal />
       </div>
-    </>
-
+    )
+      : (<h1>Cart is empty</h1>)
   );
 }
 
