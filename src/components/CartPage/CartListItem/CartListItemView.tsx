@@ -2,18 +2,17 @@ import { Link } from 'react-router-dom';
 import './cartListItem.scss';
 
 interface CartListItemViewProps {
-  title: string | undefined;
-  description: string | undefined;
-  rating: number | undefined;
-  discount: number | undefined;
-  stock: number | undefined;
-  price: number | undefined;
-  thumbnail: string | undefined;
-  position: number | undefined;
-  id: number | undefined;
+  title: string;
+  description: string;
+  rating: number;
+  discount: number;
+  stock: number;
+  price: number;
+  thumbnail: string;
+  position: number;
+  id: number;
   value: number;
   onChangeValue: (id: number, operator: string) => void;
-
 }
 
 export default function CartListItemView({
@@ -53,13 +52,13 @@ export default function CartListItemView({
           {stock}
         </h6>
         <div className="stock__controls">
-          <button onClick={() => onChangeValue(id!, '-')} className="stock__remove btn" type="button"> - </button>
+          <button onClick={() => onChangeValue(id, '-')} className="stock__remove btn" type="button"> - </button>
           <span>{value}</span>
-          <button onClick={() => onChangeValue(id!, '+')} disabled={value >= stock!} className="stock__add btn" type="button"> + </button>
+          <button onClick={() => onChangeValue(id, '+')} disabled={value >= stock} className="stock__add btn" type="button"> + </button>
         </div>
         <p className="stock__price">
 
-          {price! * value}
+          {price * value}
           $
         </p>
       </div>
