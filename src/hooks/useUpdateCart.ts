@@ -4,7 +4,6 @@ import DataContext from '../context/data.context';
 function useUpdateCart() {
   const ctx = useContext(DataContext);
   const storageCart = JSON.parse(localStorage.getItem('cart') || '[]');
-  Object.assign(ctx.cart.idArray, storageCart);
 
   const [cartState, updateState] = useState(ctx);
   const updateCart = () => {
@@ -12,6 +11,17 @@ function useUpdateCart() {
     const ctxCopy = Object.create(ctx);
     updateState(ctxCopy);
   };
+
+  const init = () => {
+    if (cartState.cart.initFlag) {
+      Object.assign(cartState.cart.idArray, storageCart);
+      Object.assign(cartState.cart, { initFlag: false });
+      const ctxCopy = Object.create(ctx);
+      updateState(ctxCopy);
+    }
+  };
+
+  if (storageCart.length !== 0) init();
 
   return {
     cartState,
