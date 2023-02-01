@@ -8,10 +8,12 @@ export default function FormSuccess() {
   const ctx = useContext(DataContext);
   const { updateCart } = useContext(CartContext);
   useEffect(() => {
-    setTimeout(() => {
+    const timeOut = setTimeout(() => {
       ctx.cart.idArray = [];
       updateCart();
       navigator('/');
+
+      clearTimeout(timeOut);
     }, 3000);
   });
 
