@@ -59,7 +59,14 @@ const config = {
         use: [stylesHandler, 'css-loader', 'postcss-loader', 'sass-loader'],
       },
       {
-        test: /\.(svg|png|jpe?g|gif|webp)$/i,
+        test: /\.(png|jpe?g|gif|webp)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: getPath('images'),
+        },
+      },
+      {
+        test: /\.(svg)$/i,
         type: 'asset/resource',
         generator: {
           filename: getPath('images'),
