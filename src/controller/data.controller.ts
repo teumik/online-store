@@ -41,7 +41,7 @@ interface Storage {
   };
 }
 
-export default class DataController {
+class DataController {
   private readonly data;
   storage: Storage;
   public view: IData[];
