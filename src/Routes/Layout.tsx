@@ -9,9 +9,8 @@ import DataContext from '../context/data.context';
 
 function Layout() {
   const query = useQueryContext();
-  const ctx = useContext(DataContext);
-  ctx.activeBrandsFilters = [];
-  ctx.activeCategoryFilters = [];
+  const { clearFilters } = useContext(DataContext);
+  clearFilters();
 
   return (
     <QueryContext.Provider value={query}>

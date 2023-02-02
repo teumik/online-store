@@ -99,6 +99,11 @@ class DataController {
     this.priceWithPromoCodes = 0;
   }
 
+  clearFilters = () => {
+    this.activeBrandsFilters = [];
+    this.activeCategoryFilters = [];
+  };
+
   removeValidPromocode(promo: PromoCode) {
     this.validPromocodes = this.validPromocodes.filter((item) => item !== promo);
   }
