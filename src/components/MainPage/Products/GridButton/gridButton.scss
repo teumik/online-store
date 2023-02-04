@@ -1,0 +1,9 @@
+@import '../../../../App.scss';
+
+.views {
+
+  &__buttons {
+    @extend %SecondaryButton;
+    @extend %Svgs;
+  }
+}

@@ -1,0 +1,48 @@
+@import '../../../../lib/styles/variables.scss';
+
+.range__box {
+  display: flex;
+
+
+
+
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+  position: relative;
+  height: 8px;
+  margin: 10px 0;
+
+}
+
+.filters__range-values {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  align-items: center;
+}
+
+input[type="range"] {
+  appearance: none;
+  width: 100%;
+  position: absolute;
+  background-color: transparent;
+
+  top: 0;
+  bottom: 0;
+  pointer-events: none;
+
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  appearance: none;
+  height: 1em;
+  width: 1em;
+  background-color: $blueColorPrimary ;
+
+  cursor: pointer;
+  border-radius: 50%;
+  pointer-events: auto;
+}
+
+input[type="range"]:active::-webkit-slider-thumb {
+  background-color: $green;
+}

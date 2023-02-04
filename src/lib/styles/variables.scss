@@ -1,0 +1,187 @@
+$blueColorPrimary: #0064D2;
+$blueColorOpacity: rgba(0, 101, 209, 0.1);
+$whiteTextColor: #ffffff;
+$blackTextColor: #000000;
+$blueTextColor: $blueColorPrimary;
+$purpleTextColor: #2F294D;
+$purpleTextColorOpacity: rgba(47, 41, 77, 0.502);
+$whiteBackgroundColor: $whiteTextColor;
+$greyBackgroundColor: #f3f3f3;
+$moreGreyBackgroundColor: #e4e3e3;
+$blueBackgroundColor: $blueColorOpacity;
+$redColorBasic: #E53238;
+$orangeColorBasic: #F5AF02;
+$yellowColorBasic: #F2C94C;
+$greenColorBasic: #86B817;
+$aditionalColorOpacity: rgba(31, 31, 77, 0.5);
+
+$blueColorSecondary: $blueColorOpacity;
+$yellow: $orangeColorBasic;
+$green: $greenColorBasic;
+
+$paddingBasic: 0.5rem;
+$gap: 0.5rem;
+$borderRadius: 5px;
+
+$transition: 0.2s;
+
+$logoColors: $redColorBasic, $blueTextColor, $orangeColorBasic, $greenColorBasic;
+$logoColorsLength: length($logoColors);
+
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/src/assets/fonts/Poppins/Poppins-Medium.ttf');
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/src/assets/fonts/Poppins/Poppins-Regular.ttf');
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: 'Poppins';
+  src: url('/src/assets/fonts/Poppins/Poppins-SemiBold.ttf');
+  font-weight: 600;
+}
+
+@mixin PoppinsMedium {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 400;
+}
+
+@mixin PoppinsRegular {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+
+@mixin PoppinsSemiBold {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 600;
+}
+
+%MainText {
+  @include PoppinsMedium;
+  font-size: 1rem;
+}
+
+%DetailsHeaders {
+  @include PoppinsRegular;
+  font-size: 1rem;
+}
+
+@mixin Logo {
+  @include PoppinsRegular;
+  font-size: 2.5rem;
+}
+
+%SecondaryButton {
+  padding: 0.25rem;
+  color: $blueColorPrimary;
+  background: $blueColorOpacity;
+  border: transparent;
+  border-radius: $borderRadius;
+  transition: color $transition, background $transition;
+
+  &:hover {
+    color: $whiteTextColor;
+    background: $orangeColorBasic;
+  }
+
+  &:active {
+    color: $whiteTextColor;
+    background: $greenColorBasic;
+  }
+}
+
+%PrimaryButton {
+  @extend %SecondaryButton;
+  color: $whiteTextColor;
+  background: $blueColorPrimary;
+}
+
+%Svgs {
+  svg {
+    fill: $blueColorPrimary;
+    transition: fill $transition;
+  }
+
+  &:hover {
+    svg {
+      fill: $whiteTextColor;
+    }
+  }
+
+  &:active {
+    svg {
+      fill: $whiteTextColor;
+    }
+  }
+}
+
+%CloseSvg {
+  svg {
+    fill: $purpleTextColor;
+    transition: fill $transition;
+  }
+
+  &:hover {
+    svg {
+      fill: $orangeColorBasic;
+    }
+  }
+
+  &:active {
+    svg {
+      fill: $greenColorBasic;
+    }
+  }
+}
+
+
+%FooterSvgs {
+  svg {
+    fill: $purpleTextColor;
+    transition: fill $transition;
+  }
+
+  &:hover {
+    svg {
+      fill: $orangeColorBasic;
+    }
+  }
+
+  &:active {
+    svg {
+      fill: $greenColorBasic;
+    }
+  }
+}
+
+%Links {
+  color: $blueColorPrimary;
+  text-decoration: none;
+
+  &:hover {
+    color: $orangeColorBasic;
+  }
+
+  &:active {
+    color: $greenColorBasic;
+  }
+}
+
+@mixin AddButtons {
+  @extend %SecondaryButton;
+
+  &_active {
+    color: $whiteTextColor;
+    background: $greenColorBasic;
+
+    &:hover {
+      background: $redColorBasic;
+    }
+  }
+}

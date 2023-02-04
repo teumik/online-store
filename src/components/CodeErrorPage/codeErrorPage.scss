@@ -1,0 +1,9 @@
+@import '../../App.scss';
+
+.code-error {
+
+  &__message {
+    text-align: center;
+    text-transform: capitalize;
+  }
+}

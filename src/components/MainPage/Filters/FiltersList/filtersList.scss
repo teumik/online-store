@@ -1,0 +1,49 @@
+.filters__list-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 0 0 1.5rem;
+  list-style-type: none;
+
+  input {
+    opacity: 0;
+  }
+
+  label {
+    cursor: pointer;
+    text-align: left;
+    flex-grow: 1;
+  }
+
+  label::after {
+    content: url('/src/assets/images/checked.svg');
+    position: absolute;
+    top: 50%;
+    left: 0.5rem;
+    z-index: 2;
+    transform: translateY(-45%);
+    height: min-content;
+    opacity: 0;
+  }
+
+  input:checked + label::after {
+    opacity: 1;
+  }
+
+  p {
+    margin: 0;
+    width: 2rem;
+    text-align: end;
+  }
+}
+
+.filters__list {
+  padding: 0.5rem 0.5rem 0.5rem 0;
+  margin: 0 0 0.5rem 0;
+  overflow: auto;
+  max-height: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}

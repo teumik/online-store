@@ -1,0 +1,59 @@
+@import '../../../App.scss';
+
+.products {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+
+  &__matchless {
+    display: grid;
+    gap: $gap;
+    padding: 1rem 0.5rem;
+    color: $redColorBasic;
+    text-align: center;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__items {
+    display: flex;
+    gap: calc($gap / 2);
+  }
+
+  &__articles {
+    display: grid;
+    gap: $gap;
+
+    &_grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+
+      .item {
+        height: 100%;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr auto;
+
+        &__link {
+          grid-template-columns: 1fr;
+          grid-template-rows: 150px 1fr;
+        }
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    border: transparent;
+    cursor: pointer;
+  }
+}

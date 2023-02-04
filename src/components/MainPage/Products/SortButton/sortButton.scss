@@ -1,0 +1,19 @@
+@import '../../../../App.scss';
+
+.sorts {
+  &__types {
+    position: relative;
+    padding: 0.25rem 2rem;
+    @extend %SecondaryButton;
+    @extend %Svgs;
+
+    svg {
+      fill: $blueColorPrimary;
+      position: absolute;
+      height: 80%;
+      top: 50%;
+      right: 0;
+      transform: translate(-15%, -50%);
+    }
+  }
+}

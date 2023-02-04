@@ -1,0 +1,36 @@
+@import '../../App.scss';
+
+$dotSize: 0.5rem;
+
+.details {
+
+  &__path {
+    display: flex;
+    gap: calc($gap * 4);
+    margin: 1rem 0 0;
+    padding: 0.5rem;
+  }
+
+  &__link {
+    position: relative;
+    @extend %Links;
+
+    &_active {
+      color: $purpleTextColor;
+    }
+
+    &:not(:last-child)::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 100%;
+      transform: translate(150%, -50%);
+      width: $dotSize;
+      height: $dotSize;
+      background: $yellowColorBasic;
+      border-radius: 50%;
+      color: black;
+      pointer-events: none;
+    }
+  }
+}

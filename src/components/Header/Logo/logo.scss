@@ -1,0 +1,45 @@
+@import '../../../App.scss';
+
+.logo {
+  @include Logo;
+  transition: transform $transition;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: $gap;
+    text-decoration: none;
+
+    &_active {
+      pointer-events: none;
+    }
+  }
+
+  &__header {
+    margin: 0;
+
+    &_color {
+      letter-spacing: -0.25rem;
+
+      &:nth-child(1) {
+        color: $redColorBasic;
+      }
+
+      &:nth-child(2) {
+        color: $blueTextColor;
+      }
+
+      &:nth-child(3) {
+        color: $orangeColorBasic;
+      }
+
+      &:nth-child(4) {
+        color: $greenColorBasic;
+      }
+    }
+  }
+}

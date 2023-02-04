@@ -1,0 +1,18 @@
+.cart-page {
+  display: flex;
+  justify-content: space-around;
+  gap: 1rem;
+
+  &__title {
+    text-align: center;
+  }
+}
+
+.productsCart {
+  flex-grow: 1;
+}
+
+
+.hidden {
+  display: none;
+}

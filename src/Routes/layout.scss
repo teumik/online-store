@@ -1,0 +1,23 @@
+.main-route,
+.error-route,
+.article-route,
+.cart-route {
+  display: flex;
+  flex-grow: 1;
+  gap: 0.5rem;
+  padding: 0.5rem;
+}
+
+.cart-route {
+  display: grid;
+  align-items: start;
+  grid-template-rows: min-content;
+}
+
+.main-route {
+  &__filters-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
